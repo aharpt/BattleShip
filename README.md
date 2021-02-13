@@ -1,1 +1,1 @@
-# Welcome to Battleship
+# Welcome to Battleship Game
