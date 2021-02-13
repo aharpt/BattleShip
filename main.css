@@ -1,6 +1,5 @@
 /* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
 
 #player1Board {
-  border-right: 5px;
-  border-color: gray;
+  border-right: 5px solid black;
 }
