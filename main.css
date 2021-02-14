@@ -1,11 +1,11 @@
-/* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
-
 /* container */
 @media (min-width: 1200px) {
   .container, .container-lg, .container-md, .container-sm, .container-xl {
     max-width: 1240px;
   }
 }
+
+/* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
 
 /* board */
 
@@ -56,4 +56,12 @@ button.btn {
 .rowNumber {
   display: inline-block;
   width: 20px;
+}
+
+/* fire input box */
+
+#fire-box {
+  margin-top: 15px;
+  display: inline-block;
+  margin-left: 860px;
 }
