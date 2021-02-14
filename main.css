@@ -29,15 +29,13 @@
 
 /* columns */
 
+.columns {
+  margin-left: 2px;
+}
+
 .columns div {
   display: inline-block;
   width: 45px;
   text-align: center;
   margin-left: 0px;
-}
-
-/* rows */
-.rowNumber {
-  display: inline;
-  margin-right: 5px;
 }
