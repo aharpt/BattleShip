@@ -46,5 +46,10 @@
 }
 
 .columns {
-  margin-left: 15px;
+  margin-left: 27px;
+}
+
+.rowNumber {
+  display: inline-block;
+  width: 20px;
 }
