@@ -39,3 +39,12 @@
   text-align: center;
   margin-left: 0px;
 }
+
+/* new styles */
+.board .first-button {
+  margin-left: 5px !important;
+}
+
+.columns {
+  margin-left: 15px;
+}
