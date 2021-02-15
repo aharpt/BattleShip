@@ -51,7 +51,7 @@ document.querySelector("#fire-box .btn").onclick = function() {
 /* Place Ships */
 
 document.querySelector("#place-box .btn").onclick = function() {
-  let value = document.getElementById("shipPlacement").value;
+  let value = document.getElementById("shipPlacement").value.toUpperCase();
   let isValidLetter = checkLetter(value);
   let isValidNumber = checkNumber(value);
 
@@ -73,3 +73,6 @@ document.querySelector("#place-box .btn").onclick = function() {
 
 
 }
+
+/* Modal code */
+$('.modal').modal();
