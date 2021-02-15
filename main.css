@@ -5,6 +5,11 @@
   }
 }
 
+/* colorRow */
+#colorRow .text-dark {
+  margin-bottom: 0.5rem;
+}
+
 /* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
 
 /* board */
