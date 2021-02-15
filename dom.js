@@ -34,6 +34,7 @@ document.getElementById("placeShips").onclick = function() {
 
   if (value > 0 && value < 7) {
     $(".modal").modal("hide");
+    // call placeShips() method
   }
   else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
     let p = document.createElement("p");
