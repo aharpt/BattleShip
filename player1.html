@@ -347,12 +347,13 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div id="modalBody" class="modal-body">
+              <div class="input-group mb-3">
+                <input id="numberOfShips" type="text" class="form-control" placeholder="# of Ships (number between 1 and 6)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="placeShips">Place Ships!</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

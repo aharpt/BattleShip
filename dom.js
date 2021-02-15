@@ -24,6 +24,24 @@ let checkNumber = (value) => {
   return false;
 };
 
+/* get number of ships */
+
+/* Modal code */
+$('.modal').modal();
+
+document.getElementById("placeShips").onclick = function() {
+  let value = document.getElementById("numberOfShips").value;
+
+  if (value > 0 && value < 7) {
+    $(".modal").modal("hide");
+  }
+  else {
+    document.getElementById("modalBody").append("<p>Please give an integer between 1 and 6 (inclusive).</p>");
+  }
+}
+
+
+
 /* Fire at Oppoent Ships */
 
 document.querySelector("#fire-box .btn").onclick = function() {
@@ -73,6 +91,3 @@ document.querySelector("#place-box .btn").onclick = function() {
 
 
 }
-
-/* Modal code */
-$('.modal').modal();
