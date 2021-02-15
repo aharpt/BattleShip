@@ -45,32 +45,6 @@ document.getElementById("placeShips").onclick = function() {
   }
 }
 
-
-
-/* Fire at Oppoent Ships */
-
-document.querySelector("#fire-box .btn").onclick = function() {
-  let value = document.getElementById("playerGuess").value;
-  let isValidLetter = checkLetter(value);
-  let isValidNumber = checkNumber(value);
-
-  if (value.length !== 2) {
-    console.log("You must enter a string of exactly two characters that comprises a letter followed by a number (for example 'A1')");
-  }
-  else if (!isValidLetter) {
-    console.log("You entered an invalid first character. Your first character must be a letter from A-J");
-  }
-  else if (!isValidNumber) {
-    console.log("You entered an invalid second character. Your second character must be a number from 1-10");
-  }
-  else {
-    console.log("You entered a valid shot");
-    // Call fire/miss methods
-  }
-
-
-}
-
 /* Place Ships */
 
 document.querySelector("#place-box .btn").onclick = function() {
@@ -93,6 +67,26 @@ document.querySelector("#place-box .btn").onclick = function() {
     document.getElementById(value).classList.remove("btn-secondary");
     document.getElementById(value).classList.add("btn-success");
   }
+}
 
+/* Fire at Opponent Ships */
 
+document.querySelector("#fire-box .btn").onclick = function() {
+  let value = document.getElementById("playerGuess").value;
+  let isValidLetter = checkLetter(value);
+  let isValidNumber = checkNumber(value);
+
+  if (value.length !== 2) {
+    console.log("You must enter a string of exactly two characters that comprises a letter followed by a number (for example 'A1')");
+  }
+  else if (!isValidLetter) {
+    console.log("You entered an invalid first character. Your first character must be a letter from A-J");
+  }
+  else if (!isValidNumber) {
+    console.log("You entered an invalid second character. Your second character must be a number from 1-10");
+  }
+  else {
+    console.log("You entered a valid shot");
+    // Call fire/miss methods
+  }
 }
