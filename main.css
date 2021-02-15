@@ -5,6 +5,11 @@
   }
 }
 
+/* jumbotron */
+.jumbotron-fluid {
+  padding: 2rem 2rem;
+}
+
 /* colorRow */
 #colorRow .text-dark {
   margin-bottom: 0.5rem;
