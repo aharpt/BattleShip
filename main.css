@@ -1,0 +1,77 @@
+/* container */
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1240px;
+  }
+}
+
+/* jumbotron */
+.jumbotron-fluid {
+  padding: 2rem 2rem;
+}
+
+/* colorRow */
+#colorRow .text-dark {
+  margin-bottom: 0.5rem;
+}
+
+/* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
+
+/* board */
+
+#myBoard {
+  border-right: 5px solid black;
+}
+
+.col-md-6 {
+  height: 80%;
+}
+
+.board {
+  display: inline-block;
+}
+
+.board button {
+  width: 45px;
+  height: 45px;
+  margin: 1px;
+}
+
+button.btn {
+  border-radius: 0;
+}
+
+/* columns */
+
+.columns {
+  margin-left: 2px;
+}
+
+.columns div {
+  display: inline-block;
+  width: 45px;
+  text-align: center;
+  margin-left: 0px;
+}
+
+/* new styles */
+.board .first-button {
+  margin-left: 5px !important;
+}
+
+.columns {
+  margin-left: 27px;
+}
+
+.rowNumber {
+  display: inline-block;
+  width: 20px;
+}
+
+/* fire input box */
+
+#fire-box {
+  margin-top: 15px;
+  display: inline-block;
+  margin-left: 860px;
+}
