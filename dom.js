@@ -2,6 +2,12 @@
 const columns = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
+/* When player turn is over */
+
+/* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
+
+window.location.href = "http://externalpage.com";
+
 /* functions to verify input */
 
 let checkLetter = (value) => {
