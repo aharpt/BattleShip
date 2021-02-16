@@ -79,3 +79,9 @@ button.btn {
 .input-group.mb-3 {
   max-width: 500px;
 }
+
+/* instructions */
+
+#instructionsContainer div {
+  display: inline-block;
+}

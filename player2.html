@@ -321,9 +321,17 @@
       </div>
 
       <div class="row">
-        <div id="fire-box" class="col-md-3">
+        <div id="place-box" class="col-md-6">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Guess a location 'A1'" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input id="shipPlacement" type="text" class="form-control" placeholder="Enter coordinates for a ship (i.e. 'A1')" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Place</button>
+            </div>
+          </div>
+        </div>
+        <div id="fire-box" class="col-md-6">
+          <div class="input-group mb-3">
+            <input id="playerGuess" type="text" class="form-control" placeholder="Guess a location 'A1'" aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Fire</button>
             </div>
@@ -332,5 +340,6 @@
       </div>
     </div>
 
+    <script type="text/javascript" src="dom.js"></script>
   </body>
 </html>
