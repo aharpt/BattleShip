@@ -322,16 +322,47 @@
       </div>
 
       <div class="row">
-        <div id="fire-box" class="col-md-3">
+        <div id="place-box" class="col-md-6">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Guess a location 'A1'" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input id="shipPlacement" type="text" class="form-control" placeholder="Enter coordinates for a ship (i.e. 'A1')" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Place</button>
+            </div>
+          </div>
+        </div>
+        <div id="fire-box" class="col-md-6">
+          <div class="input-group mb-3">
+            <input id="playerGuess" type="text" class="form-control" placeholder="Guess a location 'A1'" aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Fire</button>
             </div>
           </div>
         </div>
       </div>
+      <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Number of Ships</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="modalBody" class="modal-body">
+              <div class="input-group mb-3">
+                <input id="numberOfShips" type="text" class="form-control" placeholder="# of Ships (number between 1 and 6)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="placeShips">Place Ships!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="dom.js"></script>
   </body>
 </html>
