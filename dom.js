@@ -28,11 +28,12 @@ let checkNumber = (value) => {
 
 /* Modal code */
 $('.modal').modal();
+let numberOfShips;
 
 document.getElementById("placeShips").onclick = function() {
-  let value = document.getElementById("numberOfShips").value;
+  numberOfShips = document.getElementById("numberOfShips").value;
 
-  if (value > 0 && value < 7) {
+  if (numberOfShips > 0 && numberOfShips < 7) {
     $(".modal").modal("hide");
     // call placeShips() method
   }
@@ -45,7 +46,7 @@ document.getElementById("placeShips").onclick = function() {
   }
 }
 
-/* Place Ships */
+/* Place Ships should make with no button */
 
 document.querySelector("#place-box .btn").onclick = function() {
   let value = document.getElementById("shipPlacement").value.toUpperCase();
