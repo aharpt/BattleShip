@@ -1,5 +1,5 @@
 
-//a test board setup with 5 ships of 
+//a test board setup with 5 ships of
 //size 5, 4, 3, 2, and 1
 //board is a 10x10
 testBoard = [['X','O','O','O','O','O','O','O','O','X'],
@@ -37,7 +37,7 @@ function gamePlay(boardArray, moveX, moveY) {
                 aboveEmpty = false;
             }
         }
-        
+
         //checking one tile below
         if ((moveY+1) <= 9) {
             if (boardArray[moveY+1] != 'O') {
@@ -51,7 +51,7 @@ function gamePlay(boardArray, moveX, moveY) {
                 leftEmpty = false;
             }
         }
-        
+
         //checking one tile right
         if ((moveX+1) <= 9) {
             if (boardArray[moveX+1] != 'O') {

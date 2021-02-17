@@ -25,3 +25,5 @@ document.getElementById("placeShips").onclick = function() {
     document.getElementById("modalBody").append(p);
   }
 }
+
+export default numberOfShips;

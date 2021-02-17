@@ -29,4 +29,8 @@
     }
   };
 
+  var numberOfShips$1 = numberOfShips;
+
+  return numberOfShips$1;
+
 }());
