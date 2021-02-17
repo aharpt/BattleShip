@@ -93,6 +93,10 @@ button.btn {
   margin-bottom: 25px;
 }
 
+#hide {
+  display: none !important;
+}
+
 
 /* instructions */
 

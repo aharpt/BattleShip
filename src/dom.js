@@ -50,12 +50,16 @@
 
         document.getElementById("modalBody").append(p);
       }
-    }
+    };
 
     /* when ship buttons are clicked */
-      document.querySelector(".btn-primary").onclick = function() {
+      document.querySelector(".btn-primary").onhover = function() {
         console.log("Hello World");
       };
+
+      $("button").hover(function() {
+        console.log("JJ");
+      });
 
 
   }
