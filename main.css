@@ -84,6 +84,16 @@ button.btn {
   max-width: 500px;
 }
 
+/* place ships */
+#placeShipsContainer {
+  margin-bottom: 20px;
+}
+
+#placeShipsRow .col-md-4 {
+  margin-bottom: 25px;
+}
+
+
 /* instructions */
 
 #instructionsContainer div {

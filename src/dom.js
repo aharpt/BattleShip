@@ -37,6 +37,10 @@
         $(".modal").modal("hide");
         // call placeShips() method
         // after placeShips()
+        for (let i = 1; i <= numberOfShips; i++) {
+          let column = '<div class="col-md-4"><h3>Ship ' + i + '</h3><form><div class="form-group"><label for="formGroupExampleInput">Starting Coordinate:</label><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter starting coordinate for ship (i.e. \'A1\')"></div><div class="form-group"><label for="formGroupExampleInput2">Orientation:</label><input type="text" class="form-control" id="formGroupExampleInput2" placeholder="type \'horizontal\' or \'vertical\'"></div><button type="button" class="btn btn-primary">Place!</button></form></div>';
+          $("#placeShipsRow").append(column);
+        }
       }
       else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
         let p = document.createElement("p");
