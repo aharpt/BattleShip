@@ -106,6 +106,7 @@
       /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
       if (location.pathname.split("BattleShip")[1] == "/player1.html") {
         console.log(location.pathname.split("BattleShip"));
+        document.querySelector(".modal").style.display = "none";
         setTimeout(changePlayerTurn, 750, "./player2.html");
       }
       else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
