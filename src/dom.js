@@ -110,7 +110,7 @@
         setTimeout(changePlayerTurn, 750, "./player2.html");
       }
       else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-        setTimeout(changePlayerTurn, 750, "./player1.html");
+        setTimeout(changePlayerTurn, 750, "./new_player1.html");
       }
 
     }
