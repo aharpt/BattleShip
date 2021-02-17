@@ -6,24 +6,26 @@ function changeURL() {
   window.location.href = "./player1.html";
 }
 
-document.getElementById("placeShips").onclick = function() {
-  numberOfShips = document.getElementById("numberOfShips").value;
+if (location.pathname.split("BattleShip")[1] == "/placeShips.html") {
 
-  if (numberOfShips > 0 && numberOfShips < 7) {
-    $(".modal").modal("hide");
-    // call placeShips() method
+  document.getElementById("placeShips").onclick = function() {
+    numberOfShips = document.getElementById("numberOfShips").value;
 
-    // after placeShips()
+    if (numberOfShips > 0 && numberOfShips < 7) {
+      $(".modal").modal("hide");
+      // call placeShips() method
 
-    changeURL();
-  }
-  else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
-    let p = document.createElement("p");
-    p.innerText = "Please give an integer between 1 and 6 (inclusive).";
-    p.classList.add("modalError");
+      // after placeShips()
 
-    document.getElementById("modalBody").append(p);
+      changeURL();
+    }
+    else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
+      let p = document.createElement("p");
+      p.innerText = "Please give an integer between 1 and 6 (inclusive).";
+      p.classList.add("modalError");
+
+      document.getElementById("modalBody").append(p);
+    }
   }
 }
-
 export default numberOfShips;
