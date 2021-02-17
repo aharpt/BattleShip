@@ -50,6 +50,7 @@
               orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical' (default horizontal)");
               isValidInput = true;
               // call placeShips method to update js Board
+              // switch statement based off of the value of i
               document.getElementById(input).classList.remove("btn-secondary");
               document.getElementById(input).classList.add("btn-success");
             }
