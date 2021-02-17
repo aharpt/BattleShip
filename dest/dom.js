@@ -69,30 +69,6 @@
       return false;
     };
 
-    /* get number of ships */
-    // if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-    //
-    //   /* Modal code */
-    //   $('.modal').modal();
-    //   let numberOfShips;
-    //
-    //   document.getElementById("placeShips").onclick = function() {
-    //     numberOfShips = document.getElementById("numberOfShips").value;
-    //
-    //     if (numberOfShips > 0 && numberOfShips < 7) {
-    //       $(".modal").modal("hide");
-    //       // call placeShips() method
-    //     }
-    //     else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
-    //       let p = document.createElement("p");
-    //       p.innerText = "Please give an integer between 1 and 6 (inclusive).";
-    //       p.classList.add("modalError");
-    //
-    //       document.getElementById("modalBody").append(p);
-    //     }
-    //   }
-    // }
-
     /* Place Ships should make with no button */
 
     document.querySelector("#place-box .btn").onclick = function() {
@@ -147,10 +123,10 @@
 
         if (location.pathname.split("BattleShip")[1] == "/player1.html") {
           console.log(location.pathname.split("BattleShip"));
-          setTimeout(changePlayerTurn, 2000, "./player2.html");
+          setTimeout(changePlayerTurn, 750, "./player2.html");
         }
         else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-          setTimeout(changePlayerTurn, 2000, "./player1.html");
+          setTimeout(changePlayerTurn, 750, "./player1.html");
         }
 
       }
