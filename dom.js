@@ -12,8 +12,6 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
 
   /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
 
-  /* window.location.href = "http://externalpage.com"; */
-
   /* functions to verify input */
 
   let checkLetter = (value) => {
@@ -35,6 +33,9 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
 
     return false;
   };
+
+  /* place ships on dom */
+
 
   /* Place Ships should make with no button */
 
