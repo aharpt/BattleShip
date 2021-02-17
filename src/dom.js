@@ -35,8 +35,12 @@
 
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".modal").modal("hide");
-        // call placeShips() method
-        // after placeShips()
+
+        for (let i = 1; i <= numberOfShips; i++) {
+          // call placeShips() method
+        }
+
+
       }
       else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
         let p = document.createElement("p");
@@ -45,7 +49,9 @@
 
         document.getElementById("modalBody").append(p);
       }
-    }
+    };
+
+
   }
 
 
@@ -104,9 +110,7 @@
       /* When player turn is over */
 
       /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
-      if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-        console.log(location.pathname.split("BattleShip"));
-        document.querySelector(".modal").style.display = "none";
+      if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.pathname.split("BattleShip")[1] == "/new_player1.html") {
         setTimeout(changePlayerTurn, 750, "./player2.html");
       }
       else if (location.pathname.split("BattleShip")[1] == "/player2.html") {

@@ -84,6 +84,11 @@ button.btn {
   max-width: 500px;
 }
 
+/* place ships */
+#shipOrientation {
+  display: block;
+}
+
 /* instructions */
 
 #instructionsContainer div {
