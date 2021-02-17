@@ -37,14 +37,18 @@
         $(".modal").modal("hide");
         let input;
         let orientation;
+        let isValidInput = true;
 
         for (let i = 1; i <= numberOfShips; i++) {
-          alert("Placing Ship " + i + "");
-          input = prompt("Please provide a starting coordinate. The desired format is a letter followed by a number (i.e. A1)").toUpperCase();
+          do {
+            alert("Placing Ship " + i + "");
+            input = prompt("Please provide a starting coordinate. The desired format is a letter followed by a number (i.e. A1)").toUpperCase();
+            orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical'");
+          } while (!isValidInput);
           // call placeShips method to update js Board
           document.getElementById(input).classList.remove("btn-secondary");
           document.getElementById(input).classList.add("btn-success");
-          orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical'");
+
         }
 
 
