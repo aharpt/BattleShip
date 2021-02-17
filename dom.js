@@ -12,8 +12,6 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
 
   /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
 
-  /* window.location.href = "http://externalpage.com"; */
-
   /* functions to verify input */
 
   let checkLetter = (value) => {
@@ -39,11 +37,13 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
   /* place ships on dom */
 
   function placeShipsOnDom() {
+    console.log(numberOfShips);
     for (let i = 1; i <= numberOfShips; i++) {
       let startingCoordinate;
       switch (i) {
         case 1:
           startingCoordinate = prompt("What coordinate do you want to start at (example 'A1')");
+          console.log(startingCoordinate);
           document.getElementById(startingCoordinate).classList.remove("btn-secondary");
           document.getElementById(startingCoordinate).classList.add("btn-success");
           break;
