@@ -31,24 +31,26 @@ let checkNumber = (value) => {
 };
 
 /* get number of ships */
+if (location.pathname.split("BattleShip")[1] == "/player1.html") {
 
-/* Modal code */
-$('.modal').modal();
-let numberOfShips;
+  /* Modal code */
+  $('.modal').modal();
+  let numberOfShips;
 
-document.getElementById("placeShips").onclick = function() {
-  numberOfShips = document.getElementById("numberOfShips").value;
+  document.getElementById("placeShips").onclick = function() {
+    numberOfShips = document.getElementById("numberOfShips").value;
 
-  if (numberOfShips > 0 && numberOfShips < 7) {
-    $(".modal").modal("hide");
-    // call placeShips() method
-  }
-  else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
-    let p = document.createElement("p");
-    p.innerText = "Please give an integer between 1 and 6 (inclusive).";
-    p.classList.add("modalError");
+    if (numberOfShips > 0 && numberOfShips < 7) {
+      $(".modal").modal("hide");
+      // call placeShips() method
+    }
+    else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
+      let p = document.createElement("p");
+      p.innerText = "Please give an integer between 1 and 6 (inclusive).";
+      p.classList.add("modalError");
 
-    document.getElementById("modalBody").append(p);
+      document.getElementById("modalBody").append(p);
+    }
   }
 }
 
