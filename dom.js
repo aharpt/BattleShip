@@ -1,6 +1,6 @@
-import numberOfShips from "./src/placeShips";
+import {numOfShips} from "./src/placeShips"
 
-console.log(numberOfShips);
+console.log(numOfShips);
 
 if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.pathname.split("BattleShip")[1] == "/player2.html") {
 
