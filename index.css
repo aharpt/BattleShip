@@ -1,0 +1,33 @@
+
+/* Navigation styles */
+
+.logo {
+  font-family: arial, "Times New Roman";
+  font-size: 22px;
+  font-weight: 200;
+  font-style: none; /*italic*/
+  text-align: center; /*center,left justify*/
+  text-decoration: none;
+  text-indent: 0px;
+  text-transform: none;
+  color: red;
+  word-spacing: 10px;
+  line-height: 40px;
+}
+
+.navigation {
+  display: inline;
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  text-align: center;
+  display:block;
+  line-height: 40px;
+  text-decoration: none;
+  color: black;
+
+}
