@@ -10,6 +10,10 @@
   padding: 2rem 2rem;
 }
 
+.lead {
+  font-weight: bold;
+}
+
 /* colorRow */
 #colorRow .text-dark {
   margin-bottom: 0.5rem;
