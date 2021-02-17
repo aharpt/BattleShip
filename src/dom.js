@@ -35,9 +35,16 @@
 
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".modal").modal("hide");
+        let input;
+        let orientation;
 
         for (let i = 1; i <= numberOfShips; i++) {
-          // call placeShips() method
+          alert("Placing Ship " + i + "");
+          input = prompt("Please provide a starting coordinate. The desired format is a letter followed by a number (i.e. A1)").toUpperCase();
+          // call placeShips method to update js Board
+          document.getElementById(input).classList.remove("btn-secondary");
+          document.getElementById(input).classList.add("btn-success");
+          orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical'");
         }
 
 
