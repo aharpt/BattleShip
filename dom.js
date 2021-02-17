@@ -90,10 +90,10 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
 
       if (location.pathname.split("BattleShip")[1] == "/player1.html") {
         console.log(location.pathname.split("BattleShip"));
-        setTimeout(changePlayerTurn, 2000, "./player2.html");
+        setTimeout(changePlayerTurn, 750, "./player2.html");
       }
       else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-        setTimeout(changePlayerTurn, 2000, "./player1.html");
+        setTimeout(changePlayerTurn, 750, "./player1.html");
       }
 
     }
