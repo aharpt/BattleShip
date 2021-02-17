@@ -35,13 +35,12 @@
 
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".modal").modal("hide");
-        // call placeShips() method
-        // after placeShips()
 
         for (let i = 1; i <= numberOfShips; i++) {
-          let column = '<div class="col-md-4"><h3>Ship ' + i + '</h3><form><div class="form-group"><label for="startingCoordinate-' + i + '">Starting Coordinate:</label><input type="text" class="form-control" id="startingCoordinate-' + i + '" placeholder="Enter starting coordinate for ship (i.e. \'A1\')"></div><div class="form-group"><label for="formGroupExampleInput2">Orientation:</label><input type="text" class="form-control" id="formGroupExampleInput2" placeholder="type \'horizontal\' or \'vertical\'"></div><button id="shipButton-'+ i + '" type="button" class="btn btn-primary">Place!</button></form></div>';
-          $("#placeShipsRow").append(column);
+          // call placeShips() method
         }
+
+
       }
       else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
         let p = document.createElement("p");
@@ -51,15 +50,6 @@
         document.getElementById("modalBody").append(p);
       }
     };
-
-    /* when ship buttons are clicked */
-      document.querySelector(".btn-primary").onhover = function() {
-        console.log("Hello World");
-      };
-
-      $("button").hover(function() {
-        console.log("JJ");
-      });
 
 
   }
