@@ -87,6 +87,10 @@ document.querySelector("#fire-box .btn").onclick = function() {
   let isValidLetter = checkLetter(value);
   let isValidNumber = checkNumber(value);
 
+  function changePlayerTurn(url) {
+    window.location.href = url;
+  }
+
   if (value.length !== 2) {
     alert("You must enter a string of exactly two characters that comprises a letter followed by a number (for example 'A1')");
   }
@@ -99,6 +103,15 @@ document.querySelector("#fire-box .btn").onclick = function() {
   else {
     alert("You entered a valid shot");
     // Call fire/miss methods
+
+    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+      console.log(location.pathname.split("BattleShip"));
+      setTimeout(2000, changePlayerTurn, "./player2.html");
+    }
+    else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+      setTimeout(2000, changePlayerTurn, "./player1.html");
+    }
+
   }
 
   document.getElementById("playerGuess").value = "";
