@@ -36,18 +36,25 @@
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".modal").modal("hide");
         let input;
-        let orientation;
+        let orientation = "horizontal";
         let isValidInput = true;
 
         for (let i = 1; i <= numberOfShips; i++) {
           do {
             alert("Placing Ship " + i + "");
             input = prompt("Please provide a starting coordinate. The desired format is a letter followed by a number (i.e. A1)").toUpperCase();
-            orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical'");
+            if (input.length !== 2 || !checkLetter(input) || !checkNumber(input)) {
+              alert("Invalid coordinate.  Please try again");
+              isValidInput = false;
+            } else {
+              orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical' (default horizontal)");
+              isValidInput = true;
+              // call placeShips method to update js Board
+              document.getElementById(input).classList.remove("btn-secondary");
+              document.getElementById(input).classList.add("btn-success");
+            }
           } while (!isValidInput);
-          // call placeShips method to update js Board
-          document.getElementById(input).classList.remove("btn-secondary");
-          document.getElementById(input).classList.add("btn-success");
+
 
         }
 
