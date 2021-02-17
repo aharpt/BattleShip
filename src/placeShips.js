@@ -9,13 +9,13 @@ function changeURL() {
 
 if (location.pathname.split("BattleShip")[1] == "/placeShips.html") {
 
+
   document.getElementById("placeShips").onclick = function() {
     numberOfShips = document.getElementById("numberOfShips").value;
 
     if (numberOfShips > 0 && numberOfShips < 7) {
       $(".modal").modal("hide");
       // call placeShips() method
-
       // after placeShips()
 
       changeURL();

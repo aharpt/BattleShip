@@ -12,13 +12,13 @@
 
   if (location.pathname.split("BattleShip")[1] == "/placeShips.html") {
 
+
     document.getElementById("placeShips").onclick = function() {
       numberOfShips = document.getElementById("numberOfShips").value;
 
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".modal").modal("hide");
         // call placeShips() method
-
         // after placeShips()
 
         changeURL();
@@ -69,6 +69,28 @@
 
       return false;
     };
+
+    /* place ships on dom */
+
+    function placeShipsOnDom() {
+      for (let i = 1; i <= numberOfShips$1; i++) {
+        let startingCoordinate;
+        switch (i) {
+          case 1:
+            startingCoordinate = prompt("What coordinate do you want to start at (example 'A1')");
+            document.getElementById(startingCoordinate).classList.remove("btn-secondary");
+            document.getElementById(startingCoordinate).classList.add("btn-success");
+            break;
+          default:
+            console.log("default");
+            break;
+        }
+
+      }
+    }
+
+    placeShipsOnDom();
+
 
     /* Place Ships should make with no button */
 

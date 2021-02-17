@@ -36,6 +36,28 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
     return false;
   };
 
+  /* place ships on dom */
+
+  function placeShipsOnDom() {
+    for (let i = 1; i <= numberOfShips; i++) {
+      let startingCoordinate;
+      switch (i) {
+        case 1:
+          startingCoordinate = prompt("What coordinate do you want to start at (example 'A1')");
+          document.getElementById(startingCoordinate).classList.remove("btn-secondary");
+          document.getElementById(startingCoordinate).classList.add("btn-success");
+          break;
+        default:
+          console.log("default");
+          break;
+      }
+
+    }
+  }
+
+  placeShipsOnDom();
+
+
   /* Place Ships should make with no button */
 
   document.querySelector("#place-box .btn").onclick = function() {
