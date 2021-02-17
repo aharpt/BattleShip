@@ -1,16 +1,6 @@
-import numberOfShips from "./src/placeShips";
-
-console.log(numberOfShips);
-
-if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.pathname.split("BattleShip")[1] == "/player2.html") {
-
   /* available places to shoot */
   const columns = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-
-  /* When player turn is over */
-
-  /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
 
   /* functions to verify input */
 
@@ -34,7 +24,29 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
     return false;
   };
 
-  /* place ships on dom */
+  /* place ships */
+  if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+    /* Make the modal not close clicking on outside of modal : Stack Overflow https://stackoverflow.com/questions/22207377/disable-click-outside-of-bootstrap-modal-area-to-close-modal#:~:text=On%20Options%20chapter%2C%20in%20the,will%20prevent%20closing%20the%20modal. */
+    $('.modal').modal({backdrop: "static", keyboard: false});
+    let numberOfShips = 0;
+
+    document.getElementById("placeShips").onclick = function() {
+      numberOfShips = document.getElementById("numberOfShips").value;
+
+      if (numberOfShips > 0 && numberOfShips < 7) {
+        $(".modal").modal("hide");
+        // call placeShips() method
+        // after placeShips()
+      }
+      else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
+        let p = document.createElement("p");
+        p.innerText = "Please give an integer between 1 and 6 (inclusive).";
+        p.classList.add("modalError");
+
+        document.getElementById("modalBody").append(p);
+      }
+    }
+  }
 
 
   /* Place Ships should make with no button */
@@ -89,6 +101,9 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
         window.location.href = url;
       }
 
+      /* When player turn is over */
+
+      /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
       if (location.pathname.split("BattleShip")[1] == "/player1.html") {
         console.log(location.pathname.split("BattleShip"));
         setTimeout(changePlayerTurn, 750, "./player2.html");
@@ -101,4 +116,3 @@ if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.path
 
     document.getElementById("playerGuess").value = "";
   }
-}
