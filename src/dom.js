@@ -61,10 +61,10 @@
                   document.getElementById(input).classList.add("btn-success");
 
                   if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-                    setTimeout(changeLocation, 2000, "./player2.html");
+                    setTimeout(changeLocation, 3000, "./player2.html");
                   }
                   else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-                    setTimeout(changeLocation, 2000, "./new_player1.html");
+                    setTimeout(changeLocation, 3000, "./new_player1.html");
                   }
 
                   break;
@@ -158,10 +158,10 @@
 
       /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
       if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.pathname.split("BattleShip")[1] == "/new_player1.html") {
-        setTimeout(changePlayerTurn, 750, "./new_player2.html");
+        setTimeout(changePlayerTurn, 3000, "./new_player2.html");
       }
       else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-        setTimeout(changePlayerTurn, 750, "./new_player1.html");
+        setTimeout(changePlayerTurn, 3000, "./new_player1.html");
       }
 
     }
