@@ -10,6 +10,10 @@
   padding: 2rem 2rem;
 }
 
+.lead {
+  font-weight: bold;
+}
+
 /* colorRow */
 #colorRow .text-dark {
   margin-bottom: 0.5rem;
@@ -68,10 +72,20 @@ button.btn {
   width: 20px;
 }
 
-/* fire input box */
+/* input boxes */
 
-#fire-box {
+#fire-box,
+#place-box {
   margin-top: 15px;
   display: inline-block;
-  margin-left: 860px;
+}
+
+.input-group.mb-3 {
+  max-width: 500px;
+}
+
+/* instructions */
+
+#instructionsContainer div {
+  display: inline-block;
 }
