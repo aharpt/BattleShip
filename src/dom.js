@@ -49,6 +49,9 @@
             } else {
               orientation = prompt("Please provide the desired orientational.  Type 'horizontal' or 'vertical' (default horizontal)");
               isValidInput = true;
+              let changeLocation = function(url) {
+                  window.location.href = url;
+              };
               // call placeShips method to update js Board
               // switch statement based off of the value of i
 
@@ -57,7 +60,7 @@
                   document.getElementById(input).classList.remove("btn-secondary");
                   document.getElementById(input).classList.add("btn-success");
 
-                  window.location.href = "./player2.html";
+                  setTimeout(changeLocation, 2000, "./player2.html");
 
                   break;
                 case 2:
