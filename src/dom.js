@@ -27,14 +27,14 @@
   /* place ships */
   if (location.pathname.split("BattleShip")[1] == "/player1.html" || location.pathname.split("BattleShip")[1] == "/player2.html") {
     /* Make the modal not close clicking on outside of modal : Stack Overflow https://stackoverflow.com/questions/22207377/disable-click-outside-of-bootstrap-modal-area-to-close-modal#:~:text=On%20Options%20chapter%2C%20in%20the,will%20prevent%20closing%20the%20modal. */
-    $('.modal').modal({backdrop: "static", keyboard: false});
+    $('.placeShips1Modal').modal({backdrop: "static", keyboard: false});
     let numberOfShips = 0;
 
     document.getElementById("placeShips").onclick = function() {
       numberOfShips = document.getElementById("numberOfShips").value;
 
       if (numberOfShips > 0 && numberOfShips < 7) {
-        $(".modal").modal("hide");
+        $(".placeShips1Modal").modal("hide");
         let input;
         let orientation = "horizontal";
         let isValidInput = true;
