@@ -31,7 +31,7 @@
     let numberOfShips = 0;
 
     document.getElementById("placeShips").onclick = function() {
-      numberOfShips = document.getElementById("numberOfShips").value;
+        numberOfShips = document.getElementById("numberOfShips").value;
 
       if (numberOfShips > 0 && numberOfShips < 7) {
         $(".placeShips1Modal").modal("hide");
@@ -60,7 +60,12 @@
                   document.getElementById(input).classList.remove("btn-secondary");
                   document.getElementById(input).classList.add("btn-success");
 
-                  setTimeout(changeLocation, 2000, "./player2.html");
+                  if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+                    setTimeout(changeLocation, 2000, "./player2.html");
+                  }
+                  else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+                    setTimeout(changeLocation, 2000, "./new_player1.html");
+                  }
 
                   break;
                 case 2:
