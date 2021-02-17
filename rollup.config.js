@@ -1,7 +1,7 @@
 export default {
-  input: "src/placeShips.js",
+  input: "./dom.js",
   output: {
-    file: "dest/placeShips.js",
+    file: "dest/dom.js",
     format: "iife"
   }
 };
