@@ -35,34 +35,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      $('.modal').modal();
-
-      let numberOfShips;
-
-      function changeURL() {
-        window.location.href = "./player1.html";
-      }
-
-      document.getElementById("placeShips").onclick = function() {
-        numberOfShips = document.getElementById("numberOfShips").value;
-
-        if (numberOfShips > 0 && numberOfShips < 7) {
-          $(".modal").modal("hide");
-          // call placeShips() method
-
-          // after placeShips()
-
-          changeURL();
-        }
-        else if (document.getElementById("modalBody").lastChild !== document.querySelector(".modalError")) {
-          let p = document.createElement("p");
-          p.innerText = "Please give an integer between 1 and 6 (inclusive).";
-          p.classList.add("modalError");
-
-          document.getElementById("modalBody").append(p);
-        }
-      }
-    </script>
+    <script type="text/javascript" src="./placeShips.js"></script>
   </body>
 </html>
