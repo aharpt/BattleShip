@@ -87,10 +87,6 @@ document.querySelector("#fire-box .btn").onclick = function() {
   let isValidLetter = checkLetter(value);
   let isValidNumber = checkNumber(value);
 
-  function changePlayerTurn(url) {
-    window.location.href = url;
-  }
-
   if (value.length !== 2) {
     alert("You must enter a string of exactly two characters that comprises a letter followed by a number (for example 'A1')");
   }
@@ -103,6 +99,10 @@ document.querySelector("#fire-box .btn").onclick = function() {
   else {
     alert("You entered a valid shot");
     // Call fire/miss methods
+
+    function changePlayerTurn(url) {
+      window.location.href = url;
+    }
 
     if (location.pathname.split("BattleShip")[1] == "/player1.html") {
       console.log(location.pathname.split("BattleShip"));
