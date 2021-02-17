@@ -1,14 +1,13 @@
 /* Make the modal not close clicking on outside of modal : Stack Overflow https://stackoverflow.com/questions/22207377/disable-click-outside-of-bootstrap-modal-area-to-close-modal#:~:text=On%20Options%20chapter%2C%20in%20the,will%20prevent%20closing%20the%20modal. */
 $('.modal').modal({backdrop: "static", keyboard: false});
-
 let numberOfShips = 0;
+
 
 function changeURL() {
   window.location.href = "./player1.html";
 }
 
 if (location.pathname.split("BattleShip")[1] == "/placeShips.html") {
-
 
   document.getElementById("placeShips").onclick = function() {
     numberOfShips = document.getElementById("numberOfShips").value;
@@ -30,6 +29,4 @@ if (location.pathname.split("BattleShip")[1] == "/placeShips.html") {
   }
 }
 
-let numOfShips = numberOfShips;
-
-export {numOfShips};
+export {numberOfShips};
