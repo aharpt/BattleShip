@@ -3,14 +3,26 @@
 let $tiles = $("#myBoard button");
 
 // get id and return it
-function returnID() {
-  let shipIDLetters = [];
-  let shipIDNumbers = [];
+function returnIdsOfShip() {
+  let shipIds = [];
+  let shipIdLetters = [];
+  let shipIdNumbers = [];
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
-      shipIDS.push()
-    }
-  }
+      shipIdLetters.push($tiles[i].id[0]);
+      if ($tiles[i].id[2] === undefined) {
+        shipIdNumbers.push($tiles[i].id[1]);
+      } else {
+        let tempId = $tiles[i].id[1] + "" + $tiles[i].id[2];
+        shipIdNumbers.push(tempId);
+      } // end if
+    } // end if
+  } // end for
+
+  shipIds[0] = shipIdLetters;
+  shipIds[1] = shipIdNumbers;
+
+  return shipIds;
 }
 
 $("#myBoard button").click(function() {
@@ -102,12 +114,14 @@ switch (numOfShipTiles) {
   case 1:
     alert("First Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
   case 3:
     alert("Second Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
