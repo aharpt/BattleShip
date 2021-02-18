@@ -77,3 +77,54 @@ $(".btn-outline-success").click(function() {
 
 /* Take Care of ship length */
 // first ship must be length one
+$("#myBoard button").click(function() {
+
+let numOfShipTiles = 0;
+for (let i = 0; i < $tiles.length; i++) {
+  if ($($tiles[i]).hasClass("btn-success")) {
+    numOfShipTiles++;
+  }
+}
+
+switch (numOfShipTiles) {
+  case 1:
+    alert("First Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+  case 3:
+    alert("Second Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+  case 6:
+    alert("Third Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+  case 10:
+    alert("Fourth Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+  case 15:
+    alert("Fifth Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+  case 21:
+    alert("Sixth Ship Placed");
+    $("#myBoard button").removeAttr("disabled");
+    $(".btn-outline-success").trigger("click");
+    break;
+
+}
+
+
+
+});

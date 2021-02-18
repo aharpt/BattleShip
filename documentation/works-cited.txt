@@ -5,6 +5,7 @@
   2. How to update page href https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931
   3. Redirecting to a relative - url: https://stackoverflow.com/questions/1655065/redirecting-to-a-relative-url-in-javascript
   4. Getting id with JavaScript - url: https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button
+  5. https://stackoverflow.com/questions/5245368/how-can-i-convert-ascii-code-to-character-in-javascript
 4. We received certain small ideas from YouTube Tutorial Creating A Battleship Game Using JavaScript! - url: https://www.youtube.com/watch?v=m6YA2Sc7rKo&ab_channel=MystikDeveloped
 5. Mozilla Developer Network
 6. Using JavaScript setTimeout function - url: https://www.javascripttutorial.net/javascript-bom/javascript-settimeout/
