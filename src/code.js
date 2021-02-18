@@ -67,7 +67,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if ( ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && (orientation[1] === "vertical") ) {
+    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID)) {
       $tiles[i].disabled = false;
     }
   }
@@ -96,7 +96,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if ( ($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && (orientation[0] === "horizontal") ) {
+    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID)) {
       $tiles[i].disabled = false;
     }
   }
