@@ -39,57 +39,6 @@ function returnIdsOfShip() {
   return shipIds;
 }
 
-function checkValidShipPlacement() {
-  /* Row Code */
-
-  // get id of button one row down
-  let rowDownNumber = parseInt(clickedId[1]) + 1;
-  let rowDownID = clickedId[0] + "" + rowDownNumber;
-  // console.log("rowDownID: " + rowDownID);
-
-  // get id of button one row up
-  let rowUpNumber = parseInt(clickedId[1]) - 1;
-  // console.log("rowUpNumber: " + rowUpNumber);
-  let rowUpID = clickedId[0] + "" + rowUpNumber;
-  // console.log("rowUpID: " + rowUpID);
-
-  // remove disabled attribute from button one row adjacent
-  for (let i = 0; i < $tiles.length; i++) {
-    if ( ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && (orientation[1] === "vertical") ) {
-      $tiles[i].disabled = false;
-    }
-  }
-
-/* Column Code */
-
-
-  // get id of button one column down
-  let columnDownLetter = clickedId[0].charCodeAt(0);
-  columnDownLetter += 1;
-
-  // get back to new letter
-  let newLetter1 = String.fromCharCode(columnDownLetter);
-  let columnDownID = newLetter1 + "" + clickedId[1];
-  // console.log("adjacentColumnID: " + adjacentColumnID);
-
-
-  // get id of button one column up
-  let columnUpLetter = clickedId[0].charCodeAt(0);
-  columnUpLetter -= 1;
-
-  // get back to new letter
-  let newLetter2 = String.fromCharCode(columnUpLetter);
-  let columnUpID = newLetter2 + "" + clickedId[1];
-
-
-  // remove disabled attribute from button one column adjacent
-  for (let i = 0; i < $tiles.length; i++) {
-    if ( ($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && (orientation[0] === "horizontal") ) {
-      $tiles[i].disabled = false;
-    }
-  }
-}
-
 
 $("#myBoard button").click(function() {
   // disable all buttons
