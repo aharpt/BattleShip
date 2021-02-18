@@ -1,3 +1,6 @@
+// get all board tiles from my board
+let $tiles = $("#myBoard button");
+
 $("#myBoard button").click(function() {
   // disable all buttons
   $("#myBoard button").attr("disabled", "true");
@@ -26,7 +29,6 @@ $("#myBoard button").click(function() {
   // console.log("rowUpID: " + rowUpID);
 
   // remove disabled attribute from button one row down
-  let $tiles = $("#myBoard button");
   for (let i = 0; i < $tiles.length; i++) {
     if ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) {
       $tiles[i].disabled = false;
@@ -62,3 +64,16 @@ $("#myBoard button").click(function() {
     }
   }
 });
+
+/* When 'Place Ship' button is clicked */
+
+$(".btn-outline-success").click(function() {
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($($tiles[i]).hasClass("btn-success")) {
+      $tiles[i].disabled = true;
+    }
+  }
+});
+
+/* Take Care of ship length */
+// first ship must be length one
