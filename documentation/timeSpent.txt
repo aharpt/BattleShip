@@ -5,6 +5,11 @@ Group Meetings:
 
 Aaron:
 
-2/12 - 1 hour 
+2/12 - 1 hour
 2/13 - 45 minutes
+<<<<<<< HEAD
 2/15 - 1 hour 30 minutes
+||||||| merged common ancestors
+=======
+2/16 - 2 hrs
+>>>>>>> master
