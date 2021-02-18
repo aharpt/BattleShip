@@ -123,11 +123,6 @@ for (let i = 0; i < $tiles.length; i++) {
   }
 }
 
-
-function orientShips() {
-  orientation = prompt("Do you want your next ship to be horizontal or vertical?");
-}
-
 switch (numOfShipTiles) {
   case 1:
     alert("First Ship Placed");
