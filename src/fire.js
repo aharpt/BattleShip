@@ -30,25 +30,32 @@ function changePlayerTurn(url) {
   window.location.href = url;
 }
 
+let $enemyTileClicked;
+
 $("#enemyBoard button").click(function() {
 
   // remove class btn-secondary and add class btn-success
-  $(this).removeClass("btn-secondary").addClass("btn-danger");
+  $enemyTileClicked = $(this);
 
   // get id of button clicked
   let clickedId = $(this).attr("id");
   console.log(clickedId);
 
-/* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
+});
 
-  if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-    alert("Player 2's turn");
-    setTimeout(changeLocation, 1000, "./player2.html");
-  } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-    alert("Player 1's turn");
-    setTimeout(changeLocation, 1000, "./player1.html");
-  }
+$("#fire-box .btn-outline-danger").click(function() {
 
+  $enemyTileClicked.removeClass("btn-secondary").addClass("btn-danger");
+
+  /* How to update page href,  Stack Overflow https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931 */
+
+    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+      alert("Player 2's turn");
+      setTimeout(changeLocation, 1000, "./player2.html");
+    } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+      alert("Player 1's turn");
+      setTimeout(changeLocation, 1000, "./player1.html");
+    }
 });
 
 // document.querySelector("#fire-box .btn").onclick = function() {
