@@ -2,6 +2,9 @@
 // get all board tiles from my board
 let $tiles = $("#myBoard button");
 
+// orientation of ship placement
+let orientation = ["horizontal", "vertical"];
+
 // get id and return it
 
 /*
@@ -31,7 +34,7 @@ function returnIdsOfShip() {
   shipIds[0] = shipIdLetters;
   shipIds[1] = shipIdNumbers;
 
-  console.log(shipIdLetters[0] + "" + shipIdNumbers);
+  console.log(shipIdLetters[0] + "" + shipIdNumbers[0]);
 
   return shipIds;
 }
@@ -63,9 +66,9 @@ $("#myBoard button").click(function() {
   let rowUpID = clickedId[0] + "" + rowUpNumber;
   // console.log("rowUpID: " + rowUpID);
 
-  // remove disabled attribute from button one row down
+  // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) {
+    if ( ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && (orientation[1] === "vertical") ) {
       $tiles[i].disabled = false;
     }
   }
@@ -92,9 +95,9 @@ $("#myBoard button").click(function() {
   let columnUpID = newLetter2 + "" + clickedId[1];
 
 
-  // remove disabled attribute from button one column down
+  // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if ($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) {
+    if ( ($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && (orientation[0] === "horizontal") ) {
       $tiles[i].disabled = false;
     }
   }
@@ -121,6 +124,20 @@ for (let i = 0; i < $tiles.length; i++) {
   }
 }
 
+let tempOrientation;
+
+function orientShips() {
+  tempOrientation = prompt("Do you want your next ship to be horizontal or vertical?");
+
+  if (tempOrientation === "vertical") {
+    orientation[0] = "vertical";
+  } else {
+    orientation[1] = "horizontal";
+  }
+
+  orientation = ["horizontal", "vertical"];
+}
+
 switch (numOfShipTiles) {
   case 1:
     alert("First Ship Placed");
@@ -133,13 +150,16 @@ switch (numOfShipTiles) {
     alert("Second Ship Placed");
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
+    orientShips();
     doneWithPlacingShip();
+
     break;
 
   case 6:
     alert("Third Ship Placed");
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
+    orientShips();
     doneWithPlacingShip();
     break;
 
@@ -147,6 +167,7 @@ switch (numOfShipTiles) {
     alert("Fourth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
+    orientShips();
     doneWithPlacingShip();
     break;
 
@@ -154,6 +175,7 @@ switch (numOfShipTiles) {
     alert("Fifth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
+    orientShips();
     doneWithPlacingShip();
     break;
 
