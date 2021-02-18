@@ -50,18 +50,29 @@ $("#myBoard button").click(function() {
 
   // get id of button clicked
   let clickedId = $(this).attr("id");
-  // console.log(clickedId);
+  console.log(clickedId);
 
   /* Row Code */
 
   // get id of button one row down
-  let rowDownNumber = parseInt(clickedId[1]) + 1;
+  let rowDownNumber;
+  rowDownNumber = parseInt(clickedId[1]) + 1;
+
+  if (clickedId[2] !== undefined) {
+    rowDownNumber = parseInt((clickedId[1] + "" + clickedId[2])) + 1;
+  }
+
   let rowDownID = clickedId[0] + "" + rowDownNumber;
   // console.log("rowDownID: " + rowDownID);
 
   // get id of button one row up
-  let rowUpNumber = parseInt(clickedId[1]) - 1;
-  // console.log("rowUpNumber: " + rowUpNumber);
+  let rowUpNumber;
+  rowUpNumber = parseInt(clickedId[1]) - 1;
+
+  if (clickedId[2] !== undefined) {
+    rowUpNumber = parseInt((clickedId[1] + "" + clickedId[2])) - 1;
+  }
+
   let rowUpID = clickedId[0] + "" + rowUpNumber;
   // console.log("rowUpID: " + rowUpID);
 
