@@ -3,7 +3,7 @@
 let $tiles = $("#myBoard button");
 
 // orientation of ship placement
-let orientation = ["horizontal", "vertical"];
+let orientation = "neither";
 
 // get id and return it
 
@@ -67,7 +67,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID)) {
+    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal") {
       $tiles[i].disabled = false;
     }
   }
@@ -96,7 +96,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID)) {
+    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical") {
       $tiles[i].disabled = false;
     }
   }
@@ -123,19 +123,9 @@ for (let i = 0; i < $tiles.length; i++) {
   }
 }
 
-let tempOrientation;
 
 function orientShips() {
-  tempOrientation = prompt("Do you want your next ship to be horizontal or vertical?");
-
-  if (tempOrientation === "vertical") {
-    console.log(tempOrientation);
-    orientation[0] = "vertical";
-  } else {
-    orientation[1] = "horizontal";
-  }
-
-  orientation = ["horizontal", "vertical"];
+  orientation = prompt("Do you want your next ship to be horizontal or vertical?");
 }
 
 switch (numOfShipTiles) {
@@ -151,6 +141,7 @@ switch (numOfShipTiles) {
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
     doneWithPlacingShip();
+    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
 
   case 6:
@@ -158,6 +149,7 @@ switch (numOfShipTiles) {
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
     doneWithPlacingShip();
+    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
 
   case 10:
@@ -165,6 +157,7 @@ switch (numOfShipTiles) {
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
     doneWithPlacingShip();
+    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
 
   case 15:
@@ -172,6 +165,7 @@ switch (numOfShipTiles) {
     $("#myBoard button").removeAttr("disabled");
     returnIdsOfShip();
     doneWithPlacingShip();
+    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
 
   case 21:
