@@ -34,8 +34,6 @@ function returnIdsOfShip() {
   shipIds[0] = shipIdLetters;
   shipIds[1] = shipIdNumbers;
 
-  console.log(shipIdLetters[0] + "" + shipIdNumbers[0]);
-
   return shipIds;
 }
 
