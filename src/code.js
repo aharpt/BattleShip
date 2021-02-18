@@ -65,15 +65,15 @@ $("#myBoard button").click(function() {
   }
 });
 
-/* When 'Place Ship' button is clicked */
+/* When Ship is Placed */
 
-$(".btn-outline-success").click(function() {
+let doneWithPlacingShip = function() {
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
       $tiles[i].disabled = true;
     }
   }
-});
+};
 
 /* Take Care of ship length */
 // first ship must be length one
@@ -90,40 +90,70 @@ switch (numOfShipTiles) {
   case 1:
     alert("First Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
   case 3:
     alert("Second Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
   case 6:
     alert("Third Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
   case 10:
     alert("Fourth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
   case 15:
     alert("Fifth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
   case 21:
     alert("Sixth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    $(".btn-outline-success").trigger("click");
+    doneWithPlacingShip();
     break;
 
+  default:
+    break;
 }
+});
+
+/* Code For 'Done Placing Ships' button */
+
+function changeLocation(url) {
+  window.location.href = url;
+}
+
+$(".btn-outline-success").click(function() {
+let successLength = 0;
+
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($($tiles[i]).hasClass("btn-success")) {
+      successLength++;
+    }
+  }
+
+  if (successLength === 0) {
+    alert("Please place atleast one ship");
+  } else {
+    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+      alert("Player 2's turn");
+      setTimeout(changeLocation, 1000, "./player2.html");
+    } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+      alert("Player 1's turn");
+      setTimeout(changeLocation, 1000, "./player1.html");
+    }
+  }
 
 
 
