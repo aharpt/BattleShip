@@ -3,6 +3,15 @@
 let $tiles = $("#myBoard button");
 
 // get id and return it
+
+/*
+  1. shipIdLetters and shipIdNumbers hold a list of their respective values.
+   You can access an entire id by accessing the same index in both arrays.
+   For instance, shipIdLetters[0] + shipIdNumbers[0] will give entire id of 0th element
+  2. shipIds is a 2d array.  shipIds[0] holds shipIdLetters array, shipIds[1] holds shipIdNumbers
+
+*/
+
 function returnIdsOfShip() {
   let shipIds = [];
   let shipIdLetters = [];
@@ -21,6 +30,8 @@ function returnIdsOfShip() {
 
   shipIds[0] = shipIdLetters;
   shipIds[1] = shipIdNumbers;
+
+  console.log(shipIdLetters[0] + "" + shipIdNumbers);
 
   return shipIds;
 }
@@ -128,24 +139,28 @@ switch (numOfShipTiles) {
   case 6:
     alert("Third Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
   case 10:
     alert("Fourth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
   case 15:
     alert("Fifth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
   case 21:
     alert("Sixth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
+    returnIdsOfShip();
     doneWithPlacingShip();
     break;
 
