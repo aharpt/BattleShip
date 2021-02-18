@@ -1,5 +1,17 @@
+
 // get all board tiles from my board
 let $tiles = $("#myBoard button");
+
+// get id and return it
+function returnID() {
+  let shipIDLetters = [];
+  let shipIDNumbers = [];
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($($tiles[i]).hasClass("btn-success")) {
+      shipIDS.push()
+    }
+  }
+}
 
 $("#myBoard button").click(function() {
   // disable all buttons
