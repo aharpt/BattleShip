@@ -10,35 +10,55 @@ $("#myBoard button").click(function() {
 
   // get id of button clicked
   let clickedId = $(this).attr("id");
-  console.log(clickedId);
+  // console.log(clickedId);
+
+  /* Row Code */
 
   // get id of button one row down
-  let adjacentNumber = parseInt(clickedId[1]) + 1;
-  let adjacentRowID = clickedId[0] + "" + adjacentNumber;
-  console.log(adjacentRowID)
+  let rowDownNumber = parseInt(clickedId[1]) + 1;
+  let rowDownID = clickedId[0] + "" + rowDownNumber;
+  // console.log("rowDownID: " + rowDownID);
+
+  // get id of button one row up
+  let rowUpNumber = parseInt(clickedId[1]) - 1;
+  // console.log("rowUpNumber: " + rowUpNumber);
+  let rowUpID = clickedId[0] + "" + rowUpNumber;
+  // console.log("rowUpID: " + rowUpID);
 
   // remove disabled attribute from button one row down
   let $tiles = $("#myBoard button");
   for (let i = 0; i < $tiles.length; i++) {
-    if ($tiles[i].id === adjacentRowID) {
+    if ($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) {
       $tiles[i].disabled = false;
-      break;
     }
   }
 
+/* Column Code */
+
+
   // get id of button one column down
-  let adjacentLetter = clickedId[0].charCodeAt(0);
-  adjacentLetter += 1;
-  
+  let columnDownLetter = clickedId[0].charCodeAt(0);
+  columnDownLetter += 1;
+
   // get back to new letter
-  let newLetter = String.fromCharCode(adjacentLetter);
-  let adjacentColumnID = newLetter + "" + clickedId[1];
+  let newLetter1 = String.fromCharCode(columnDownLetter);
+  let columnDownID = newLetter1 + "" + clickedId[1];
+  // console.log("adjacentColumnID: " + adjacentColumnID);
+
+
+  // get id of button one column up
+  let columnUpLetter = clickedId[0].charCodeAt(0);
+  columnUpLetter -= 1;
+
+  // get back to new letter
+  let newLetter2 = String.fromCharCode(columnUpLetter);
+  let columnUpID = newLetter2 + "" + clickedId[1];
+
 
   // remove disabled attribute from button one column down
   for (let i = 0; i < $tiles.length; i++) {
-    if ($tiles[i].id === adjacentColumnID) {
+    if ($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) {
       $tiles[i].disabled = false;
-      break;
     }
   }
 });
