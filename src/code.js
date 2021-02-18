@@ -81,8 +81,12 @@ $("#myBoard button").click(function() {
 
   // get back to new letter
   let newLetter1 = String.fromCharCode(columnDownLetter);
-  let columnDownID = newLetter1 + "" + clickedId[1];
-  // console.log("adjacentColumnID: " + adjacentColumnID);
+  let columnDownID;
+  columnDownID = newLetter1 + "" + clickedId[1];
+
+  if (clickedId[2] !== undefined) {
+    columnDownID = columnDownID + "" + clickedId[2];
+  }
 
 
   // get id of button one column up
@@ -91,7 +95,12 @@ $("#myBoard button").click(function() {
 
   // get back to new letter
   let newLetter2 = String.fromCharCode(columnUpLetter);
-  let columnUpID = newLetter2 + "" + clickedId[1];
+  let columnUpID;
+  columnUpID = newLetter2 + "" + clickedId[1];
+
+  if (clickedId[2] !== undefined) {
+    columnUpID = columnUpID + "" + clickedId[2];
+  }
 
 
   // remove disabled attribute from button one column adjacent
