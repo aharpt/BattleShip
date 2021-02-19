@@ -4,6 +4,11 @@ const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
 /* functions to verify input */
 
+/**
+ * 
+ * @param {String} value 
+ * @returns true if value is contained in columns array, false otherwise
+ */
 let checkLetter = (value) => {
   for (let i = 0; i < columns.length; i++) {
     if (value[0] === columns[i]) {
@@ -14,6 +19,11 @@ let checkLetter = (value) => {
   return false;
 };
 
+/**
+ * 
+ * @param {String} value 
+ * @returns true if value is contained in rows array, false otherwise
+ */
 let checkNumber = (value) => {
   for (let i = 0; i < rows.length; i++) {
     if (value[1] === rows[i]) {
@@ -26,6 +36,10 @@ let checkNumber = (value) => {
 
 /* Fire at Opponent Ships */
 
+/**
+ * 
+ * @param {String} url 
+ */
 function changePlayerTurn(url) {
   window.location.href = url;
 }
