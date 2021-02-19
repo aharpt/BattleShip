@@ -137,8 +137,8 @@ let doneWithPlacingShip = function() {
 
 /* Take Care of ship length */
 // Figure out same number of Ships
-$("#myBoard button").click(function() {
 
+$("#myBoard button").click(function() {
 let numOfShipTiles = 0;
 for (let i = 0; i < $tiles.length; i++) {
   if ($($tiles[i]).hasClass("btn-success")) {
@@ -165,20 +165,20 @@ switch (numOfShipTiles) {
     break;
 
   case 3:
-    alert("Second Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-    //returnIdsOfShip();
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-    doneWithPlacingShip();
-    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      alert("Second Ship Placed");
+      $("#myBoard button").removeAttr("disabled");
+      //returnIdsOfShip();
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip();
+      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
 
   case 6:
@@ -278,6 +278,9 @@ let successLength = 0;
       setTimeout(changeLocation, 1000, "./player2.html");
     } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
       alert("Player 1's turn");
+      for (let i = 0; i < $tiles.length; i++) {
+        $tiles[i].disabled = true;
+      }
       setTimeout(changeLocation, 1000, "./player1.html");
     }
   }
