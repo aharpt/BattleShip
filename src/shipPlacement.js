@@ -9,18 +9,6 @@ let orientation = "neither";
 let player1Ships = [];
 let player2Ships = [];
 
-// player1 myBoard
-let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O'],
-             ['O','O','O','O','O','O','O','O','O','O']];
-
 /*
   1. shipIdLetters and shipIdNumbers hold a list of their respective values.
    You can access an entire id by accessing the same index in both arrays.
