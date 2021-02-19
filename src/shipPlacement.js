@@ -1,3 +1,17 @@
+/* change dom */
+$("#placePlayer1ShipsButton").click(function() {
+  alert("Player 2's Turn")
+  console.log("Hello World");
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
+});
+
+$("#placePlayer2ShipsButton").click(function() {
+  alert("Player 1's Turn");
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
+});
+
 
 // get all board tiles from my board
 let $tiles = $("#myBoard button");
@@ -8,7 +22,17 @@ let orientation = "neither";
 let player1Ships = [];
 let player2Ships = [];
 
-// get id and return it
+// player1 myBoard
+let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']];
 
 /*
   1. shipIdLetters and shipIdNumbers hold a list of their respective values.
@@ -253,6 +277,7 @@ switch (numOfShipTiles) {
   default:
     break;
 }
+
 });
 
 /* Code For 'Done Placing Ships' button */
@@ -261,30 +286,30 @@ function changeLocation(url) {
   window.location.href = url;
 }
 
-$(".btn-outline-success").click(function() {
-let successLength = 0;
-
-  for (let i = 0; i < $tiles.length; i++) {
-    if ($($tiles[i]).hasClass("btn-success")) {
-      successLength++;
-    }
-  }
-
-  if (successLength === 0) {
-    alert("Please place at least one ship");
-  } else {
-    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-      alert("Player 2's turn");
-      setTimeout(changeLocation, 1000, "./player2.html");
-    } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-      alert("Player 1's turn");
-      for (let i = 0; i < $tiles.length; i++) {
-        $tiles[i].disabled = true;
-      }
-      setTimeout(changeLocation, 1000, "./player1.html");
-    }
-  }
-
-
-
-});
+/* change to #placePlayer1ShipsButton, placePlayer2ShipsButton */
+// $(".btn-outline-success").click(function() {
+// let successLength = 0;
+//
+//   for (let i = 0; i < $tiles.length; i++) {
+//     if ($($tiles[i]).hasClass("btn-success")) {
+//       successLength++;
+//     }
+//   }
+//
+//   if (successLength === 0) {
+//     alert("Please place at least one ship");
+//   } else {
+//     if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+//       alert("Player 2's turn");
+//       setTimeout(changeLocation, 1000, "./player2.html");
+//     } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+//       alert("Player 1's turn");
+//       for (let i = 0; i < $tiles.length; i++) {
+//         $tiles[i].disabled = true;
+//       }
+//       setTimeout(changeLocation, 1000, "./player1.html");
+//     }
+//   }
+//
+//
+// });
