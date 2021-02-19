@@ -17,6 +17,10 @@ let player2Ships = [];
 
 */
 
+/**
+ * @returns 2d array shipIds that holds ship coordinates that have a ship on them
+ */
+
 function returnIdsOfShip() {
   let shipIds = [];
   let shipIdLetters = [];
@@ -117,8 +121,9 @@ $("#myBoard button").click(function() {
   }
 });
 
-/* Function to call when Ship is Placed */
-
+/**
+ * Function to call when Ship is Placed
+ */
 let doneWithPlacingShip = function() {
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
