@@ -1,5 +1,5 @@
 # Welcome to Battleship!
-### BattleShip is an two-player game where each player takes turns secretly placing ships, and then shooting at, and attempting to sink the opposing player's ships.  The first player to sink all of their opponent's ships wins.
+### BattleShip is a two-player game where each player takes turns secretly placing ships, and then shooting at, and attempting to sink the opposing player's ships.  The first player to sink all of their opponent's ships wins.
 ## How to Start Developing with this Project
 #### 1. If you do not have a Github account, you will need to create one.
 #### 2. After you have a Github account, fork this repository so you have a copy on your Github account
