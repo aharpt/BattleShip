@@ -133,34 +133,50 @@ let doneWithPlacingShip = function() {
 };
 
 /* Find number of ships placed */
-// Todo: Figure out number of Ships placed
 
-$("#myBoard button").click(function() {
-let numOfShipTiles = 0;
-for (let i = 0; i < $tiles.length; i++) {
-  if ($($tiles[i]).hasClass("btn-success")) {
-    numOfShipTiles++;
+function whenTileClicked() {
+  let numOfShipTiles = 0;
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($($tiles[i]).hasClass("btn-success")) {
+      numOfShipTiles++;
+    }
   }
-}
 
-switch (numOfShipTiles) {
-  case 1:
-    alert("First Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-    doneWithPlacingShip();
-    break;
+  switch (numOfShipTiles) {
+    case 1:
+      alert("First Ship Placed");
+      $("#myBoard button").removeAttr("disabled");
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip();
+      break;
 
-  case 3:
-      alert("Second Ship Placed");
+    case 3:
+        alert("Second Ship Placed");
+        $("#myBoard button").removeAttr("disabled");
+        //returnIdsOfShip();
+            if (location.pathname.split("BattleShip")[1] == "/player1.html")
+                //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+            {
+                player1Ships = returnIdsOfShip();
+            }
+            else
+            {
+                player2Ships = returnIdsOfShip();
+            }
+        doneWithPlacingShip();
+        orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
+
+    case 6:
+      alert("Third Ship Placed");
       $("#myBoard button").removeAttr("disabled");
       //returnIdsOfShip();
           if (location.pathname.split("BattleShip")[1] == "/player1.html")
@@ -174,92 +190,78 @@ switch (numOfShipTiles) {
           }
       doneWithPlacingShip();
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
-    break;
+      break;
 
-  case 6:
-    alert("Third Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-    //returnIdsOfShip();
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-    doneWithPlacingShip();
-    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
-    break;
+    case 10:
+      alert("Fourth Ship Placed");
+      $("#myBoard button").removeAttr("disabled");
+      //returnIdsOfShip();
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip();
+      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
 
-  case 10:
-    alert("Fourth Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-    //returnIdsOfShip();
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-    doneWithPlacingShip();
-    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
-    break;
+    case 15:
+      alert("Fifth Ship Placed");
+      $("#myBoard button").removeAttr("disabled");
+      //returnIdsOfShip();
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip();
+      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
 
-  case 15:
-    alert("Fifth Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-    //returnIdsOfShip();
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-    doneWithPlacingShip();
-    orientation = prompt("Do you want your next ship to be horizontal or vertical?");
-    break;
+    case 21:
+      alert("Sixth Ship Placed");
+      $("#myBoard button").removeAttr("disabled");
+      //returnIdsOfShip();
+      if (location.pathname.split("BattleShip")[1] == "/player1.html")
+          //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+      {
+          player1Ships = returnIdsOfShip();
+      }
+      else
+      {
+          player2Ships = returnIdsOfShip();
+      }
+      doneWithPlacingShip();
+      break;
 
-  case 21:
-    alert("Sixth Ship Placed");
-    $("#myBoard button").removeAttr("disabled");
-    //returnIdsOfShip();
-    if (location.pathname.split("BattleShip")[1] == "/player1.html")
-        //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-    {
-        player1Ships = returnIdsOfShip();
-    }
-    else
-    {
-        player2Ships = returnIdsOfShip();
-    }
-    doneWithPlacingShip();
-    break;
+    default:
+      break;
+  }
 
-  default:
-    break;
 }
 
+$("#myBoard button").click(function() {
+  whenTileClicked();
 });
 
 /* Code For 'Done Placing Ships' button */
 
 /* change dom */
-$("#placePlayer1ShipsButton").click(function() {
+$("#done1Btn").click(function() {
   alert("Player 2's Turn")
-  console.log("Hello World");
   $("#player1OuterContainer").toggleClass("outer-container");
   $("#player2OuterContainer").toggleClass("outer-container");
 });
 
-$("#placePlayer2ShipsButton").click(function() {
+$("#done2Btn").click(function() {
   alert("Player 1's Turn");
   $("#player1OuterContainer").toggleClass("outer-container");
   $("#player2OuterContainer").toggleClass("outer-container");
@@ -269,30 +271,30 @@ function changeLocation(url) {
   window.location.href = url;
 }
 
-/* change to #placePlayer1ShipsButton, placePlayer2ShipsButton */
-// $(".btn-outline-success").click(function() {
-// let successLength = 0;
-//
-//   for (let i = 0; i < $tiles.length; i++) {
-//     if ($($tiles[i]).hasClass("btn-success")) {
-//       successLength++;
-//     }
-//   }
-//
-//   if (successLength === 0) {
-//     alert("Please place at least one ship");
-//   } else {
-//     if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-//       alert("Player 2's turn");
-//       setTimeout(changeLocation, 1000, "./player2.html");
-//     } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-//       alert("Player 1's turn");
-//       for (let i = 0; i < $tiles.length; i++) {
-//         $tiles[i].disabled = true;
-//       }
-//       setTimeout(changeLocation, 1000, "./player1.html");
-//     }
-//   }
-//
-//
-// });
+/* change to #done1Btn, #done2Btn */
+$(".btn-outline-success").click(function() {
+let successLength = 0;
+
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($($tiles[i]).hasClass("btn-success")) {
+      successLength++;
+    }
+  }
+
+  if (successLength === 0) {
+    alert("Please place at least one ship");
+  } else {
+    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
+      alert("Player 2's turn");
+      setTimeout(changeLocation, 1000, "./player2.html");
+    } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
+      alert("Player 1's turn");
+      for (let i = 0; i < $tiles.length; i++) {
+        $tiles[i].disabled = true;
+      }
+      setTimeout(changeLocation, 1000, "./player1.html");
+    }
+  }
+
+
+});
