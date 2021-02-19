@@ -133,6 +133,8 @@ let doneWithPlacingShip = function() {
 };
 
 /* Find number of ships placed */
+let $myBoard1 = $(".myBoard1 button");
+let $myBoard2 = $(".myBoard2 button");
 
 function whenTileClicked() {
   let numOfShipTiles = 0;
@@ -255,22 +257,6 @@ $("#myBoard button").click(function() {
 /* Code For 'Done Placing Ships' button */
 
 /* change dom */
-$("#done1Btn").click(function() {
-  alert("Player 2's Turn")
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
-});
-
-$("#done2Btn").click(function() {
-  alert("Player 1's Turn");
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
-});
-
-function changeLocation(url) {
-  window.location.href = url;
-}
-
 /* change to #done1Btn, #done2Btn */
 $(".btn-outline-success").click(function() {
 let successLength = 0;
@@ -284,16 +270,9 @@ let successLength = 0;
   if (successLength === 0) {
     alert("Please place at least one ship");
   } else {
-    if (location.pathname.split("BattleShip")[1] == "/player1.html") {
-      alert("Player 2's turn");
-      setTimeout(changeLocation, 1000, "./player2.html");
-    } else if (location.pathname.split("BattleShip")[1] == "/player2.html") {
-      alert("Player 1's turn");
-      for (let i = 0; i < $tiles.length; i++) {
-        $tiles[i].disabled = true;
-      }
-      setTimeout(changeLocation, 1000, "./player1.html");
-    }
+    alert("Opponent's Turn");
+    $("#player1OuterContainer").toggleClass("outer-container");
+    $("#player2OuterContainer").toggleClass("outer-container");
   }
 
 
