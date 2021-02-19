@@ -236,17 +236,17 @@ switch (numOfShipTiles) {
     alert("Sixth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
     //returnIdsOfShip();
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-        console.log(player1Ships);
-        console.log(player2Ships);
+    if (location.pathname.split("BattleShip")[1] == "/player1.html")
+        //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+    {
+        player1Ships = returnIdsOfShip();
+    }
+    else
+    {
+        player2Ships = returnIdsOfShip();
+    }
+    console.log(player1Ships);
+    console.log(player2Ships);
     doneWithPlacingShip();
     break;
 
