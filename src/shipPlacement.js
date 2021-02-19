@@ -133,7 +133,7 @@ let doneWithPlacingShip = function() {
 };
 
 /* Take Care of ship length */
-// first ship must be length one
+// Figure out same number of Ships
 $("#myBoard button").click(function() {
 
 let numOfShipTiles = 0;
