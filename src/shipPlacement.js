@@ -56,6 +56,8 @@ $("#myBoard button").click(function() {
   let clickedId = $(this).attr("id");
   console.log(clickedId);
 
+  whenTileClicked(); // here
+
   /* Row Code */
   // get id of button one row down
   let rowDownNumber;
@@ -79,7 +81,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal") {
+    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false)) {
       $tiles[i].disabled = false;
     }
   }
@@ -115,7 +117,7 @@ $("#myBoard button").click(function() {
 
   // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical") {
+    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false)) {
       $tiles[i].disabled = false;
     }
   }
@@ -249,10 +251,6 @@ function whenTileClicked() {
   }
 
 }
-
-$("#myBoard button").click(function() {
-  whenTileClicked();
-});
 
 /* Code For 'Done Placing Ships' button */
 

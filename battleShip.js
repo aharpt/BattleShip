@@ -2,16 +2,16 @@
 //a test board setup with 5 ships of
 //size 5, 4, 3, 2, and 1
 //board is a 10x10
-testBoard = [['X','O','O','O','O','O','O','O','O','X'],
-             ['X','O','O','O','O','O','O','X','X','X'],
-             ['X','O','O','O','X','O','O','O','O','O'],
-             ['X','O','O','O','X','O','O','O','O','O'],
-             ['X','O','O','O','O','O','O','X','O','O'],
-             ['O','O','O','O','O','O','O','X','O','O'],
-             ['O','O','O','O','O','O','O','X','O','O'],
-             ['O','O','X','O','O','O','O','X','O','O'],
+testBoard = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
-             ['X','O','O','O','O','O','O','O','O','X']]
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']]
 
 //gamePlay takes in a 2D array board, move coordinates,
 //and returns either a hit, miss, or sink
