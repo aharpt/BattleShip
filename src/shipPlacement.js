@@ -1,18 +1,3 @@
-/* change dom */
-$("#placePlayer1ShipsButton").click(function() {
-  alert("Player 2's Turn")
-  console.log("Hello World");
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
-});
-
-$("#placePlayer2ShipsButton").click(function() {
-  alert("Player 1's Turn");
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
-});
-
-
 // get all board tiles from my board
 let $tiles = $("#myBoard button");
 
@@ -279,6 +264,20 @@ switch (numOfShipTiles) {
 });
 
 /* Code For 'Done Placing Ships' button */
+
+/* change dom */
+$("#placePlayer1ShipsButton").click(function() {
+  alert("Player 2's Turn")
+  console.log("Hello World");
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
+});
+
+$("#placePlayer2ShipsButton").click(function() {
+  alert("Player 1's Turn");
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
+});
 
 function changeLocation(url) {
   window.location.href = url;
