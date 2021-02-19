@@ -5,6 +5,9 @@ let $tiles = $("#myBoard button");
 // orientation of ship placement
 let orientation = "neither";
 
+let player1Ships = [];
+let player2Ships = [];
+
 // get id and return it
 
 /*
@@ -147,14 +150,33 @@ switch (numOfShipTiles) {
   case 1:
     alert("First Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
+        console.log(player1Ships);
+        console.log(player2Ships);
     doneWithPlacingShip();
     break;
 
   case 3:
     alert("Second Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+    //returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
     doneWithPlacingShip();
     orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
@@ -162,7 +184,16 @@ switch (numOfShipTiles) {
   case 6:
     alert("Third Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+    //returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
     doneWithPlacingShip();
     orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
@@ -170,7 +201,16 @@ switch (numOfShipTiles) {
   case 10:
     alert("Fourth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+    //returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
     doneWithPlacingShip();
     orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
@@ -178,7 +218,16 @@ switch (numOfShipTiles) {
   case 15:
     alert("Fifth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+    //returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
     doneWithPlacingShip();
     orientation = prompt("Do you want your next ship to be horizontal or vertical?");
     break;
@@ -186,7 +235,18 @@ switch (numOfShipTiles) {
   case 21:
     alert("Sixth Ship Placed");
     $("#myBoard button").removeAttr("disabled");
-    returnIdsOfShip();
+    //returnIdsOfShip();
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
+        console.log(player1Ships);
+        console.log(player2Ships);
     doneWithPlacingShip();
     break;
 
@@ -211,7 +271,7 @@ let successLength = 0;
   }
 
   if (successLength === 0) {
-    alert("Please place atleast one ship");
+    alert("Please place at least one ship");
   } else {
     if (location.pathname.split("BattleShip")[1] == "/player1.html") {
       alert("Player 2's turn");
