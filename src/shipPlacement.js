@@ -51,23 +51,20 @@ function returnIdsOfShip() {
   return shipIds;
 }
 
+/* When a Board Tile is Clicked */
 
 $("#myBoard button").click(function() {
   // disable all buttons
   $("#myBoard button").attr("disabled", "true");
-
   // remove disabled attribute from button clicked
   $(this).removeAttr("disabled");
-
   // remove class btn-secondary and add class btn-success
   $(this).removeClass("btn-secondary").addClass("btn-success");
-
   // get id of button clicked
   let clickedId = $(this).attr("id");
   console.log(clickedId);
 
   /* Row Code */
-
   // get id of button one row down
   let rowDownNumber;
   rowDownNumber = parseInt(clickedId[1]) + 1;
@@ -77,7 +74,6 @@ $("#myBoard button").click(function() {
   }
 
   let rowDownID = clickedId[0] + "" + rowDownNumber;
-  // console.log("rowDownID: " + rowDownID);
 
   // get id of button one row up
   let rowUpNumber;
@@ -88,7 +84,6 @@ $("#myBoard button").click(function() {
   }
 
   let rowUpID = clickedId[0] + "" + rowUpNumber;
-  // console.log("rowUpID: " + rowUpID);
 
   // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
@@ -98,7 +93,6 @@ $("#myBoard button").click(function() {
   }
 
 /* Column Code */
-
 
   // get id of button one column down
   let columnDownLetter = clickedId[0].charCodeAt(0);
@@ -127,7 +121,6 @@ $("#myBoard button").click(function() {
     columnUpID = columnUpID + "" + clickedId[2];
   }
 
-
   // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
     if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical") {
@@ -136,7 +129,7 @@ $("#myBoard button").click(function() {
   }
 });
 
-/* When Ship is Placed */
+/* Function to call when Ship is Placed */
 
 let doneWithPlacingShip = function() {
   for (let i = 0; i < $tiles.length; i++) {
@@ -146,8 +139,8 @@ let doneWithPlacingShip = function() {
   }
 };
 
-/* Take Care of ship length */
-// Figure out same number of Ships
+/* Find number of ships placed */
+// Todo: Figure out number of Ships placed
 
 $("#myBoard button").click(function() {
 let numOfShipTiles = 0;
