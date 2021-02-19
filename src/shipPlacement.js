@@ -19,6 +19,8 @@ let $tiles = $("#myBoard button");
 // orientation of ship placement
 let orientation = "neither";
 
+//will later store 2D arrays of the coordiantes for the players ships.
+//The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
 let player1Ships = [];
 let player2Ships = [];
 
@@ -183,8 +185,6 @@ switch (numOfShipTiles) {
         {
             player2Ships = returnIdsOfShip();
         }
-        console.log(player1Ships);
-        console.log(player2Ships);
     doneWithPlacingShip();
     break;
 
@@ -269,8 +269,6 @@ switch (numOfShipTiles) {
     {
         player2Ships = returnIdsOfShip();
     }
-    console.log(player1Ships);
-    console.log(player2Ships);
     doneWithPlacingShip();
     break;
 
