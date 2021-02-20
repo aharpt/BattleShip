@@ -744,10 +744,15 @@ function decrementShips(board, _this) {
     } else {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
     }
-    console.log(boardToChange);
+    console.log("boardtoChange: " + boardToChange);
     board[boardToChange[0]][boardToChange[1]] = "O";
-    console.log(board);
+    console.log("board: " + board);
 
+    let didSinkShip = isShipSunk(board, boardToChange);
+
+    if (didSinkShip) {
+      alert("You sunk a ship.");
+    }
 }
 
 function checkForGameEnd(board, _this) {
@@ -762,87 +767,19 @@ function checkForGameEnd(board, _this) {
   return true;
 }
 
-function isShipSunk(boardBtns, tileHit) {
-  let idOfTileHit = tileHit.attr("id");
+function isShipSunk(board, boardToChange) {
+  let rowDownChange = (parseInt(boardToChange[0]) + 1) + boardToChange[1];
+  let rowUpChange = parseInt(boardToChange[0] - 1) + boardToChange[1];
+  let columnDownChange = boardToChange[0] + (parseInt(boardToChange[1]) + 1);
+  let columnUpChange = boardToChange[0] + parseInt(boardToChange[1] - 1);
 
-  // get tile in row above (smaller number)
-  let rowDownNumber;
-  rowDownNumber = parseInt(idOfTileHit[1]) + 1;
+  console.log("Place Hit " + boardToChange);
+  console.log("Row Down " + rowDownChange);
+  console.log("Row Up " + rowUpChange);
+  console.log("Column Down " + columnDownChange);
+  console.log("Column Up " + columnUpChange);
 
-  if (idOfTileHit[2] !== undefined) {
-    rowDownNumber = parseInt((idOfTileHit[1] + "" + idOfTileHit[2])) + 1;
-  }
-
-  let rowDownID = idOfTileHit[0] + "" + rowDownNumber;
-  let $rowDownButton;
-
-  for (let i = 0; i < boardBtns.length; i++) {
-    if ($(boardBtns[i]).attr("id") === rowDownID) {
-      $rowDownButton = boardBtns[i];
-    }
-  }
-
-  // get tile in row below (bigger number)
-  let rowUpNumber;
-  rowUpNumber = parseInt(idOfTileHit[1]) - 1;
-
-  if (idOfTileHit[2] !== undefined) {
-    rowUpNumber = parseInt((idOfTileHit[1] + "" + idOfTileHit[2])) - 1;
-  }
-
-  let rowUpID = idOfTileHit[0] + "" + rowUpNumber;
-  let $rowUpButton;
-
-  for (let i = 0; i < boardBtns.length; i++) {
-    if ($(boardBtns[i]).attr("id") === rowUpID) {
-      $rowUpButton = boardBtns[i];
-    }
-  }
-
-  /* For Columns */
-
-  // get tile in column down (following letter)
-  let columnDownLetter = idOfTileHit[0].charCodeAt(0);
-  columnDownLetter += 1;
-
-  let newLetter1 = String.fromCharCode(columnDownLetter);
-  let columnDownID;
-  columnDownID = newLetter1 + "" + idOfTileHit[1];
-
-  if (idOfTileHit[2] !== undefined) {
-    columnDownID = columnDownID + "" + idOfTileHit[2];
-  }
-
-  let $columnDownButton;
-
-  for (let i = 0; i < boardBtns.length; i++) {
-    if ($(boardBtns[i]).attr("id") === columnDownID) {
-      $columnDownButton = boardBtns[i];
-    }
-  }
-
-  // get tile in column above (preceding letter)
-  let columnUpLetter = idOfTileHit[0].charCodeAt(0);
-  columnUpLetter -= 1;
-
-  let newLetter2 = String.fromCharCode(columnUpLetter);
-  let columnUpID;
-  columnUpID = newLetter2 + "" + idOfTileHit[1];
-
-  if (idOfTileHit[2] !== undefined) {
-    columnUpID = columnUpID + "" + idOfTileHit[2];
-  }
-
-  let $columnUpButton;
-
-  for (let i = 0; i < boardBtns.length; i++) {
-    if ($(boardBtns[i]).attr("id") === columnUpID) {
-      $columnUpButton = boardBtns[i];
-    }
-  }
-
-// check if any adjacent tiles have the class btn-success
-  if ($($rowDownButton).hasClass("btn-success") || $($rowUpButton).hasClass("btn-success") || $($columnDownButton).hasClass("btn-success") || $($columnUpButton).hasClass("btn-success")) {
+  if (board[rowDownChange[0]][rowDownChange[1]] === "S" || board[rowUpChange[0]][rowUpChange[1]] === "S" || board[columnDownChange[0]][columnDownChange[1]] === "S" || board[columnUpChange[0]][columnUpChange[1]] === "S") {
     return false;
   }
 
@@ -860,11 +797,11 @@ $(".enemyBoard1 button").click(function() {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
 
-        let didShipSink = isShipSunk($tiles2, $(this));
-
-        if (didShipSink) {
-          alert("You sunk a ship!");
-        }
+        // let didShipSink = isShipSunk(myBoard2, $(this));
+        //
+        // if (didShipSink) {
+        //   alert("You sunk a ship!");
+        // }
 
         decrementShips(myBoard2, $(this));
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
@@ -909,11 +846,11 @@ $(".enemyBoard2 button").click(function() {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
 
-        let didShipSink = isShipSunk($tiles, $(this));
-
-        if (didShipSink) {
-          alert("You sunk a ship!");
-        }
+        // let didShipSink = isShipSunk($tiles, $(this));
+        //
+        // if (didShipSink) {
+        //   alert("You sunk a ship!");
+        // }
 
         decrementShips(myBoard1, $(this));
         isGameOver = checkForGameEnd(myBoard1, $(this));
