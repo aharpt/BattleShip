@@ -288,6 +288,11 @@ let successLength = 0;
     $("#player1OuterContainer").toggleClass("outer-container");
     $("#player2OuterContainer").toggleClass("outer-container");
   }
+
+  $("#done1Btn").addClass("disabled");
+  for (let i = 0; i < $tiles.length; i++) {
+    $tiles[i].disabled = true;
+  }
 });
 
 /****** PLAYER 2 CODE *******/
@@ -512,7 +517,24 @@ function whenTileClicked2($board, myBoardBtns) {
 
 // Update myBoard1 when #done2Btn is clicked
 $("#done2Btn").click(function() {
+  let successLength = 0;
 
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
+    for (let i = 0; i < $tiles2.length; i++) {
+      if ($($tiles2[i]).hasClass("btn-success")) {
+        successLength++;
+      }
+    }
+
+    if (successLength === 0) {
+      alert("Please place at least one ship");
+    } else {
+      alert("Opponent's Turn");
+      $("#player1OuterContainer").toggleClass("outer-container");
+      $("#player2OuterContainer").toggleClass("outer-container");
+    }
+
+    $("#done2Btn").addClass("disabled");
+    for (let i = 0; i < $tiles2.length; i++) {
+      $tiles2[i].disabled = true;
+    }
 });
