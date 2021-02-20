@@ -538,3 +538,33 @@ $("#done2Btn").click(function() {
       $tiles2[i].disabled = true;
     }
 });
+
+
+/*******   FIRE CODE  ********/
+let $tiles3 = $(".enemyBoard1 button");
+
+let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']];
+
+$(".enemyBoard1 button").click(function() {
+  let clickedId = $(this).attr("id");
+
+  for (let i = 0; i < $tiles2.length; i++) {
+    if ($tiles2[i].id == clickedId) {
+      if ($($tiles[i]).hasClass("btn-success")) {
+        console.log("Hit");
+        $(this).addClass("btn-danger");
+      } else {
+        console.log("Miss");
+      }
+    }
+  }
+});
