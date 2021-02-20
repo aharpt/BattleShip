@@ -753,12 +753,6 @@ function decrementShips(board, _this) {
     console.log("boardtoChange: " + boardToChange);
     board[boardToChange[0]][boardToChange[1]] = "O";
     console.log("board: " + board);
-
-    let didSinkShip = isShipSunk(board, boardToChange);
-
-    if (didSinkShip) {
-      alert("You sunk a ship.");
-    }
 }
 
 function checkForGameEnd(board, _this) {
@@ -773,26 +767,6 @@ function checkForGameEnd(board, _this) {
   return true;
 }
 
-function isShipSunk(board, boardToChange) {
-  let rowDownChange = (parseInt(boardToChange[0]) + 1) + boardToChange[1];
-  let rowUpChange = parseInt(boardToChange[0] - 1) + boardToChange[1];
-  let columnDownChange = boardToChange[0] + (parseInt(boardToChange[1]) + 1);
-  let columnUpChange = boardToChange[0] + parseInt(boardToChange[1] - 1);
-
-  console.log("Place Hit " + boardToChange);
-  console.log("Row Down " + rowDownChange);
-  console.log("Row Up " + rowUpChange);
-  console.log("Column Down " + columnDownChange);
-  console.log("Column Up " + columnUpChange);
-
-  if (board[rowDownChange[0]][rowDownChange[1]] === "S" || board[rowUpChange[0]][rowUpChange[1]] === "S" || board[columnDownChange[0]][columnDownChange[1]] === "S" || board[columnUpChange[0]][columnUpChange[1]] === "S") {
-    return false;
-  }
-
-  return true;
-
-}
-
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
   let isGameOver = false;
@@ -802,13 +776,6 @@ $(".enemyBoard1 button").click(function() {
       if ($($tiles2[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
-
-        // let didShipSink = isShipSunk(myBoard2, $(this));
-        //
-        // if (didShipSink) {
-        //   alert("You sunk a ship!");
-        // }
-
         decrementShips(myBoard2, $(this));
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
 
@@ -851,13 +818,6 @@ $(".enemyBoard2 button").click(function() {
       if ($($tiles[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
-
-        // let didShipSink = isShipSunk($tiles, $(this));
-        //
-        // if (didShipSink) {
-        //   alert("You sunk a ship!");
-        // }
-
         decrementShips(myBoard1, $(this));
         isGameOver = checkForGameEnd(myBoard1, $(this));
 
