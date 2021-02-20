@@ -150,6 +150,7 @@ let doneWithPlacingShip = function($board) {
 };
 
 /* Get the Number of Ships Placed */
+let numOfShips = 0;
 function whenTileClicked($board, myBoardBtns) {
   let numOfShipTiles = 0;
   for (let i = 0; i < $board.length; i++) {
@@ -174,6 +175,7 @@ function whenTileClicked($board, myBoardBtns) {
               player2Ships = returnIdsOfShip();
           }
       doneWithPlacingShip($board);
+      numOfShips++;
       break;
 
     case 3:
@@ -191,6 +193,7 @@ function whenTileClicked($board, myBoardBtns) {
             player2Ships = returnIdsOfShip();
         }
         doneWithPlacingShip($board);
+        numOfShips++;
         orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
@@ -209,6 +212,7 @@ function whenTileClicked($board, myBoardBtns) {
               player2Ships = returnIdsOfShip();
           }
       doneWithPlacingShip($board);
+      numOfShips++;
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
@@ -227,6 +231,7 @@ function whenTileClicked($board, myBoardBtns) {
               player2Ships = returnIdsOfShip();
           }
       doneWithPlacingShip($board);
+      numOfShips++;
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
@@ -245,6 +250,7 @@ function whenTileClicked($board, myBoardBtns) {
               player2Ships = returnIdsOfShip();
           }
       doneWithPlacingShip($board);
+      numOfShips++;
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
@@ -263,6 +269,7 @@ function whenTileClicked($board, myBoardBtns) {
           player2Ships = returnIdsOfShip();
       }
       doneWithPlacingShip($board);
+      numOfShips++;
       break;
 
     default:
@@ -313,7 +320,6 @@ let orientation2 = "neither";
 $(".myBoard2 button").click(function() {
 
     /* DOM Manipulation */
-
     $(".myBoard2 button").attr("disabled", "true");
     $(this).removeAttr("disabled");
     $(this).removeClass("btn-secondary").addClass("btn-success");
@@ -419,21 +425,21 @@ function whenTileClicked2($board, myBoardBtns) {
       break;
 
     case 3:
-        /* DOM */
-        alert("Second Ship Placed");
-        $(myBoardBtns).removeAttr("disabled");
+          /* DOM */
+          alert("Second Ship Placed");
+          $(myBoardBtns).removeAttr("disabled");
 
-        if (location.pathname.split("BattleShip")[1] == "/player1.html")
-            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-        {
-            player1Ships = returnIdsOfShip();
-        }
-        else
-        {
-            player2Ships = returnIdsOfShip();
-        }
-        doneWithPlacingShip($board);
-        orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+          doneWithPlacingShip($board);
+          orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
     case 6:
