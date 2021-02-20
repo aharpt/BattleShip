@@ -802,15 +802,15 @@ function isShipSunk(boardBtns, tileHit) {
   /* For Columns */
 
   // get tile in column down (following letter)
-  let columnDownLetter = clickedId[0].charCodeAt(0);
+  let columnDownLetter = idOfTileHit[0].charCodeAt(0);
   columnDownLetter += 1;
 
   let newLetter1 = String.fromCharCode(columnDownLetter);
   let columnDownID;
-  columnDownID = newLetter1 + "" + clickedId[1];
+  columnDownID = newLetter1 + "" + idOfTileHit[1];
 
-  if (clickedId[2] !== undefined) {
-    columnDownID = columnDownID + "" + clickedId[2];
+  if (idOfTileHit[2] !== undefined) {
+    columnDownID = columnDownID + "" + idOfTileHit[2];
   }
 
   let $columnDownButton;
@@ -822,15 +822,15 @@ function isShipSunk(boardBtns, tileHit) {
   }
 
   // get tile in column above (preceding letter)
-  let columnUpLetter = clickedId[0].charCodeAt(0);
+  let columnUpLetter = idOfTileHit[0].charCodeAt(0);
   columnUpLetter -= 1;
 
   let newLetter2 = String.fromCharCode(columnUpLetter);
   let columnUpID;
-  columnUpID = newLetter2 + "" + clickedId[1];
+  columnUpID = newLetter2 + "" + idOfTileHit[1];
 
-  if (clickedId[2] !== undefined) {
-    columnUpID = columnUpID + "" + clickedId[2];
+  if (idOfTileHit[2] !== undefined) {
+    columnUpID = columnUpID + "" + idOfTileHit[2];
   }
 
   let $columnUpButton;
@@ -859,7 +859,13 @@ $(".enemyBoard1 button").click(function() {
       if ($($tiles2[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
-        isShipSunk(enemyBoard1, $(this));
+
+        let didShipSink = isShipSunk($tiles3, $(this));
+
+        if (didShipSink) {
+          alert("You sunk a ship!");
+        }
+
         decrementShips(myBoard2, $(this));
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
 
