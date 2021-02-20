@@ -534,6 +534,12 @@ function whenTileClicked2($board, myBoardBtns) {
               player2Ships = returnIdsOfShip();
           }
       doneWithPlacingShip($board);
+
+      if (numberOfShipsPlaced === 1) {
+        $("#done2Btn").trigger("click");
+        $(".myBoard2 button").attr("disabled", "true");
+        return false;
+      }
       break;
 
     case 3:
