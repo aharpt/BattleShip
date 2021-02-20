@@ -762,6 +762,94 @@ function checkForGameEnd(board, _this) {
   return true;
 }
 
+function isShipSunk(boardBtns, tileHit) {
+  let idOfTileHit = $(tileHit).attr("id");
+
+  // get tile in row above (smaller number)
+  let rowDownNumber;
+  rowDownNumber = parseInt(idOfTileHit[1]) + 1;
+
+  if (idOfTileHit[2] !== undefined) {
+    rowDownNumber = parseInt((idOfTileHit[1] + "" + idOfTileHit[2])) + 1;
+  }
+
+  let rowDownID = idOfTileHit[0] + "" + rowDownNumber;
+  let $rowDownButton;
+
+  for (let i = 0; i < boardBtns.length; i++) {
+    if ($(boardBtns[i]).attr("id") === rowDownID) {
+      $rowDownButton = boardBtns[i];
+    }
+  }
+
+  // get tile in row below (bigger number)
+  let rowUpNumber;
+  rowUpNumber = parseInt(idOfTileHit[1]) - 1;
+
+  if (idOfTileHit[2] !== undefined) {
+    rowUpNumber = parseInt((idOfTileHit[1] + "" + idOfTileHit[2])) - 1;
+  }
+
+  let rowUpID = idOfTileHit[0] + "" + rowUpNumber;
+  let $rowUpButton;
+
+  for (let i = 0; i < boardBtns.length; i++) {
+    if ($(boardBtns[i]).attr("id") === rowUpID) {
+      $rowUpButton = boardBtns[i];
+    }
+  }
+
+  /* For Columns */
+
+  // get tile in column down (following letter)
+  let columnDownLetter = clickedId[0].charCodeAt(0);
+  columnDownLetter += 1;
+
+  let newLetter1 = String.fromCharCode(columnDownLetter);
+  let columnDownID;
+  columnDownID = newLetter1 + "" + clickedId[1];
+
+  if (clickedId[2] !== undefined) {
+    columnDownID = columnDownID + "" + clickedId[2];
+  }
+
+  let $columnDownButton;
+
+  for (let i = 0; i < boardBtns.length; i++) {
+    if ($(boardBtns[i]).attr("id") === columnDownID) {
+      $columnDownButton = boardBtns[i];
+    }
+  }
+
+  // get tile in column above (preceding letter)
+  let columnUpLetter = clickedId[0].charCodeAt(0);
+  columnUpLetter -= 1;
+
+  let newLetter2 = String.fromCharCode(columnUpLetter);
+  let columnUpID;
+  columnUpID = newLetter2 + "" + clickedId[1];
+
+  if (clickedId[2] !== undefined) {
+    columnUpID = columnUpID + "" + clickedId[2];
+  }
+
+  let $columnUpButton;
+
+  for (let i = 0; i < boardBtns.length; i++) {
+    if ($(boardBtns[i]).attr("id") === columnUpID) {
+      $columnUpButton = boardBtns[i];
+    }
+  }
+
+// check if any adjacent tiles have the class btn-success
+  if ($($rowDownButton).hasClass("btn-success") || $($rowUpButton).hasClass("btn-success") || $($columnDownButton).hasClass("btn-success") || $($columnUpButton).hasClass("btn-success")) {
+    return false;
+  }
+
+  return true;
+
+}
+
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
   let isGameOver = false;
@@ -771,8 +859,9 @@ $(".enemyBoard1 button").click(function() {
       if ($($tiles2[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
+        isShipSunk(enemyBoard1, $(this));
         decrementShips(myBoard2, $(this));
-        isGameOver = checkForGameEnd(myBoard2, $(this));
+        isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
 
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
