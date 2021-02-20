@@ -560,18 +560,50 @@ let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
+function changeTurn() {
+  alert("Opponent's Turn");
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
+}
+
+function updateBoard(board, _this) {
+  /* Change Board */
+
+    let clickedId = _this.attr("id");
+
+    let boardToChange;
+    if (clickedId[2] === undefined) {
+      boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
+    } else {
+      boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
+    }
+    console.log(boardToChange);
+
+    if (_this.hasClass("btn-danger")) {
+      board[boardToChange[0]][boardToChange[1]] = "H";
+      console.log(board);
+    }
+    else if (_this.hasClass("btn-dark")) {
+      board[boardToChange[0]][boardToChange[1]] = "M";
+      console.log(board);
+    }
+}
+
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
 
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
       if ($($tiles2[i]).hasClass("btn-success")) {
-        console.log("Hit");
+        alert("You got a Hit!");
         $(this).addClass("btn-danger");
       } else {
-        console.log("Miss");
+        alert("You Missed.");
         $(this).addClass("btn-dark");
       }
+
+      updateBoard(enemyBoard1, $(this));
+      setTimeout(changeTurn, 2000);
     }
   }
 });
@@ -596,12 +628,15 @@ $(".enemyBoard2 button").click(function() {
   for (let i = 0; i < $tiles.length; i++) {
     if ($tiles[i].id == clickedId) {
       if ($($tiles[i]).hasClass("btn-success")) {
-        console.log("Hit");
+        alert("You got a Hit!");
         $(this).addClass("btn-danger");
       } else {
-        console.log("Miss");
+        alert("You Missed.");
         $(this).addClass("btn-dark");
       }
+
+      updateBoard(enemyBoard2, $(this));
+      setTimeout(changeTurn, 2000);
     }
   }
 });
