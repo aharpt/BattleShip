@@ -553,6 +553,10 @@ function whenTileClicked2($board, myBoardBtns) {
           doneWithPlacingShip($board);
           if (numberOfShipsPlaced > 2) {
             orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+          } else {
+            $("#done2Btn").trigger("click");
+            $(".myBoard2 button").attr("disabled", "true");
+            return false;
           }
       } else {
         $(".myBoard2 button").attr("disabled", "true");
@@ -579,6 +583,11 @@ function whenTileClicked2($board, myBoardBtns) {
         if (numberOfShipsPlaced > 3) {
           orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
         }
+        else {
+          $("#done2Btn").trigger("click");
+          $(".myBoard2 button").attr("disabled", "true");
+          return false;
+        }
       } else {
         $(".myBoard2 button").attr("disabled", "true");
         return false;
@@ -603,6 +612,10 @@ function whenTileClicked2($board, myBoardBtns) {
         doneWithPlacingShip($board);
         if (numberOfShipsPlaced > 4) {
           orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+        } else {
+          $("#done2Btn").trigger("click");
+          $(".myBoard2 button").attr("disabled", "true");
+          return false;
         }
       } else {
         $(".myBoard2 button").attr("disabled", "true");
@@ -628,6 +641,10 @@ function whenTileClicked2($board, myBoardBtns) {
         doneWithPlacingShip($board);
         if (numberOfShipsPlaced > 5) {
           orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+        } else {
+          $("#done2Btn").trigger("click");
+          $(".myBoard2 button").attr("disabled", "true");
+          return false;
         }
       } else {
         $(".myBoard2 button").attr("disabled", "true");
@@ -668,6 +685,7 @@ function whenTileClicked2($board, myBoardBtns) {
 
 // Update myBoard1 when #done2Btn is clicked
 $("#done2Btn").click(function() {
+  console.log("Hello done2Btn");
   let successLength = 0;
 
     for (let i = 0; i < $tiles2.length; i++) {
