@@ -763,7 +763,7 @@ function checkForGameEnd(board, _this) {
 }
 
 function isShipSunk(boardBtns, tileHit) {
-  let idOfTileHit = $(tileHit).attr("id");
+  let idOfTileHit = tileHit.attr("id");
 
   // get tile in row above (smaller number)
   let rowDownNumber;
@@ -860,7 +860,7 @@ $(".enemyBoard1 button").click(function() {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
 
-        let didShipSink = isShipSunk($tiles3, $(this));
+        let didShipSink = isShipSunk($tiles2, $(this));
 
         if (didShipSink) {
           alert("You sunk a ship!");
@@ -886,7 +886,7 @@ $(".enemyBoard1 button").click(function() {
 });
 
 /***** Enemy Board 2 *****/
-let $tiles4 = $(".enemyBoard1 button");
+let $tiles4 = $(".enemyBoard2 button");
 
 let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
@@ -908,6 +908,12 @@ $(".enemyBoard2 button").click(function() {
       if ($($tiles[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
+
+        let didShipSink = isShipSunk($tiles, $(this));
+
+        if (didShipSink) {
+          alert("You sunk a ship!");
+        }
 
         decrementShips(myBoard1, $(this));
         isGameOver = checkForGameEnd(myBoard1, $(this));
