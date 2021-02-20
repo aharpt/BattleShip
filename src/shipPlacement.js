@@ -564,6 +564,7 @@ $(".enemyBoard1 button").click(function() {
         $(this).addClass("btn-danger");
       } else {
         console.log("Miss");
+        $(this).addClass("btn-dark");
       }
     }
   }
