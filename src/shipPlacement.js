@@ -664,10 +664,12 @@ let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
-function changeTurn() {
-  alert("Opponent's Turn");
-  $("#player1OuterContainer").toggleClass("outer-container");
-  $("#player2OuterContainer").toggleClass("outer-container");
+function changeTurn(gameOver) {
+  if (!gameOver) {
+    alert("Opponent's Turn");
+    $("#player1OuterContainer").toggleClass("outer-container");
+    $("#player2OuterContainer").toggleClass("outer-container");
+  }
 }
 
 function decrementShips(board, _this) {
@@ -688,17 +690,9 @@ function decrementShips(board, _this) {
 }
 
 function checkForGameEnd(board, _this) {
-  let boardToChange;
-  let clickedId = _this.attr("id");
-  if (clickedId[2] === undefined) {
-    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
-  } else {
-    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
-  }
-
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
-      if (board[boardToChange[0]][boardToChange[1]] === "S") {
+      if (board[i][j] === "S") {
         return false;
       }
     }
@@ -730,8 +724,7 @@ $(".enemyBoard1 button").click(function() {
         $(this).addClass("btn-dark");
       }
 
-      // gameTest($tiles3);
-      setTimeout(changeTurn, 2000);
+      setTimeout(changeTurn, 2000, isGameOver);
     }
   }
 });
@@ -752,6 +745,7 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
 
 $(".enemyBoard2 button").click(function() {
   let clickedId = $(this).attr("id");
+  let isGameOver = false;
 
   for (let i = 0; i < $tiles.length; i++) {
     if ($tiles[i].id == clickedId) {
@@ -774,8 +768,7 @@ $(".enemyBoard2 button").click(function() {
         $(this).addClass("btn-dark");
       }
 
-      updateBoard(enemyBoard2, $(this));
-      setTimeout(changeTurn, 2000);
+      setTimeout(changeTurn, 2000, isGameOver);
     }
   }
 });
