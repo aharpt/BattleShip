@@ -782,7 +782,7 @@ $(".enemyBoard1 button").click(function() {
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
-          document.body.innerHTML = "<p>Game Over. Player 1 Won</p>";
+          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
         }
 
       } else {
@@ -824,7 +824,7 @@ $(".enemyBoard2 button").click(function() {
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
-          document.body.innerHTML = "<p>Game Over. Player 2 Won</p>";
+          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 2 Won!</h2>";
         }
 
 

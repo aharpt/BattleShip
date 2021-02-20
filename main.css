@@ -99,3 +99,8 @@ button.btn {
 #instructionsContainer div {
   display: inline-block;
 }
+
+/* Player won */
+#playerWon {
+  text-align: center;
+}
