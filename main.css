@@ -79,10 +79,10 @@ button.btn {
 
 /* input boxes */
 
-#fire-box,
 #place-box {
   margin-top: 15px;
   display: inline-block;
+  margin-bottom: 15px;
 }
 
 .input-group.mb-3 {

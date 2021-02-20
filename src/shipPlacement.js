@@ -35,6 +35,7 @@ function gamePlay(boardArray, moveX, moveY) {
     moveY -= 1;
     moveX = moveX.charCodeAt(0) - 65;
     if (boardArray[moveY][moveX] != 'O') {
+        console.log("Inside gamePlay()");
         //Check for a sink, find if the hit tile was
         //the last of its ship
         var currentShip = boardArray[moveY][moveX];
@@ -85,17 +86,17 @@ function gamePlay(boardArray, moveX, moveY) {
 
 //a small console based test suite for the gameplay
 //looping hits across the board
-function gameTest(board) {
+function gameTest($board) {
     yMoves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     xMoves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
-            if (gamePlay(board, xMoves[i], yMoves[j]) == "Hit") {
+            if ($($board[i][j]).hasClass("btn-danger")) {
                 alert("Hit: (" + xMoves[i] + ", " + yMoves[j] + ")");
             }
-            if (gamePlay(board, xMoves[i], yMoves[j]) == "Sink") {
-                alert("Sink: (" + xMoves[i] + ", " + yMoves[j] + ")");
-            }
+            // if (gamePlay(board, xMoves[i], yMoves[j]) == "Sink") {
+            //     alert("Sink: (" + xMoves[i] + ", " + yMoves[j] + ")");
+            // }
         }
     }
 }
@@ -669,7 +670,7 @@ function changeTurn() {
   $("#player2OuterContainer").toggleClass("outer-container");
 }
 
-function updateBoard(board, _this) {
+function decrementShips(board, _this) {
   /* Change Board */
 
     let clickedId = _this.attr("id");
@@ -681,33 +682,55 @@ function updateBoard(board, _this) {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
     }
     console.log(boardToChange);
+    board[boardToChange[0]][boardToChange[1]] = "O";
+    console.log(board);
 
-    if (_this.hasClass("btn-danger")) {
-      board[boardToChange[0]][boardToChange[1]] = "H";
-      console.log(board);
+}
+
+function checkForGameEnd(board, _this) {
+  let boardToChange;
+  let clickedId = _this.attr("id");
+  if (clickedId[2] === undefined) {
+    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
+  } else {
+    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
+  }
+
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (board[boardToChange[0]][boardToChange[1]] === "S") {
+        return false;
+      }
     }
-    else if (_this.hasClass("btn-dark")) {
-      board[boardToChange[0]][boardToChange[1]] = "M";
-      console.log(board);
-    }
+  }
+
+  return true;
 }
 
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
+  let isGameOver = false;
 
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
       if ($($tiles2[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
+        decrementShips(myBoard2, $(this));
+        isGameOver = checkForGameEnd(myBoard2, $(this));
+
+        if (isGameOver) {
+          $("#player1OuterContainer").addClass("outer-container");
+          $("#player2OuterContainer").addClass("outer-container");
+          document.body.innerHTML = "<p>Game Over. Player 1 Won</p>";
+        }
+
       } else {
         alert("You Missed.");
         $(this).addClass("btn-dark");
       }
 
-      gameTest(enemyBoard1);
-
-      updateBoard(enemyBoard1, $(this));
+      // gameTest($tiles3);
       setTimeout(changeTurn, 2000);
     }
   }
@@ -735,6 +758,17 @@ $(".enemyBoard2 button").click(function() {
       if ($($tiles[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
+
+        decrementShips(myBoard1, $(this));
+        isGameOver = checkForGameEnd(myBoard1, $(this));
+
+        if (isGameOver) {
+          $("#player1OuterContainer").addClass("outer-container");
+          $("#player2OuterContainer").addClass("outer-container");
+          document.body.innerHTML = "<p>Game Over. Player 2 Won</p>";
+        }
+
+
       } else {
         alert("You Missed.");
         $(this).addClass("btn-dark");
