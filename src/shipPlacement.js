@@ -559,6 +559,36 @@ $(".enemyBoard1 button").click(function() {
 
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
+      if ($($tiles2[i]).hasClass("btn-success")) {
+        console.log("Hit");
+        $(this).addClass("btn-danger");
+      } else {
+        console.log("Miss");
+        $(this).addClass("btn-dark");
+      }
+    }
+  }
+});
+
+/***** Enemy Board 2 *****/
+let $tiles4 = $(".enemyBoard1 button");
+
+let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']];
+
+$(".enemyBoard2 button").click(function() {
+  let clickedId = $(this).attr("id");
+
+  for (let i = 0; i < $tiles.length; i++) {
+    if ($tiles[i].id == clickedId) {
       if ($($tiles[i]).hasClass("btn-success")) {
         console.log("Hit");
         $(this).addClass("btn-danger");
