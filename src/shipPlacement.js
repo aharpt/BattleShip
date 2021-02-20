@@ -300,7 +300,7 @@ function whenTileClicked($board, myBoardBtns) {
         }
         doneWithPlacingShip($board);
         numOfShips = 2;
-        orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+        orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
       break;
 
     case 6:
@@ -319,7 +319,7 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 3;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
       break;
 
     case 10:
@@ -338,7 +338,7 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 4;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
       break;
 
     case 15:
@@ -357,7 +357,7 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 5;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical?");
+      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
       break;
 
     case 21:
@@ -376,6 +376,7 @@ function whenTileClicked($board, myBoardBtns) {
       }
       doneWithPlacingShip($board);
       numOfShips = 6;
+      $(".myBoard1 button").attr("disabled", "true");
       break;
 
     default:
@@ -668,6 +669,7 @@ function whenTileClicked2($board, myBoardBtns) {
             player2Ships = returnIdsOfShip();
         }
         doneWithPlacingShip($board);
+        $(".myBoard2 button").attr("disabled", "true");
       } else {
         $(".myBoard2 button").attr("disabled", "true");
         return false;
