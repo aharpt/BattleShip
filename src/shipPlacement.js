@@ -289,7 +289,7 @@ let successLength = 0;
     $("#player2OuterContainer").toggleClass("outer-container");
   }
 
-  $("#done1Btn").addClass("disabled");
+  $("#done1Btn").hide();
   for (let i = 0; i < $tiles.length; i++) {
     $tiles[i].disabled = true;
   }
@@ -533,7 +533,7 @@ $("#done2Btn").click(function() {
       $("#player2OuterContainer").toggleClass("outer-container");
     }
 
-    $("#done2Btn").addClass("disabled");
+    $("#done2Btn").hide();
     for (let i = 0; i < $tiles2.length; i++) {
       $tiles2[i].disabled = true;
     }
