@@ -1,0 +1,12 @@
+1. Bootstrap Framework v. 4.6 https://getbootstrap.com/
+2. jQuery Library https://api.jquery.com/
+3. Stack Overflow
+  1. How to update page href https://stackoverflow.com/questions/9029881/open-page-automatically-using-javascript/9029931
+  2. Redirecting to a relative - url: https://stackoverflow.com/questions/1655065/redirecting-to-a-relative-url-in-javascript
+  3. Getting id with JavaScript - url: https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button
+  4. https://stackoverflow.com/questions/5245368/how-can-i-convert-ascii-code-to-character-in-javascript
+4. We received certain small ideas from YouTube Tutorial Creating A Battleship Game Using JavaScript! - url: https://www.youtube.com/watch?v=m6YA2Sc7rKo&ab_channel=MystikDeveloped
+5. Mozilla Developer Network
+6. Using JavaScript setTimeout function - url: https://www.javascripttutorial.net/javascript-bom/javascript-settimeout/
+7. Making a vertical line in HTML - url: https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/
+8. Tutorial Republic
