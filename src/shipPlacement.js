@@ -161,6 +161,7 @@ let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
 /* When a Button on Player1's Place Ships Board is Clicked */
+let numberOfShipsPlaced;
 $(".myBoard1 button").click(function() {
 
   /* DOM Manipulation */
@@ -185,7 +186,7 @@ $(".myBoard1 button").click(function() {
   myBoard1[boardToChange[0]][boardToChange[1]] = "S";
   console.log(myBoard1);
 
-  whenTileClicked($tiles, ".myBoard1 button");
+  numberOfShipsPlaced = whenTileClicked($tiles, ".myBoard1 button");
 
   /* Checks Which Spaces Are Open for the Ship */
 
@@ -379,6 +380,8 @@ function whenTileClicked($board, myBoardBtns) {
     default:
       break;
   }
+
+  return numOfShips;
 
 }
 
