@@ -1,5 +1,5 @@
 // get all board tiles from my board
-let $tiles = $("#myBoard button");
+let $tiles = $(".myBoard1 button");
 
 // orientation of ship placement
 let orientation = "neither";
@@ -44,22 +44,48 @@ function returnIdsOfShip() {
 }
 
 /* When a Board Tile is Clicked */
+// charCodeAt(0) - 65
+let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']];
 
-$("#myBoard button").click(function() {
-  // disable all buttons
-  $("#myBoard button").attr("disabled", "true");
-  // remove disabled attribute from button clicked
+/* When a Button on Player1's Place Ships Board is Clicked */
+$(".myBoard1 button").click(function() {
+
+  /* DOM Manipulation */
+
+  $(".myBoard1 button").attr("disabled", "true");
   $(this).removeAttr("disabled");
-  // remove class btn-secondary and add class btn-success
   $(this).removeClass("btn-secondary").addClass("btn-success");
   // get id of button clicked
   let clickedId = $(this).attr("id");
   console.log(clickedId);
 
-  whenTileClicked(); // here
+/* Change Board */
 
-  /* Row Code */
-  // get id of button one row down
+  let boardToChange;
+  if (clickedId[2] === undefined) {
+    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
+  } else {
+    boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
+  }
+  console.log(boardToChange);
+
+  myBoard1[boardToChange[0]][boardToChange[1]] = "S";
+  console.log(myBoard1);
+
+  whenTileClicked($tiles, ".myBoard1 button");
+
+  /* Checks Which Spaces Are Open for the Ship */
+
+  // Row Code
   let rowDownNumber;
   rowDownNumber = parseInt(clickedId[1]) + 1;
 
@@ -68,8 +94,6 @@ $("#myBoard button").click(function() {
   }
 
   let rowDownID = clickedId[0] + "" + rowDownNumber;
-
-  // get id of button one row up
   let rowUpNumber;
   rowUpNumber = parseInt(clickedId[1]) - 1;
 
@@ -78,21 +102,16 @@ $("#myBoard button").click(function() {
   }
 
   let rowUpID = clickedId[0] + "" + rowUpNumber;
-
-  // remove disabled attribute from button one row adjacent
   for (let i = 0; i < $tiles.length; i++) {
     if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false)) {
       $tiles[i].disabled = false;
     }
   }
 
-/* Column Code */
-
-  // get id of button one column down
+  // Column Code
   let columnDownLetter = clickedId[0].charCodeAt(0);
   columnDownLetter += 1;
 
-  // get back to new letter
   let newLetter1 = String.fromCharCode(columnDownLetter);
   let columnDownID;
   columnDownID = newLetter1 + "" + clickedId[1];
@@ -101,12 +120,9 @@ $("#myBoard button").click(function() {
     columnDownID = columnDownID + "" + clickedId[2];
   }
 
-
-  // get id of button one column up
   let columnUpLetter = clickedId[0].charCodeAt(0);
   columnUpLetter -= 1;
 
-  // get back to new letter
   let newLetter2 = String.fromCharCode(columnUpLetter);
   let columnUpID;
   columnUpID = newLetter2 + "" + clickedId[1];
@@ -115,7 +131,6 @@ $("#myBoard button").click(function() {
     columnUpID = columnUpID + "" + clickedId[2];
   }
 
-  // remove disabled attribute from button one column adjacent
   for (let i = 0; i < $tiles.length; i++) {
     if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false)) {
       $tiles[i].disabled = false;
@@ -126,30 +141,29 @@ $("#myBoard button").click(function() {
 /**
  * Function to call when Ship is Placed
  */
-let doneWithPlacingShip = function() {
-  for (let i = 0; i < $tiles.length; i++) {
-    if ($($tiles[i]).hasClass("btn-success")) {
-      $tiles[i].disabled = true;
+let doneWithPlacingShip = function($board) {
+  for (let i = 0; i < $board.length; i++) {
+    if ($($board[i]).hasClass("btn-success")) {
+      $board[i].disabled = true;
     }
   }
 };
 
-/* Find number of ships placed */
-let $myBoard1 = $(".myBoard1 button");
-let $myBoard2 = $(".myBoard2 button");
-
-function whenTileClicked() {
+/* Get the Number of Ships Placed */
+function whenTileClicked($board, myBoardBtns) {
   let numOfShipTiles = 0;
-  for (let i = 0; i < $tiles.length; i++) {
-    if ($($tiles[i]).hasClass("btn-success")) {
+  for (let i = 0; i < $board.length; i++) {
+    if ($($board[i]).hasClass("btn-success")) {
       numOfShipTiles++;
     }
   }
 
   switch (numOfShipTiles) {
     case 1:
+      /* DOM */
       alert("First Ship Placed");
-      $("#myBoard button").removeAttr("disabled");
+      $(myBoardBtns).removeAttr("disabled");
+
           if (location.pathname.split("BattleShip")[1] == "/player1.html")
               //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
           {
@@ -159,30 +173,32 @@ function whenTileClicked() {
           {
               player2Ships = returnIdsOfShip();
           }
-      doneWithPlacingShip();
+      doneWithPlacingShip($board);
       break;
 
     case 3:
+        /* DOM */
         alert("Second Ship Placed");
-        $("#myBoard button").removeAttr("disabled");
-        //returnIdsOfShip();
-            if (location.pathname.split("BattleShip")[1] == "/player1.html")
-                //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-            {
-                player1Ships = returnIdsOfShip();
-            }
-            else
-            {
-                player2Ships = returnIdsOfShip();
-            }
-        doneWithPlacingShip();
+        $(myBoardBtns).removeAttr("disabled");
+
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
+        doneWithPlacingShip($board);
         orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
     case 6:
+      /* DOM */
       alert("Third Ship Placed");
-      $("#myBoard button").removeAttr("disabled");
-      //returnIdsOfShip();
+      $(myBoardBtns).removeAttr("disabled");
+
           if (location.pathname.split("BattleShip")[1] == "/player1.html")
               //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
           {
@@ -192,14 +208,15 @@ function whenTileClicked() {
           {
               player2Ships = returnIdsOfShip();
           }
-      doneWithPlacingShip();
+      doneWithPlacingShip($board);
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
     case 10:
+      /* DOM */
       alert("Fourth Ship Placed");
-      $("#myBoard button").removeAttr("disabled");
-      //returnIdsOfShip();
+      $(myBoardBtns).removeAttr("disabled");
+
           if (location.pathname.split("BattleShip")[1] == "/player1.html")
               //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
           {
@@ -209,14 +226,15 @@ function whenTileClicked() {
           {
               player2Ships = returnIdsOfShip();
           }
-      doneWithPlacingShip();
+      doneWithPlacingShip($board);
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
     case 15:
+      /* DOM */
       alert("Fifth Ship Placed");
-      $("#myBoard button").removeAttr("disabled");
-      //returnIdsOfShip();
+      $(myBoardBtns).removeAttr("disabled");
+
           if (location.pathname.split("BattleShip")[1] == "/player1.html")
               //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
           {
@@ -226,14 +244,15 @@ function whenTileClicked() {
           {
               player2Ships = returnIdsOfShip();
           }
-      doneWithPlacingShip();
+      doneWithPlacingShip($board);
       orientation = prompt("Do you want your next ship to be horizontal or vertical?");
       break;
 
     case 21:
+      /* DOM */
       alert("Sixth Ship Placed");
-      $("#myBoard button").removeAttr("disabled");
-      //returnIdsOfShip();
+      $(myBoardBtns).removeAttr("disabled");
+
       if (location.pathname.split("BattleShip")[1] == "/player1.html")
           //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
       {
@@ -243,7 +262,7 @@ function whenTileClicked() {
       {
           player2Ships = returnIdsOfShip();
       }
-      doneWithPlacingShip();
+      doneWithPlacingShip($board);
       break;
 
     default:
@@ -253,10 +272,7 @@ function whenTileClicked() {
 }
 
 /* Code For 'Done Placing Ships' button */
-
-/* change dom */
-/* change to #done1Btn, #done2Btn */
-$(".btn-outline-success").click(function() {
+$("#done1Btn").click(function() {
 let successLength = 0;
 
   for (let i = 0; i < $tiles.length; i++) {
@@ -272,6 +288,231 @@ let successLength = 0;
     $("#player1OuterContainer").toggleClass("outer-container");
     $("#player2OuterContainer").toggleClass("outer-container");
   }
+});
+
+/****** PLAYER 2 CODE *******/
+let myBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O'],
+             ['O','O','O','O','O','O','O','O','O','O']];
+
+let $tiles2 = $(".myBoard2 button");
+let orientation2 = "neither";
+
+$(".myBoard2 button").click(function() {
+
+    /* DOM Manipulation */
+
+    $(".myBoard2 button").attr("disabled", "true");
+    $(this).removeAttr("disabled");
+    $(this).removeClass("btn-secondary").addClass("btn-success");
+    // get id of button clicked
+    let clickedId = $(this).attr("id");
+    console.log(clickedId);
+
+  /* Change Board */
+
+    let boardToChange;
+    if (clickedId[2] === undefined) {
+      boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
+    } else {
+      boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
+    }
+    console.log(boardToChange);
+
+    myBoard2[boardToChange[0]][boardToChange[1]] = "S";
+    console.log(myBoard2);
+
+    whenTileClicked2($tiles2, ".myBoard2 button");
+
+    /* Checks Which Spaces Are Open for the Ship */
+
+    // Row Code
+    let rowDownNumber;
+    rowDownNumber = parseInt(clickedId[1]) + 1;
+
+    if (clickedId[2] !== undefined) {
+      rowDownNumber = parseInt((clickedId[1] + "" + clickedId[2])) + 1;
+    }
+
+    let rowDownID = clickedId[0] + "" + rowDownNumber;
+    let rowUpNumber;
+    rowUpNumber = parseInt(clickedId[1]) - 1;
+
+    if (clickedId[2] !== undefined) {
+      rowUpNumber = parseInt((clickedId[1] + "" + clickedId[2])) - 1;
+    }
+
+    let rowUpID = clickedId[0] + "" + rowUpNumber;
+    for (let i = 0; i < $tiles2.length; i++) {
+      if (($tiles2[i].id === rowDownID || $tiles2[i].id === rowUpID) && orientation2 !== "horizontal" && ($($tiles2[i]).hasClass("btn-success") === false)) {
+        $tiles2[i].disabled = false;
+      }
+    }
+
+    // Column Code
+    let columnDownLetter = clickedId[0].charCodeAt(0);
+    columnDownLetter += 1;
+
+    let newLetter1 = String.fromCharCode(columnDownLetter);
+    let columnDownID;
+    columnDownID = newLetter1 + "" + clickedId[1];
+
+    if (clickedId[2] !== undefined) {
+      columnDownID = columnDownID + "" + clickedId[2];
+    }
+
+    let columnUpLetter = clickedId[0].charCodeAt(0);
+    columnUpLetter -= 1;
+
+    let newLetter2 = String.fromCharCode(columnUpLetter);
+    let columnUpID;
+    columnUpID = newLetter2 + "" + clickedId[1];
+
+    if (clickedId[2] !== undefined) {
+      columnUpID = columnUpID + "" + clickedId[2];
+    }
+
+    for (let i = 0; i < $tiles2.length; i++) {
+      if (($tiles2[i].id === columnDownID || $tiles2[i].id === columnUpID) && orientation2 !== "vertical" && ($($tiles2[i]).hasClass("btn-success") === false)) {
+        $tiles2[i].disabled = false;
+      }
+    }
+});
+
+/* Get the Number of Ships Placed */
+function whenTileClicked2($board, myBoardBtns) {
+  let numOfShipTiles = 0;
+  for (let i = 0; i < $board.length; i++) {
+    if ($($board[i]).hasClass("btn-success")) {
+      numOfShipTiles++;
+    }
+  }
+
+  switch (numOfShipTiles) {
+    case 1:
+      /* DOM */
+      alert("First Ship Placed");
+      $(myBoardBtns).removeAttr("disabled");
+
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip($board);
+      break;
+
+    case 3:
+        /* DOM */
+        alert("Second Ship Placed");
+        $(myBoardBtns).removeAttr("disabled");
+
+        if (location.pathname.split("BattleShip")[1] == "/player1.html")
+            //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+        {
+            player1Ships = returnIdsOfShip();
+        }
+        else
+        {
+            player2Ships = returnIdsOfShip();
+        }
+        doneWithPlacingShip($board);
+        orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
+
+    case 6:
+      /* DOM */
+      alert("Third Ship Placed");
+      $(myBoardBtns).removeAttr("disabled");
+
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip($board);
+      orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
+
+    case 10:
+      /* DOM */
+      alert("Fourth Ship Placed");
+      $(myBoardBtns).removeAttr("disabled");
+
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip($board);
+      orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
+
+    case 15:
+      /* DOM */
+      alert("Fifth Ship Placed");
+      $(myBoardBtns).removeAttr("disabled");
+
+          if (location.pathname.split("BattleShip")[1] == "/player1.html")
+              //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+          {
+              player1Ships = returnIdsOfShip();
+          }
+          else
+          {
+              player2Ships = returnIdsOfShip();
+          }
+      doneWithPlacingShip($board);
+      orientation2 = prompt("Do you want your next ship to be horizontal or vertical?");
+      break;
+
+    case 21:
+      /* DOM */
+      alert("Sixth Ship Placed");
+      $(myBoardBtns).removeAttr("disabled");
+
+      if (location.pathname.split("BattleShip")[1] == "/player1.html")
+          //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+      {
+          player1Ships = returnIdsOfShip();
+      }
+      else
+      {
+          player2Ships = returnIdsOfShip();
+      }
+      doneWithPlacingShip($board);
+      break;
+
+    default:
+      break;
+  }
+
+}
 
 
+
+// Update myBoard1 when #done2Btn is clicked
+$("#done2Btn").click(function() {
+
+  $("#player1OuterContainer").toggleClass("outer-container");
+  $("#player2OuterContainer").toggleClass("outer-container");
 });
