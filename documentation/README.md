@@ -7,7 +7,7 @@
 ### Developed By:
 #### 1. Aaron Harpt
 #### 2. Michael Cooley
-#### 3. Kaylee Mitchell
+#### 3. KayLee Mitchell
 #### 4. Eva Morrison
 #### 5. Nick Velicer
 ### Technologies Used:
@@ -16,3 +16,4 @@
 #### 3. Bootstrap
 #### 4. Jquery
 #### 5. JavaScript
+#### 6. JSDoc
