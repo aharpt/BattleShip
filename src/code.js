@@ -437,7 +437,6 @@ $(".myBoard2 button").click(function() {
     console.log(clickedId);
 
   /* Change Board */
-
     let boardToChange;
     if (clickedId[2] === undefined) {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
