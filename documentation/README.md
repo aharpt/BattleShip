@@ -3,7 +3,7 @@
 ## How to Start Developing with this Project
 #### 1. If you do not have a Github account, you will need to create one.
 #### 2. After you have a Github account, fork this repository so you have a copy on your Github account
-#### 3. Run the "git clone (followed by the repository url)" to clone down the repository on your local computer.  You can get the url by clicking on the green "Code" button.  Once you click the button, a dropdown will open and will provide a link to use.  Make sure the "HTTPS" option is selected.
+#### 3. Open the terminal and run "git clone (followed by the repository url)" to clone down the repository on your local computer.  You can get the repository url by clicking on the green "Code" button.  Once you click the button, a dropdown will open and will provide a url to use.  Make sure the "HTTPS" option is selected.
 ### Developed By:
 #### 1. Aaron Harpt
 #### 2. Michael Cooley
