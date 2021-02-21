@@ -13,6 +13,7 @@
 ### Technologies Used:
 #### 1. HTML
 #### 2. CSS
-#### 3. Bootstrap
-#### 4. Jquery
+#### 3. Bootstrap v. 4.6 - https://getbootstrap.com/docs/4.6/getting-started/introduction/
+#### 4. Jquery - https://jquery.com/
 #### 5. JavaScript
+#### 6. Documentation Generator - JSDoc - https://jsdoc.app/about-getting-started.html
