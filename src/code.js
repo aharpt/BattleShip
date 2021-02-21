@@ -285,7 +285,7 @@ function whenTileClicked($board, myBoardBtns) {
 
 /* Code For 'Done Placing Ships' button */
 $("#done1Btn").click(function() {
-let successLength = 0;
+  let successLength = 0;
 
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
@@ -671,7 +671,21 @@ $(".enemyBoard1 button").click(function() {
       if ($($tiles2[i]).hasClass("btn-success")) {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
-        decrementShips(myBoard2, $(this));
+        // decrementShips(myBoard2, $(this));
+
+        // sink detection
+        let xCoordinate = ($tiles2[i].id[0]).charCodeAt(0) - 65;
+        let yCoordinate = parseInt($tiles2[i].id[1]) - 1;
+        console.log("xCoordinate " + xCoordinate);
+        console.log("yCoordinate " + yCoordinate);
+
+
+        let isShipSunk = sinkDetect(myBoard2, xCoordinate, yCoordinate);
+
+        if (isShipSunk) {
+          alert("Ship sunk");
+        }
+
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
 
         if (isGameOver) {
