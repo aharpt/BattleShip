@@ -10,3 +10,12 @@
 6. Using JavaScript setTimeout function - url: https://www.javascripttutorial.net/javascript-bom/javascript-settimeout/
 7. Making a vertical line in HTML - url: https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/
 8. Tutorial Republic
+
+https://www.digitalocean.com/community/tutorials/how-to-add-javascript-to-html
+
+http://html5doctor.com/html-5-reset-stylesheet/
+
+https://www.youtube.com/watch?v=azZCW24XtT4&list=PL0eyrZgxdwhwNC5ppZo_dYGVjerQY3xYU&index=10
+
+
+
