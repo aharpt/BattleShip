@@ -4,6 +4,6 @@ Aaron: 15 hours
 Eva: 8 hours
 KayLee: 5 hours
 Nick: 10 hours
-Micheal: 8 hours
+Michael: 8 hours
 
 Total: 46 hours
