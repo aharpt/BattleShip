@@ -1,15 +1,44 @@
-Estimate:
+For simplicity, all components are classified as Average complexity.
 
-Aaron: 15 hours
+input item:    3
+    number of ships
+    ship placement
+    firing on opponent's grid
 
-Details:
-HTML 4 hrs
-CSS 1 hr
-JavaScript 10 hrs
+output item:    4
+    ship placement
+    if shot fired was a hit or a miss
+    if opponent has sunk a ship
+    end of game
 
-Eva: 8 hours
-KayLee: 5 hours
-Nick: 10 hours
-Michael: 8 hours
+inquiry:    0
 
-Total: 46 hours
+Master file:    4
+    title html page
+    instruction html page
+    gameplay html page
+    javascript backend for gameplay
+
+Interface:    5
+    title page
+    instructions page
+    player 1 page
+    player 2 page
+    end of game page
+
+Unadjusted Function Point:
+UFP = 33 + 44 + 00 + 44 + 55 = 9 + 16 + 0 + 16 + 25 = 66
+
+Total Degree of Influence: measure of effects of 14 technical factors from 0-5
+DI = 2 + 1 + 5 + 1 + 1 + 5 + 4 + 5 + 2 + 0 + 5 + 1 + 0 = 32
+
+Technical Complexity Factor:
+TCF = 0.65 + 0.01DI = 0.97
+
+Function Point:
+FP = UFPTCF = 660.97 = 64.02
+
+Effort: FP times person-hour per funcion point
+Effort = FPperson-hour/FP = 64.021 = 64.02
+
+Total: 64.02 hours
