@@ -4,8 +4,8 @@
 //board is a 10x10
 testBoard = [['5','O','O','O','O','O','O','O','O','1'],
              ['5','O','O','O','O','O','O','3','3','3'],
-             ['5','O','O','O','2','O','O','O','O','O'],
-             ['5','O','O','O','2','O','O','O','O','O'],
+             ['O','O','O','O','2','O','O','O','O','O'],
+             ['5','O','O','O','O','O','O','O','O','O'],
              ['5','O','O','O','O','O','O','4','O','O'],
              ['O','O','O','O','O','O','O','4','O','O'],
              ['O','O','O','O','O','O','O','4','O','O'],
@@ -34,43 +34,7 @@ function gamePlay(boardArray, moveX, moveY) {
     moveY -= 1;
     moveX = moveX.charCodeAt(0) - 65;
     if (boardArray[moveY][moveX] != 'O') {
-        //Check for a sink, find if the hit tile was
-        //the last of its ship
-        var currentShip = boardArray[moveY][moveX];
-        var aboveEmpty = true;
-        var belowEmpty = true;
-        var rightEmpty = true;
-        var leftEmpty = true;
-
-        //checking one tile above
-        if ((moveY-1 >= 0)) {
-            if (boardArray[moveY-1][moveX] == currentShip) {
-                aboveEmpty = false;
-            }
-        }
-
-        //checking one tile below
-        if ((moveY+1) <= 9) {
-            if (boardArray[moveY+1][moveX] == currentShip) {
-                belowEmpty = false;
-            }
-        }
-
-        //checking one tile left
-        if ((moveX-1 >= 0)) {
-            if (boardArray[moveY][moveX-1] == currentShip) {
-                leftEmpty = false;
-            }
-        }
-
-        //checking one tile right
-        if ((moveX+1) <= 9) {
-            if (boardArray[moveY][moveX+1] == currentShip) {
-                rightEmpty = false;
-            }
-        }
-
-        if (aboveEmpty && belowEmpty && rightEmpty && leftEmpty) {
+        if (sinkDetect(boardArray, moveX, moveY)) {
             return("Sink");
         }
         else {
@@ -100,3 +64,60 @@ function gameTest() {
 }
 
 gameTest();
+
+//takes in a formatted board, and an x coord and y coord of a shot
+//reads through the board to determine where the ships are and forms internal arrays based on that
+
+//example board (ship lengths are represented in their numbers, some might be less than the length if they have already been hit but the number stays the same):
+//testBoard = [['5','O','O','O','O','O','O','O','O','1'],
+//             ['5','O','O','O','O','O','O','3','3','3'],
+//             ['5','O','O','O','2','O','O','O','O','O'],
+//             ['5','O','O','O','2','O','O','O','O','O'],
+//             ['5','O','O','O','O','O','O','4','O','O'],
+//             ['O','O','O','O','O','O','O','4','O','O'],
+//             ['O','O','O','O','O','O','O','4','O','O'],
+//             ['O','O','O','O','O','O','O','4','O','O'],
+//             ['O','O','O','O','O','O','O','O','O','O'],
+//             ['O','O','O','O','O','O','O','O','O','O']]
+
+
+//xcoord and ycoord are already scaled 0-9
+//coordinates of an already valid hit
+function sinkDetect(board, xcoord, ycoord) {
+    var aboveEmpty = true;
+    var belowEmpty = true;
+    var rightEmpty = true;
+    var leftEmpty = true;
+    for (var i = 1; i < board[ycoord][xcoord]; i++) {
+        //checking i tiles above
+        if ((ycoord-i >= 0)) {
+            if (board[ycoord-i][xcoord] == board[ycoord][xcoord]) {
+                aboveEmpty = false;
+            }
+        }
+        //checking i tiles below
+        if ((ycoord+i) <= 9) {
+            if (board[ycoord+i][xcoord] == board[ycoord][xcoord]) {
+                belowEmpty = false;
+            }
+        }
+        //checking i tiles left
+        if ((xcoord-i >= 0)) {
+            if (board[ycoord][xcoord-i] == board[ycoord][xcoord]) {
+                leftEmpty = false;
+            }
+        }
+        //checking i tiles right
+        if ((xcoord+i) <= 9) {
+            if (board[ycoord][xcoord+i] == board[ycoord][xcoord]) {
+                rightEmpty = false;
+            }
+        }
+    }
+    if (aboveEmpty && belowEmpty && rightEmpty && leftEmpty) {
+        return(true);
+    }
+    else {
+        return(false);
+    }
+}

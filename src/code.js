@@ -67,7 +67,6 @@ $(".myBoard1 button").click(function() {
   $(this).removeClass("btn-secondary").addClass("btn-success");
   // get id of button clicked
   let clickedId = $(this).attr("id");
-  console.log(clickedId);
 
 /* Change Board */
 
@@ -77,10 +76,8 @@ $(".myBoard1 button").click(function() {
   } else {
     boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
   }
-  console.log(boardToChange);
 
   myBoard1[boardToChange[0]][boardToChange[1]] = "S";
-  console.log(myBoard1);
 
   numberOfShipsPlaced = whenTileClicked($tiles, ".myBoard1 button");
   console.log("number of Ships Placed: " + numberOfShipsPlaced);
@@ -285,7 +282,7 @@ function whenTileClicked($board, myBoardBtns) {
 
 /* Code For 'Done Placing Ships' button */
 $("#done1Btn").click(function() {
-let successLength = 0;
+  let successLength = 0;
 
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
@@ -330,7 +327,6 @@ $(".myBoard2 button").click(function() {
     $(this).removeClass("btn-secondary").addClass("btn-success");
     // get id of button clicked
     let clickedId = $(this).attr("id");
-    console.log(clickedId);
 
   /* Change Board */
     let boardToChange;
@@ -339,10 +335,8 @@ $(".myBoard2 button").click(function() {
     } else {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
     }
-    console.log(boardToChange);
 
     myBoard2[boardToChange[0]][boardToChange[1]] = "S";
-    console.log(myBoard2);
 
     let areMoreShips = whenTileClicked2($tiles2, ".myBoard2 button");
 
@@ -588,7 +582,6 @@ function whenTileClicked2($board, myBoardBtns) {
 
 // Update myBoard1 when #done2Btn is clicked
 $("#done2Btn").click(function() {
-  console.log("Hello done2Btn");
   let successLength = 0;
 
     for (let i = 0; i < $tiles2.length; i++) {
@@ -672,6 +665,7 @@ $(".enemyBoard1 button").click(function() {
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
         decrementShips(myBoard2, $(this));
+
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
 
         if (isGameOver) {
