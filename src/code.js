@@ -138,7 +138,7 @@ $(".myBoard1 button").click(function() {
 
 /**
  * @description Function to call when Ship is Placed
- * @param $board which is a jQuery representation of all DOM element that match a particular selector
+ * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
  */
 let doneWithPlacingShip = function($board) {
   for (let i = 0; i < $board.length; i++) {
@@ -153,8 +153,8 @@ let numOfShips = 0;
 
 /**
  * @description Logic for when a board tile on the ship placement board for player 1 is clicked
- * @param {array} $board
- * @param {array} myBoardBtns
+ * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
+ * @param {array} myBoardBtns A jQuery representation of all DOM elements that match a particular selector
  * @returns numOfShips that contains the number of ships placed
  */
 function whenTileClicked($board, myBoardBtns) {
@@ -414,8 +414,8 @@ $(".myBoard2 button").click(function() {
 /* Get the Number of Ships Placed */
 /**
  * @description Logic for when a board tile on player 2's ship placement board is clicked
- * @param {array} $board
- * @param {array} myBoardBtns
+ * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
+ * @param {array} myBoardBtns A jQuery representation of all DOM elements that match a particular selector
  * @returns true if all six ships are placed, false otherwise
  */
 function whenTileClicked2($board, myBoardBtns) {
@@ -643,7 +643,7 @@ let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
 
 /**
  * @description Changes the turn to the next player as long as the current turn did not result in the game ending
- * @param {boolean} gameOver
+ * @param {boolean} gameOver A parameter that evaluates to true if the game is over, false otherwise
  */
 function changeTurn(gameOver) {
   if (!gameOver) {
@@ -655,8 +655,8 @@ function changeTurn(gameOver) {
 
 /**
  * @description takes a player board, and the tile that was clicked, and decrements the number of ship spaces left to hit
- * @param {array} board
- * @param {object} _this
+ * @param {array} board An array of a player board
+ * @param {object} _this A reference to the board tile clicked
  */
 function decrementShips(board, _this) {
   /* Change Board */
@@ -676,8 +676,8 @@ function decrementShips(board, _this) {
 
 /**
  * @description Takes in a player board and the tile clicked, and checks if the game is over
- * @param {array} board
- * @param {object} _this
+ * @param {array} board An array of a player board
+ * @param {object} _this A reference to the board tile clicked
  * @returns true if game is over, false otherwise
  */
 function checkForGameEnd(board, _this) {
