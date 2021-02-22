@@ -9,16 +9,12 @@ let orientation = "neither";
 let player1Ships = [];
 let player2Ships = [];
 
-/*
-  1. shipIdLetters and shipIdNumbers hold a list of their respective values.
+/**
+ * @description 1. shipIdLetters and shipIdNumbers hold a list of their respective values.
    You can access an entire id by accessing the same index in both arrays.
    For instance, shipIdLetters[0] + shipIdNumbers[0] will give entire id of 0th element
   2. shipIds is a 2d array.  shipIds[0] holds shipIdLetters array, shipIds[1] holds shipIdNumbers
-
-*/
-
-/**
- * @returns 2d array shipIds that holds ship coordinates that have a ship on them
+ * @returns 2d array shipIds that holds ship coordinates that have a ship placed on them
  */
 
 function returnIdsOfShip() {
@@ -58,6 +54,9 @@ let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
 
 /* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
+/**
+ * @description click event callback function for when a button (board tile) of Player 1's ship placement board is clicked
+ */
 $(".myBoard1 button").click(function() {
 
   /* DOM Manipulation */
@@ -138,7 +137,8 @@ $(".myBoard1 button").click(function() {
 });
 
 /**
- * Function to call when Ship is Placed
+ * @description Function to call when Ship is Placed
+ * @param $board which is a jQuery representation of all DOM element that match a particular selector
  */
 let doneWithPlacingShip = function($board) {
   for (let i = 0; i < $board.length; i++) {
@@ -150,6 +150,13 @@ let doneWithPlacingShip = function($board) {
 
 /* Get the Number of Ships Placed */
 let numOfShips = 0;
+
+/**
+ * @description Contains logic for when a board tile on the ship placement board for player 1 is clicked
+ * @param {array} $board
+ * @param {array} myBoardBtns
+ * @returns numOfShips that contains the number of ships placed
+ */
 function whenTileClicked($board, myBoardBtns) {
   let numOfShipTiles = 0;
   for (let i = 0; i < $board.length; i++) {
@@ -281,6 +288,9 @@ function whenTileClicked($board, myBoardBtns) {
 }
 
 /* Code For 'Done Placing Ships' button */
+/**
+ * @description Logic for when player 1's 'Done Placing Ships' button is clicked
+ */
 $("#done1Btn").click(function() {
   let successLength = 0;
 
@@ -319,6 +329,9 @@ let myBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
 let $tiles2 = $(".myBoard2 button");
 let orientation2 = "neither";
 
+/**
+ * @description Event Callback function for when a board tile for player 2's ship placment board is clicked
+ */
 $(".myBoard2 button").click(function() {
 
     /* DOM Manipulation */
@@ -399,6 +412,12 @@ $(".myBoard2 button").click(function() {
 });
 
 /* Get the Number of Ships Placed */
+/**
+ * @description Logic for when a board tile on player 2's ship placement board is clicked
+ * @param {array} $board
+ * @param {array} myBoardBtns
+ * @returns true if all six ships are placed, false otherwise
+ */
 function whenTileClicked2($board, myBoardBtns) {
   let numOfShipTiles = 0;
   for (let i = 0; i < $board.length; i++) {
@@ -581,6 +600,9 @@ function whenTileClicked2($board, myBoardBtns) {
 
 
 // Update myBoard1 when #done2Btn is clicked
+/**
+ * @description Logic for when player 2's 'Done Placing Ships' button is clicked
+ */
 $("#done2Btn").click(function() {
   let successLength = 0;
 
@@ -619,6 +641,10 @@ let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
+/**
+ * @description Changes the turn to the next player as long as the current turn did not result in the game ending
+ * @param {boolean} gameOver
+ */
 function changeTurn(gameOver) {
   if (!gameOver) {
     alert("Opponent's Turn");
@@ -627,6 +653,11 @@ function changeTurn(gameOver) {
   }
 }
 
+/**
+ * @description takes a player board, and the tile that was clicked, and decrements the number of ship spaces left to hit
+ * @param {array} board
+ * @param {object} _this
+ */
 function decrementShips(board, _this) {
   /* Change Board */
 
@@ -643,6 +674,12 @@ function decrementShips(board, _this) {
     console.log("board: " + board);
 }
 
+/**
+ * @description Takes in a player board and the tile clicked, and checks if the game is over
+ * @param {array} board
+ * @param {object} _this
+ * @returns true if game is over, false otherwise
+ */
 function checkForGameEnd(board, _this) {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
@@ -655,6 +692,9 @@ function checkForGameEnd(board, _this) {
   return true;
 }
 
+/**
+ * @description Logic for when player 1 shoots at player 2's ships (When player 1 clicks a board tile on his "Attack Board")
+ */
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
   let isGameOver = false;
@@ -698,6 +738,9 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
+/**
+ * @description Logic for when player 2 shoots at player 1's ships (when a board tile on player 2's "Attack Board" is clicked)
+ */
 $(".enemyBoard2 button").click(function() {
   let clickedId = $(this).attr("id");
   let isGameOver = false;
