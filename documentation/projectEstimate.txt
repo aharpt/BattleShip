@@ -1,6 +1,12 @@
 Estimate:
 
 Aaron: 15 hours
+
+Details:
+HTML 4 hrs
+CSS 1 hr
+JavaScript 10 hrs
+
 Eva: 8 hours
 KayLee: 5 hours
 Nick: 10 hours
