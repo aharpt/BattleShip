@@ -1,13 +1,9 @@
-Aaron - Main UI
+Estimate:
 
-20 hrs
+Aaron: 15 hours
+Eva: 8 hours
+KayLee: 5 hours
+Nick: 10 hours
+Micheal: 8 hours
 
-Nick - Main JavaScript Logic
-
-Michael - index.html page
-
-10 hrs
-
-Eva - Help with JavaScript Logic
-
-Kaylee - Research/Documentation
+Total: 46 hours
