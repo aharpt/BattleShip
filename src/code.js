@@ -152,7 +152,7 @@ let doneWithPlacingShip = function($board) {
 let numOfShips = 0;
 
 /**
- * @description Contains logic for when a board tile on the ship placement board for player 1 is clicked
+ * @description Logic for when a board tile on the ship placement board for player 1 is clicked
  * @param {array} $board
  * @param {array} myBoardBtns
  * @returns numOfShips that contains the number of ships placed
