@@ -55,7 +55,7 @@ let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
 /* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
 /**
- * @description click event callback function for when a button (board tile) of Player 1's ship placement board is clicked
+ * @event click event callback function for Player 1's ship placement
  */
 $(".myBoard1 button").click(function() {
 
@@ -289,7 +289,7 @@ function whenTileClicked($board, myBoardBtns) {
 
 /* Code For 'Done Placing Ships' button */
 /**
- * @description Logic for when player 1's 'Done Placing Ships' button is clicked
+ * @event click for when Player 1's 'Done Placing Ships' button is clicked
  */
 $("#done1Btn").click(function() {
   let successLength = 0;
@@ -330,7 +330,7 @@ let $tiles2 = $(".myBoard2 button");
 let orientation2 = "neither";
 
 /**
- * @description Event Callback function for when a board tile for player 2's ship placment board is clicked
+ * @event click event callback function for  Player 2's ship placment
  */
 $(".myBoard2 button").click(function() {
 
@@ -601,7 +601,7 @@ function whenTileClicked2($board, myBoardBtns) {
 
 // Update myBoard1 when #done2Btn is clicked
 /**
- * @description Logic for when player 2's 'Done Placing Ships' button is clicked
+ * @event click for when Player 2's 'Done Placing Ships' button is clicked
  */
 $("#done2Btn").click(function() {
   let successLength = 0;
@@ -693,7 +693,7 @@ function checkForGameEnd(board, _this) {
 }
 
 /**
- * @description Logic for when player 1 shoots at player 2's ships (When player 1 clicks a board tile on his "Attack Board")
+ * @event click for when Player 1 shoots at Player 2's ships
  */
 $(".enemyBoard1 button").click(function() {
   let clickedId = $(this).attr("id");
@@ -739,7 +739,7 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
 /**
- * @description Logic for when player 2 shoots at player 1's ships (when a board tile on player 2's "Attack Board" is clicked)
+ * @event click for when Player 2 shoots at Player 1's ships
  */
 $(".enemyBoard2 button").click(function() {
   let clickedId = $(this).attr("id");
