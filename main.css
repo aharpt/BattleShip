@@ -1,3 +1,5 @@
+
+
 /* outer-container */
 .outer-container {
   display: none;
@@ -29,6 +31,7 @@
 /* board */
 
 #myBoard {
+  cursor:url('http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif'), auto;
   border-right: 5px solid black;
 }
 
