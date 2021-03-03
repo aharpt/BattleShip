@@ -738,7 +738,7 @@ $(".enemyBoard1 button").click(function() {
         $(this).addClass("btn-dark");
       }
 
-      setTimeout(changeTurn, 2000, isGameOver);
+      setTimeout(changeTurn, 2, isGameOver);
     }
   }
 });
@@ -789,7 +789,7 @@ $(".enemyBoard2 button").click(function() {
         $(this).addClass("btn-dark");
       }
 
-      setTimeout(changeTurn, 2000, isGameOver);
+      setTimeout(changeTurn, 2, isGameOver);
     }
   }
 });
