@@ -23,17 +23,13 @@
 
 /* colorRow */
 #colorRow .text-dark {
+
   margin-bottom: 0.5rem;
 }
 
 /* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
 
 /* board */
-
-#myBoard {
-  cursor:url('http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif'), auto;
-  border-right: 5px solid black;
-}
 
 .col-md-6 {
   height: 80%;
@@ -44,6 +40,7 @@
 }
 
 .board button {
+
   width: 45px;
   height: 45px;
   margin: 1px;

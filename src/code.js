@@ -348,7 +348,7 @@ let orientation2 = "neither";
  * @event click event callback function for  Player 2's ship placment
  */
 $(".myBoard2 button").click(function() {
-
+    $("#done2Btn").hide();
     /* DOM Manipulation */
     $(".myBoard2 button").attr("disabled", "true");
     $(this).removeAttr("disabled");
