@@ -1,3 +1,5 @@
+
+
 /* outer-container */
 .outer-container {
   display: none;
@@ -21,16 +23,13 @@
 
 /* colorRow */
 #colorRow .text-dark {
+
   margin-bottom: 0.5rem;
 }
 
 /* From Geeks for Geeks : https://www.geeksforgeeks.org/how-to-make-a-vertical-line-using-html/ */
 
 /* board */
-
-#myBoard {
-  border-right: 5px solid black;
-}
 
 .col-md-6 {
   height: 80%;
@@ -41,6 +40,7 @@
 }
 
 .board button {
+
   width: 45px;
   height: 45px;
   margin: 1px;

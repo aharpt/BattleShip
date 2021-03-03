@@ -8,7 +8,22 @@ let orientation = "neither";
 //The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
 let player1Ships = [];
 let player2Ships = [];
-
+//Sound Effects
+function shipHitS()
+{
+  let sound = new Audio('Sound Effects/explosion.mp3');
+  sound.play();
+}
+function shipMissS()
+{
+  let sound = new Audio('Sound Effects/WaterSploosh.mp3');
+  sound.play();
+}
+function backgroudS()
+{
+  let sound = new Audio('Sound Effects/BackgroundMusic.mp3');
+  sound.play();
+}
 /**
  * @description 1. shipIdLetters and shipIdNumbers hold a list of their respective values.
    You can access an entire id by accessing the same index in both arrays.
@@ -333,7 +348,7 @@ let orientation2 = "neither";
  * @event click event callback function for  Player 2's ship placment
  */
 $(".myBoard2 button").click(function() {
-
+    $("#done2Btn").hide();
     /* DOM Manipulation */
     $(".myBoard2 button").attr("disabled", "true");
     $(this).removeAttr("disabled");
@@ -623,13 +638,14 @@ $("#done2Btn").click(function() {
     $("#done2Btn").hide();
     for (let i = 0; i < $tiles2.length; i++) {
       $tiles2[i].disabled = true;
+      $tiles3[i].disabled = false;
+      $tiles4[i].disabled = false;
     }
 });
 
 
 /*******   FIRE CODE  ********/
 let $tiles3 = $(".enemyBoard1 button");
-
 let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
@@ -640,6 +656,7 @@ let enemyBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
+
 
 /**
  * @description Changes the turn to the next player as long as the current turn did not result in the game ending
@@ -702,6 +719,7 @@ $(".enemyBoard1 button").click(function() {
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
       if ($($tiles2[i]).hasClass("btn-success")) {
+        shipHitS();
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
         decrementShips(myBoard2, $(this));
@@ -715,11 +733,12 @@ $(".enemyBoard1 button").click(function() {
         }
 
       } else {
+        shipMissS();
         alert("You Missed.");
         $(this).addClass("btn-dark");
       }
 
-      setTimeout(changeTurn, 2000, isGameOver);
+      setTimeout(changeTurn, 2, isGameOver);
     }
   }
 });
@@ -737,7 +756,10 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
-
+for (let i = 0; i < $tiles.length; i++) {
+  $tiles3[i].disabled = true;
+  $tiles4[i].disabled = true;
+}
 /**
  * @event click for when Player 2 shoots at Player 1's ships
  */
@@ -748,6 +770,7 @@ $(".enemyBoard2 button").click(function() {
   for (let i = 0; i < $tiles.length; i++) {
     if ($tiles[i].id == clickedId) {
       if ($($tiles[i]).hasClass("btn-success")) {
+        shipHitS();
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
         decrementShips(myBoard1, $(this));
@@ -761,11 +784,12 @@ $(".enemyBoard2 button").click(function() {
 
 
       } else {
+        shipMissS();
         alert("You Missed.");
         $(this).addClass("btn-dark");
       }
 
-      setTimeout(changeTurn, 2000, isGameOver);
+      setTimeout(changeTurn, 2, isGameOver);
     }
   }
 });
