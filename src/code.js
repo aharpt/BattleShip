@@ -165,6 +165,7 @@ let doneWithPlacingShip = function($board) {
 
 /* Get the Number of Ships Placed */
 let numOfShips = 0;
+$('#done1Btn').prop('disabled', true);
 
 /**
  * @description Logic for when a board tile on the ship placement board for player 1 is clicked
@@ -197,6 +198,7 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 1;
+      $('#done1Btn').prop('disabled', false);
       break;
 
     case 3:
@@ -308,7 +310,6 @@ function whenTileClicked($board, myBoardBtns) {
  */
 $("#done1Btn").click(function() {
   let successLength = 0;
-
   for (let i = 0; i < $tiles.length; i++) {
     if ($($tiles[i]).hasClass("btn-success")) {
       successLength++;
@@ -348,7 +349,6 @@ let orientation2 = "neither";
  * @event click event callback function for  Player 2's ship placment
  */
 $(".myBoard2 button").click(function() {
-    $("#done2Btn").hide();
     /* DOM Manipulation */
     $(".myBoard2 button").attr("disabled", "true");
     $(this).removeAttr("disabled");
@@ -620,7 +620,6 @@ function whenTileClicked2($board, myBoardBtns) {
  */
 $("#done2Btn").click(function() {
   let successLength = 0;
-
     for (let i = 0; i < $tiles2.length; i++) {
       if ($($tiles2[i]).hasClass("btn-success")) {
         successLength++;
@@ -634,12 +633,12 @@ $("#done2Btn").click(function() {
       $("#player1OuterContainer").toggleClass("outer-container");
       $("#player2OuterContainer").toggleClass("outer-container");
     }
-
-    $("#done2Btn").hide();
+    if (successLength !== 0) {
     for (let i = 0; i < $tiles2.length; i++) {
       $tiles2[i].disabled = true;
       $tiles3[i].disabled = false;
       $tiles4[i].disabled = false;
+    }
     }
 });
 
@@ -756,6 +755,8 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
+
+$("#done2Btn").hide();
 for (let i = 0; i < $tiles.length; i++) {
   $tiles3[i].disabled = true;
   $tiles4[i].disabled = true;
