@@ -686,7 +686,7 @@ function decrementShips(board, _this) {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
     }
     console.log("boardtoChange: " + boardToChange);
-    board[boardToChange[0]][boardToChange[1]] = "O";
+    board[boardToChange[0]][boardToChange[1]] = "H";
     console.log("board: " + board);
 }
 
@@ -717,6 +717,8 @@ $(".enemyBoard1 button").click(function() {
 
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
+      
+
       if ($($tiles2[i]).hasClass("btn-success")) {
         shipHitS();
         alert("You got a Hit!");
@@ -724,20 +726,31 @@ $(".enemyBoard1 button").click(function() {
         decrementShips(myBoard2, $(this));
 
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
+        setTimeout(changeTurn, 2, isGameOver);
 
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
           document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
+          
         }
 
-      } else {
+      } 
+      else {
         shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
+        if($(this).hasClass("btn-dark")){
+          alert("Already guessed this square."); 
+          continue;
+        }
+        else{
+          alert("You Missed.");
+          $(this).addClass("btn-dark");
+          setTimeout(changeTurn, 2, isGameOver);
+        }
+        
       }
-
-      setTimeout(changeTurn, 2, isGameOver);
+      
+      
     }
   }
 });
@@ -776,6 +789,7 @@ $(".enemyBoard2 button").click(function() {
         $(this).addClass("btn-danger");
         decrementShips(myBoard1, $(this));
         isGameOver = checkForGameEnd(myBoard1, $(this));
+        setTimeout(changeTurn, 2, isGameOver);
 
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
@@ -784,13 +798,22 @@ $(".enemyBoard2 button").click(function() {
         }
 
 
-      } else {
+      } 
+      else {
         shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
+        if($(this).hasClass("btn-dark")){
+          alert("Already guessed this square."); 
+          continue;
+        }
+        else{
+          alert("You Missed.");
+          $(this).addClass("btn-dark");
+          setTimeout(changeTurn, 2, isGameOver);
+        }
+        
       }
 
-      setTimeout(changeTurn, 2, isGameOver);
+      
     }
   }
 });
