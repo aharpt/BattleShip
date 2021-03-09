@@ -69,6 +69,7 @@ let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
 
 /* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
+let specialCase=false;
 /**
  * @event click event callback function for Player 1's ship placement
  */
@@ -116,7 +117,7 @@ $(".myBoard1 button").click(function() {
 
   let rowUpID = clickedId[0] + "" + rowUpNumber;
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false)) {
+    if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false)&&!specialCase) {
       $tiles[i].disabled = false;
     }
   }
@@ -145,7 +146,7 @@ $(".myBoard1 button").click(function() {
   }
 
   for (let i = 0; i < $tiles.length; i++) {
-    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false)) {
+    if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false)&&!specialCase) {
       $tiles[i].disabled = false;
     }
   }
@@ -278,23 +279,32 @@ function whenTileClicked($board, myBoardBtns) {
       break;
 
     case 21:
-      /* DOM */
-      alert("Sixth Ship Placed");
-      $(myBoardBtns).removeAttr("disabled");
+    /* DOM */
+    specialCase=true
+    alert("Sixth Ship Placed");
+    $(myBoardBtns).removeAttr("disabled");
 
-      if (location.pathname.split("BattleShip")[1] == "/player1.html")
-          //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
-      {
-          player1Ships = returnIdsOfShip();
-      }
-      else
-      {
-          player2Ships = returnIdsOfShip();
-      }
-      doneWithPlacingShip($board);
-      numOfShips = 6;
-      $(".myBoard1 button").attr("disabled", "true");
-      break;
+    if (location.pathname.split("BattleShip")[1] == "/player1.html")
+        //when it is player 1s turn the ships are stored for that player otherwise the ships are stored under player 2
+    {
+        player1Ships = returnIdsOfShip();
+    }
+    else
+    {
+        player2Ships = returnIdsOfShip();
+    }
+    numOfShips = 6;
+    doneWithPlacingShip($board);
+    $(".myBoard1 button").attr("disabled", true);
+    alert("Opponent's Turn");
+    $("#player1OuterContainer").toggleClass("outer-container");
+    $("#player2OuterContainer").toggleClass("outer-container");
+
+    $("#done1Btn").hide();
+    for (let i = 0; i < $tiles.length; i++) {
+      $tiles[i].disabled = true;
+    }
+    break;
 
     default:
       break;
@@ -390,7 +400,7 @@ $(".myBoard2 button").click(function() {
 
     let rowUpID = clickedId[0] + "" + rowUpNumber;
     for (let i = 0; i < $tiles2.length; i++) {
-      if (($tiles2[i].id === rowDownID || $tiles2[i].id === rowUpID) && orientation2 !== "horizontal" && ($($tiles2[i]).hasClass("btn-success") === false)) {
+        if (($tiles2[i].id === rowDownID || $tiles2[i].id === rowUpID) && orientation2 !== "horizontal" && ($($tiles2[i]).hasClass("btn-success") === false)&&!specialCase2) {
         $tiles2[i].disabled = false;
       }
     }
@@ -419,13 +429,13 @@ $(".myBoard2 button").click(function() {
     }
 
     for (let i = 0; i < $tiles2.length; i++) {
-      if (($tiles2[i].id === columnDownID || $tiles2[i].id === columnUpID) && orientation2 !== "vertical" && ($($tiles2[i]).hasClass("btn-success") === false)) {
+      if (($tiles2[i].id === columnDownID || $tiles2[i].id === columnUpID) && orientation2 !== "vertical" && ($($tiles2[i]).hasClass("btn-success") === false)&&!specialCase2) {
         $tiles2[i].disabled = false;
       }
     }
   }
 });
-
+let specialCase2=false
 /* Get the Number of Ships Placed */
 /**
  * @description Logic for when a board tile on player 2's ship placement board is clicked
@@ -583,6 +593,7 @@ function whenTileClicked2($board, myBoardBtns) {
       break;
 
     case 21:
+    specialCase2=true
       if (numberOfShipsPlaced > 5) {
         /* DOM */
         alert("Sixth Ship Placed");
@@ -603,13 +614,22 @@ function whenTileClicked2($board, myBoardBtns) {
         $(".myBoard2 button").attr("disabled", "true");
         return false;
       }
+      alert("Opponent's Turn");
+      $("#player1OuterContainer").toggleClass("outer-container");
+      $("#player2OuterContainer").toggleClass("outer-container");
     break;
-
     default:
       break;
   }
-
-  return true;
+  if (numOfShipTiles==21)
+  {
+    for (let i = 0; i < $tiles2.length; i++) {
+      $tiles2[i].disabled = true;
+      $tiles3[i].disabled = false;
+      $tiles4[i].disabled = false;
+    }
+  }
+    return true;
 }
 
 
@@ -686,7 +706,7 @@ function decrementShips(board, _this) {
       boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + 9;
     }
     console.log("boardtoChange: " + boardToChange);
-    board[boardToChange[0]][boardToChange[1]] = "O";
+    board[boardToChange[0]][boardToChange[1]] = "H";
     console.log("board: " + board);
 }
 
@@ -717,6 +737,8 @@ $(".enemyBoard1 button").click(function() {
 
   for (let i = 0; i < $tiles2.length; i++) {
     if ($tiles2[i].id == clickedId) {
+
+
       if ($($tiles2[i]).hasClass("btn-success")) {
         shipHitS();
         alert("You got a Hit!");
@@ -724,20 +746,31 @@ $(".enemyBoard1 button").click(function() {
         decrementShips(myBoard2, $(this));
 
         isGameOver = checkForGameEnd(myBoard2, $tiles2[i]);
+        setTimeout(changeTurn, 2, isGameOver);
 
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
           document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
+
         }
 
-      } else {
+      }
+      else {
         shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
+        if($(this).hasClass("btn-dark")){
+          alert("Already guessed this square.");
+          continue;
+        }
+        else{
+          alert("You Missed.");
+          $(this).addClass("btn-dark");
+          setTimeout(changeTurn, 2, isGameOver);
+        }
+
       }
 
-      setTimeout(changeTurn, 2, isGameOver);
+
     }
   }
 });
@@ -776,6 +809,7 @@ $(".enemyBoard2 button").click(function() {
         $(this).addClass("btn-danger");
         decrementShips(myBoard1, $(this));
         isGameOver = checkForGameEnd(myBoard1, $(this));
+        setTimeout(changeTurn, 2, isGameOver);
 
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
@@ -784,13 +818,22 @@ $(".enemyBoard2 button").click(function() {
         }
 
 
-      } else {
+      }
+      else {
         shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
+        if($(this).hasClass("btn-dark")){
+          alert("Already guessed this square.");
+          continue;
+        }
+        else{
+          alert("You Missed.");
+          $(this).addClass("btn-dark");
+          setTimeout(changeTurn, 2, isGameOver);
+        }
+
       }
 
-      setTimeout(changeTurn, 2, isGameOver);
+
     }
   }
 });

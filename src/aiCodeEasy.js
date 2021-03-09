@@ -3,7 +3,7 @@ let $tiles = $(".myBoard1 button");
 
 // orientation of ship placement
 let orientation = "neither";
-
+let isGameOver = false;
 //will later store 2D arrays of the coordiantes for the players ships.
 //The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
 let player1Ships = [];
@@ -155,7 +155,6 @@ let doneWithPlacingShip = function ($board) {
 
 let numOfShips = 0;
 $('#done1Btn').prop('disabled', true);
-
 /**
  * @description Logic for when a board tile on the ship placement board for player 1 is clicked
  * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
@@ -311,7 +310,10 @@ $("#done1Btn").click(function () {
     $("#done1Btn").hide();
     for (let i = 0; i < $tiles.length; i++) {
         $tiles[i].disabled = true;
+        $tiles3[i].disabled = false;
     }
+
+    console.log(myBoard1)
 });
 
 /****** PLAYER 2 CODE *******/
@@ -332,19 +334,20 @@ let orientation2 = "neither";
 // JavaScript source code
 // Haven't coded yet but guess works!
 function aiShipPlace() {
+
     alert("Computer has placed their ships!")
 }
 
 function easyGuess() {
-
     let posA = Math.floor(Math.random() * 10) + 1;
     let posB = Math.floor(Math.random() * 10) + 1;
 
     let guessID = String.fromCharCode(posA + 65);
     guessID = guessID + "" + posB;
 
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i < $tiles.length; i++) { 
         if ($tiles[i].id == guessID) {
+            console.log(guessID)
             if ($($tiles[i]).hasClass("btn-success")) {
                 shipHitS();
                 alert("Computer got a Hit!");
@@ -400,7 +403,9 @@ let enemyBoard1 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']];
 
-
+for (let i = 0; i < $tiles.length; i++) {
+  $tiles3[i].disabled = true;
+}
 /**
  * @description Changes the turn to the next player as long as the current turn did not result in the game ending
  * @param {boolean} gameOver A parameter that evaluates to true if the game is over, false otherwise
@@ -439,8 +444,6 @@ function decrementShips(board, _this) {
  */
 $(".enemyBoard1 button").click(function () {
     let clickedId = $(this).attr("id");
-    let isGameOver = false;
-
     if (clickedId[2] === undefined) {
         boardShot = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
     } else {
