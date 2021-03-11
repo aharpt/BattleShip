@@ -4,20 +4,31 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="./index.css">
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
   </head>
   <body>
+    <div>
+        Dark mode:
+        <span class="change">OFF</span>
+    </div>
     <audio autoplay>
       <source src="Sound Effects/MenuMusic.mp3" type="audio/mp3">
     </audio>
     <h1 class="logo">BattleShip</h1>
       <div class="navigation">
-        <a href="player.html">Player1 vs. Player2<a/>
+        <a id="mya1" href="player.html">
+          Player1 vs. Player2
+          <a/>
       </div>
       <div class="navigation">
-        <a href="difficulty.html">Player vs. Computer<a/>
+        <a id="mya2" href="difficulty.html">Player vs. Computer<a/>
       </div>
       <div class="navigation">
-        <a href="instructions.html">How To Play<a/>
+        <a id="mya3" href="instructions.html">How To Play<a/>
       </div>
+      <script type="text/javascript" src="./src/darkMode.js">
+      </script>
     </body>
 </html>

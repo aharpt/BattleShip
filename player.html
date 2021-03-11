@@ -10,8 +10,12 @@
     <audio autoplay>
       <source src="Sound Effects\BackgroundMusic.mp3" type="audio/mp3">
     </audio>
+    <div class= "mode">
+        Dark mode:
+        <span class="change">OFF</span>
+    </div>
     <div id="player1OuterContainer">
-      <div class="jumbotron jumbotron-fluid">
+      <div id="mya1" class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Play BattleShip</h1>
           <p class="lead">Player 1</p>
@@ -24,7 +28,7 @@
               <p class="text-success">green = ship placed on that tile</p>
           </div>
           <div class="col-md-6">
-              <p class="text-dark">black = tile already shot at (missed)</p>
+              <p id="mya4">black = tile already shot at (missed)</p>
               <p class="text-danger">red = tile already shot at (hit)</p>
           </div>
         </div>
@@ -334,7 +338,7 @@
 
       <!-- Player 2-->
       <div id="player2OuterContainer" class="outer-container">
-          <div class="jumbotron jumbotron-fluid">
+          <div id="mya2"class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4">Play BattleShip</h1>
               <p class="lead">Player 2</p>
@@ -347,7 +351,7 @@
                   <p class="text-success">green = ship placed on that tile</p>
               </div>
               <div class="col-md-6">
-                  <p class="text-dark">red = tile already shot at (hit)</p>
+                  <p id="mya3">black = tile already shot at (missed)</p>
                   <p class="text-danger">red = tile already shot at (hit)</p>
               </div>
             </div>
@@ -653,9 +657,14 @@
             </div>
           </div>
         </div>
+        <div class='navigation'><a  href='index.html'>Back to Menu<a/></div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./src/code.js">
     </script>
+    <script type="text/javascript" src="./src/darkMode.js">
+    </script>
+
   </body>
 </html>

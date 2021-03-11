@@ -1,14 +1,32 @@
 
-body {
-  padding: 25px;
-  background-color: white;
-  color: black;
-  font-size: 25px;
+.change {
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 40%;
+    width: 20px;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
 }
-
-.dark-mode {
-  background-color: black;
-  color: white;
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
+}
+.mode {
+  padding:.5% .5% .5% .5%;
+}
+.navigation {
+  font-family: arial, "Times New Roman";
+  font-size: 22px;
+  font-weight: 200;
+  font-style: none; /*italic*/
+  text-align: center; /*center,left justify*/
+  text-decoration: none;
+  text-indent: 0px;
+  text-transform: none;
+  color: red;
+  word-spacing: 5px;
+  line-height: 40px;
 }
 /* outer-container */
 .outer-container {

@@ -316,7 +316,7 @@ $("#done1Btn").click(function () {
     console.log(myBoard1)
 });
 
-/****** PLAYER 2 CODE *******/
+/****** AI *******/
 let myBoard2 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
@@ -345,7 +345,7 @@ function easyGuess() {
     let guessID = String.fromCharCode(posA + 65);
     guessID = guessID + "" + posB;
 
-    for (let i = 0; i < $tiles.length; i++) { 
+    for (let i = 0; i < $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
             console.log(guessID)
             if ($($tiles[i]).hasClass("btn-success")) {

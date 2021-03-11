@@ -1,5 +1,6 @@
 /* Navigation styles */
 
+
 .logo {
   font-family: arial, "Times New Roman";
   font-size: 22px;
@@ -27,20 +28,23 @@ a {
   display:block;
   line-height: 40px;
   text-decoration: none;
-  background-color: white;
   color: black;
 
 }
+/*beginning of custom addition Dark/Light mode*/
 
-/*beginning of custom addition Dark/Light mode
-body {
-  padding: 25px;
-  background-color: white;
-  color: black;
-  font-size: 25px;
+
+
+.change {
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 40%;
+    width: 20px;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
 }
-
-.dark-mode {
-  background-color: black;
-  color: white;
-}*/
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
+}
