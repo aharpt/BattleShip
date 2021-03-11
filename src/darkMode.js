@@ -1,4 +1,4 @@
-
+//automatically set mode to perviouly set mode from localstorage
 if(localStorage.getItem("isDark")==1)
 {
   console.log("isDark")
@@ -19,6 +19,11 @@ else{
   $( ".change" ).text( "OFF" );
 }
 
+
+/* When Button for dark mode is clicked */
+/**
+ * @event click event for adding and removing call dark style
+ */
 $( ".change" ).on("click", function() {
     if( $( "body" ).hasClass( "dark" )) {
         $( "body" ).removeClass( "dark" );

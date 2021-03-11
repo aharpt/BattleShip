@@ -1,13 +1,3 @@
-// get all board tiles from my board
-let $tiles = $(".myBoard1 button");
-
-// orientation of ship placement
-let orientation = "neither";
-
-//will later store 2D arrays of the coordiantes for the players ships.
-//The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
-let player1Ships = [];
-let player2Ships = [];
 //Sound Effects
 function shipHitS()
 {
@@ -24,6 +14,18 @@ function backgroudS()
   let sound = new Audio('Sound Effects/BackgroundMusic.mp3');
   sound.play();
 }
+
+// get all board tiles from my board
+let $tiles = $(".myBoard1 button");
+
+// orientation of ship placement
+let orientation = "neither";
+
+//will later store 2D arrays of the coordiantes for the players ships.
+//The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
+let player1Ships = [];
+let player2Ships = [];
+
 /**
  * @description 1. shipIdLetters and shipIdNumbers hold a list of their respective values.
    You can access an entire id by accessing the same index in both arrays.
@@ -67,9 +69,11 @@ let myBoard1 = [['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O'],
              ['O','O','O','O','O','O','O','O','O','O']];
 
-/* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
+/*is when switching to guessing when 6 ships are plced */
 let specialCase=false;
+
+/* When a Button on Player1's Place Ships Board is Clicked */
 /**
  * @event click event callback function for Player 1's ship placement
  */
@@ -294,6 +298,8 @@ function whenTileClicked($board, myBoardBtns) {
         player2Ships = returnIdsOfShip();
     }
     numOfShips = 6;
+
+    //preforms donebtn actions
     doneWithPlacingShip($board);
     $(".myBoard1 button").attr("disabled", true);
     alert("Opponent's Turn");
@@ -609,6 +615,7 @@ function whenTileClicked2($board, myBoardBtns) {
             player2Ships = returnIdsOfShip();
         }
         doneWithPlacingShip($board);
+        //preforms donebtn2 actions
         $(".myBoard2 button").attr("disabled", "true");
       } else {
         $(".myBoard2 button").attr("disabled", "true");
@@ -624,6 +631,7 @@ function whenTileClicked2($board, myBoardBtns) {
   if (numOfShipTiles==21)
   {
     for (let i = 0; i < $tiles2.length; i++) {
+      // switches to guessing mode for special case
       $tiles2[i].disabled = true;
       $tiles3[i].disabled = false;
       $tiles4[i].disabled = false;
@@ -751,7 +759,7 @@ $(".enemyBoard1 button").click(function() {
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
-          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2> <div><a id='mya5' href='index.html'>Play Again<a/></div>";
+          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2> <div class='navigation'><a href='index.html'>Play Again<a/></div>";
 
         }
 
@@ -791,6 +799,7 @@ let enemyBoard2 = [['O','O','O','O','O','O','O','O','O','O'],
 
 $("#done2Btn").hide();
 for (let i = 0; i < $tiles.length; i++) {
+  //so players  can't geuss before they are done placing all ships
   $tiles3[i].disabled = true;
   $tiles4[i].disabled = true;
 }
@@ -814,7 +823,7 @@ $(".enemyBoard2 button").click(function() {
         if (isGameOver) {
           $("#player1OuterContainer").addClass("outer-container");
           $("#player2OuterContainer").addClass("outer-container");
-          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 2 Won!</h2><div class='navigation'><a  href='index.html'>Play Again<a/></div>";
+          document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 2 Won!</h2><div class='navigation'><a href='index.html'>Play Again<a/></div>";
         }
 
 

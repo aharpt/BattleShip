@@ -1,0 +1,63 @@
+Estimated programming hours
+
+Meeting
+30 min. Meeting 3 times per week
+8 meetings total
+4hrs total
+
+Bug Fixes
+If a player shoots again before alert to switch players pops up: 1hr
+	LOC <5: Fixing this bug would likely be only a few lines of code. The majority of the time
+	would likely be spent understanding and identifying the bug in the code.
+
+Able to guess before your done placing ships: 2hr
+	LOC ≅ 10: To fix this bug we would have to figure how to disable the entire guessing
+	boards buttons. We then have to identify where and when to disable and enable buttons
+	for each of the guessing/enemy boards.
+6th ship placed does not have to follow dimension rules: 1hr
+	LOC ≅ 10: Fixing this bug would likely require changing certain conditions when
+	switching from placing ships to guessing and disabling specific buttons as to not allow
+	the incorrect dimension options.
+Attempts to place a ship out of bounds wrong dimensions of the ship & can cancel out of horizontal or vertical prompt to place ship with weird dimensions: 4hr
+	LOC ≅ 40: These two bugs kind of go hand-and-hand. We would need to only allow
+	options to place ships so that the player cannot place ships out of bounds and can not
+	get weird dimensions. Likely need to implement a different mechanism than alerts to
+	determine horizontal or vertical.
+Player 1 and player 2 can have different number ships:  1hr
+	LOC ≅ 10:  To fix this bug we would need to disallow player 2 from being done placing
+	ships if their number of ships does not equal player 1’s, then switch to the guessing
+	portion of the game when they are equal.
+
+Players can have no ships placed: 15min
+	LOC < 5: To fix this bug we likely only need to disable the done placing ships button until
+	after at least one ship is placed
+Can shoot at positions you have already guessed:1hr
+	LOC ≅ 15: To fix this bug we would can either check that if they click the same button
+	they already guessed, it gives the message that they already guessed there and allows
+	them to guess again or we can disable that button so they cannot guess the same space
+	again.
+
+Custom additions
+button to play again: 30 min
+	LOC ≅ 10: Only need to add a button to player.html for play again and only show it when
+	someone has won.
+sound effects added: 30min
+	LOC ≅ 15: Add sound effects folder with effects for hit (explosion) miss (water). Then
+	create functions for specific sound effects and call them when the player hits or misses.
+light/dark mode: 4hr
+LOC ≅ 60: To add this custom addition we would need to considerably edit the .css files,
+	create darkMode.js, and edit html to have a button that switches the css syles.
+
+AI
+Easy difficulty: 5hr
+	LOC ≅ 300+: For creating AI we would need to copy and place a lot of the code,js and
+	edit the player 2 to be functioning for an AI instead. The majority of the time would be
+	implementing AI properties and a small amount of time would be dedicated to easy logic.
+Medium difficulty: 3hr
+	LOC ≅ 40: Already have code for AI properties from implementing the easy difficulty. We
+	only need to edit logic to fit medium difficulties requirements (hardest logic to implement)
+Hard difficulty:1.5hr
+	LOC ≅ 30: Time would be spent creating hard difficulties logic. Likely need to go through
+	players board and immediately shoot player ships until none are left.
+
+Total Estimated Time ≅ 25

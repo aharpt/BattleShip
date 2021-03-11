@@ -1,4 +1,5 @@
 
+/* Dark Mode*/
 .change {
     cursor: pointer;
     border: 1px solid #555;
@@ -15,6 +16,8 @@
 .mode {
   padding:.5% .5% .5% .5%;
 }
+
+/* navigation button style */
 .navigation {
   font-family: arial, "Times New Roman";
   font-size: 22px;
@@ -28,6 +31,7 @@
   word-spacing: 5px;
   line-height: 40px;
 }
+
 /* outer-container */
 .outer-container {
   display: none;
@@ -68,13 +72,14 @@
 }
 
 .board button {
-
+  cursor: crosshair;
   width: 45px;
   height: 45px;
   margin: 1px;
 }
 
 button.btn {
+
   border-radius: 0;
 }
 
