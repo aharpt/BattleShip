@@ -360,15 +360,22 @@ function easyGuess() {
                     //$("#player2OuterContainer").addClass("outer-container");
                     document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Computer Won!</h2>";
                 }
+                setTimeout(changeTurn, 2, isGameOver);
 
-
-            } else {
-                shipMissS();
-                alert("Computer Missed.");
-                $($tiles[i]).addClass("btn-dark");
             }
-
-            setTimeout(changeTurn, 2, isGameOver);
+            else {
+                shipMissS();
+                if($(this).hasClass("btn-dark")){
+                  alert("Already guessed this square.");
+                  continue;
+                }
+                else{
+                  alert("Computer Missed.");
+                  $(this).addClass("btn-dark");
+                  setTimeout(changeTurn, 2, isGameOver);
+                }
+            }
+           
         }
     }
 }
