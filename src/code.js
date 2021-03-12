@@ -44,8 +44,8 @@ function returnIdsOfShip() {
       if ($tiles[i].id[2] === undefined) {
         shipIdNumbers.push($tiles[i].id[1]);
       } else {
-        let tempId = $tiles[i].id[1] + "" + $tiles[i].id[2];
-        shipIdNumbers.push(tempId);
+        let orientationFinderId = $tiles[i].id[1] + "" + $tiles[i].id[2];
+        shipIdNumbers.push(orientationFinderId);
       } // end if
     } // end if
   } // end for
@@ -77,6 +77,8 @@ let specialCase=false;
 /**
  * @event click event callback function for Player 1's ship placement
  */
+ let boardToChange;
+ let lastpos;
 $(".myBoard1 button").click(function() {
 
   /* DOM Manipulation */
@@ -89,7 +91,7 @@ $(".myBoard1 button").click(function() {
 
 /* Change Board */
 
-  let boardToChange;
+
   if (clickedId[2] === undefined) {
     boardToChange = clickedId[0].charCodeAt(0) - 65 + "" + (clickedId[1] - 1);
   } else {
@@ -100,7 +102,7 @@ $(".myBoard1 button").click(function() {
 
   numberOfShipsPlaced = whenTileClicked($tiles, ".myBoard1 button");
   console.log("number of Ships Placed: " + numberOfShipsPlaced);
-
+  lastpos = boardToChange[1]
   /* Checks Which Spaces Are Open for the Ship */
 
   // Row Code
@@ -185,7 +187,7 @@ function whenTileClicked($board, myBoardBtns) {
       numOfShipTiles++;
     }
   }
-
+let orientationFinder=returnIdsOfShip()
   switch (numOfShipTiles) {
     case 1:
       /* DOM */
@@ -222,7 +224,17 @@ function whenTileClicked($board, myBoardBtns) {
         }
         doneWithPlacingShip($board);
         numOfShips = 2;
-        orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
+      break;
+
+    case 5:
+      console.log(boardToChange[1])
+      if(boardToChange[1]==lastpos)
+      {
+        orientation="horizontal";
+      }
+      else {
+        orientation="vertical";
+      }
       break;
 
     case 6:
@@ -241,8 +253,19 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 3;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
+      orientation="neither";
       break;
+
+    case 8:
+        console.log(boardToChange[1])
+        if(boardToChange[1]==lastpos)
+        {
+          orientation="horizontal";
+        }
+        else {
+          orientation="vertical";
+        }
+        break;
 
     case 10:
       /* DOM */
@@ -260,7 +283,17 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 4;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
+      orientation="neither";
+      break;
+
+    case 12:
+      if(boardToChange[1]==lastpos)
+      {
+        orientation="horizontal";
+      }
+      else {
+        orientation="vertical";
+      }
       break;
 
     case 15:
@@ -279,8 +312,20 @@ function whenTileClicked($board, myBoardBtns) {
           }
       doneWithPlacingShip($board);
       numOfShips = 5;
-      orientation = prompt("Do you want your next ship to be horizontal or vertical? (Press 'Cancel' to stop placing ships)");
+      orientation="neither";
+
       break;
+
+    case 17:
+      if(boardToChange[1]==lastpos)
+      {
+        orientation="horizontal";
+      }
+      else {
+        orientation="vertical";
+      }
+      break;
+
 
     case 21:
     /* DOM */

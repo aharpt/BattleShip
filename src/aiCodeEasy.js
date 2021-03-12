@@ -59,6 +59,7 @@ let myBoard1 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 
 /* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
+let specialCase=false;
 /**
  * @event click event callback function for Player 1's ship placement
  */
@@ -106,7 +107,7 @@ $(".myBoard1 button").click(function () {
 
     let rowUpID = clickedId[0] + "" + rowUpNumber;
     for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false)) {
+        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -135,7 +136,7 @@ $(".myBoard1 button").click(function () {
     }
 
     for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false)) {
+        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -261,6 +262,7 @@ function whenTileClicked($board, myBoardBtns) {
             break;
 
         case 21:
+            specialCase=true
             /* DOM */
             alert("Sixth Ship Placed");
             $(myBoardBtns).removeAttr("disabled");
@@ -276,6 +278,11 @@ function whenTileClicked($board, myBoardBtns) {
             doneWithPlacingShip($board);
             numOfShips = 6;
             $(".myBoard1 button").attr("disabled", "true");
+            alert("Opponent's Turn");
+            aiShipPlace();
+            for (let i = 0; i < $tiles.length; i++) {
+              $tiles3[i].disabled = false;
+            }
             break;
 
         default:
@@ -365,6 +372,7 @@ function easyGuess() {
             }
             else {
                 shipMissS();
+                $($tiles[i]).addClass("btn-dark");
                 if($(this).hasClass("btn-dark")){
                   alert("Already guessed this square.");
                   continue;
@@ -375,7 +383,7 @@ function easyGuess() {
                   setTimeout(changeTurn, 2, isGameOver);
                 }
             }
-           
+
         }
     }
 }
