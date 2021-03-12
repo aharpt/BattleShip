@@ -503,12 +503,21 @@ $(".enemyBoard1 button").click(function () {
 
     } else {
         shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
+        if($(this).hasClass("btn-dark")){
+            alert("Already guessed this square.");
+            
+        }
+        else{
+            alert("You Missed.");
+            $(this).addClass("btn-dark");
+            if (!isGameOver) {
+                alert("Computer's Turn");
+                easyGuess();
+            }
+        }
+        
+        
     }
 
-    if (!isGameOver) {
-        alert("Computer's Turn");
-        easyGuess();
-    }
+    
 });
