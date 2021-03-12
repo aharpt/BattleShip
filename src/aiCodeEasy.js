@@ -565,15 +565,22 @@ $(".enemyBoard1 button").click(function () {
         }
 
     } else {
-        if ($(this).hasClass("btn-dark")) {
+        shipMissS();
+        if($(this).hasClass("btn-dark")){
             alert("Already guessed this square.");
+            
         }
-        else {
-            shipMissS();
+        else{
             alert("You Missed.");
             $(this).addClass("btn-dark");
-            alert("computer's turn");
-            easyGuess();
+            if (!isGameOver) {
+                alert("Computer's Turn");
+                easyGuess();
+            }
         }
+        
+        
     }
+
+    
 });
