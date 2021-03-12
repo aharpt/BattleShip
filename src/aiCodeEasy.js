@@ -340,6 +340,7 @@ function aiShipPlace() {
         let posB = 1;
         let prevPosA = 1;
         let prevPosB = 1;
+        let fail = false;
         if (Math.floor(Math.random() * 2) + 1 == 1) {
             orientation2 = "horizontal";
         }
@@ -352,17 +353,73 @@ function aiShipPlace() {
                 do {
                     posA = Math.floor(Math.random() * 10);
                     posB = Math.floor(Math.random() * 10);
-                    console.log("Trying " + posA + " , " + posB + ": " + myBoard2[posA][posB]);
+                    console.log("AI Trying " + posA + " , " + posB + ": " + myBoard2[posA][posB]);
                 } while (myBoard2[posA][posB] == 'S');
+                count++;
+                myBoard2[posA][posB] = 'S';
+                console.log("ship placed at " + posA + " , " + posB);
+                prevPosA = posA;
+                prevPosB = posB;
             }
             else {
-
+                if (!fail) {
+                    if (orientation2 == "horizonal") {
+                        //Horizontal placement
+                        if (prevPosB + 1 < 10) {
+                            if (myBoard2[prevPosA][prevPosB + 1] != 'S') {
+                                posA = prevPosA;
+                                posB = prevPosB + 1;
+                            }
+                            else {
+                                fail = true;
+                            }
+                        }
+                        else {
+                            fail = true;
+                        }
+                    }
+                    else {
+                        //Vertical placement
+                        if (prevPosA + 1 < 10) {
+                            if (myBoard2[prevPosA + 1][prevPosB] != 'S') {
+                                posA = prevPosA + 1;
+                                posB = prevPosB;
+                            }
+                            else {
+                                fail = true;
+                            }
+                        }
+                        else {
+                            fail = true;
+                        }
+                    }
+                    if (!fail) {
+                        count++;
+                        myBoard2[posA][posB] = 'S';
+                        console.log("ship placed at " + posA + " , " + posB);
+                        prevPosA = posA;
+                        prevPosB = posB;
+                    }
+                }
+                else {
+                    //on fail
+                    myBoard2[prevPosA][prevPosB] = 'O';
+                    if (count > 2) {
+                        if (orientation2 == "horizontal") {
+                            prevPosB--;
+                        }
+                        else {
+                            prevPosA--;
+                        }
+                    }
+                    else {
+                        fail = false;
+                    }
+                    count--;
+                }
+                
             }
-            myBoard2[posA][posB] = 'S';
-            console.log("ship placed at " + posA + " , " + posB);
-            prevPosA = posA;
-            prevPosB = posB;
-            count++;
+
         } while (count <= i);
     }
     alert("Computer has placed their ships!")
@@ -394,15 +451,17 @@ function easyGuess() {
 
             }
             else {
-                shipMissS();
-                if($(this).hasClass("btn-dark")){
-                  alert("Already guessed this square.");
-                  continue;
+                console.log("AI trying to miss at: " + guessID);
+                if ($($tiles[i]).hasClass("btn-dark")) {
+                    console.log("Fail...AI Already guess here");
+                    easyGuess();
                 }
-                else{
-                  alert("Computer Missed.");
-                  $(this).addClass("btn-dark");
-                  setTimeout(changeTurn, 2, isGameOver);
+                else {
+                    console.log("success miss.");
+                    shipMissS();
+                    alert("Computer Missed.");
+                    $($tiles[i]).addClass("btn-dark");
+                    setTimeout(changeTurn, 2, isGameOver);
                 }
             }
            
@@ -449,7 +508,7 @@ for (let i = 0; i < $tiles.length; i++) {
  */
 function changeTurn(gameOver) {
     if (!gameOver) {
-        alert("Players's Turn");
+        //alert("Players's Turn");
         //$("#player1OuterContainer").toggleClass("outer-container");
         //$("#player2OuterContainer").toggleClass("outer-container");
     }
@@ -500,15 +559,21 @@ $(".enemyBoard1 button").click(function () {
             //$("#player2OuterContainer").addClass("outer-container");
             document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
         }
+        else {
+            alert("computer's turn");
+            easyGuess();
+        }
 
     } else {
-        shipMissS();
-        alert("You Missed.");
-        $(this).addClass("btn-dark");
-    }
-
-    if (!isGameOver) {
-        alert("Computer's Turn");
-        easyGuess();
+        if ($(this).hasClass("btn-dark")) {
+            alert("Already guessed this square.");
+        }
+        else {
+            shipMissS();
+            alert("You Missed.");
+            $(this).addClass("btn-dark");
+            alert("computer's turn");
+            easyGuess();
+        }
     }
 });
