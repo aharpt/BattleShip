@@ -334,7 +334,37 @@ let orientation2 = "neither";
 // JavaScript source code
 // Haven't coded yet but guess works!
 function aiShipPlace() {
+    for (let i = 1; i <= numOfShips; i++) {
+        let count = 1;
+        let posA = 1;
+        let posB = 1;
+        let prevPosA = 1;
+        let prevPosB = 1;
+        if (Math.floor(Math.random() * 2) + 1 == 1) {
+            orientation2 = "horizontal";
+        }
+        else {
+            orientation2 = "vertical";
+        }
 
+        do {
+            if (count == 1) {
+                do {
+                    posA = Math.floor(Math.random() * 10);
+                    posB = Math.floor(Math.random() * 10);
+                    console.log("Trying " + posA + " , " + posB + ": " + myBoard2[posA][posB]);
+                } while (myBoard2[posA][posB] == 'S');
+            }
+            else {
+
+            }
+            myBoard2[posA][posB] = 'S';
+            console.log("ship placed at " + posA + " , " + posB);
+            prevPosA = posA;
+            prevPosB = posB;
+            count++;
+        } while (count <= i);
+    }
     alert("Computer has placed their ships!")
 }
 
