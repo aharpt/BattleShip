@@ -436,7 +436,7 @@ function easyGuess() {
     let posA = Math.floor(Math.random() * 10) + 1;
     let posB = Math.floor(Math.random() * 10) + 1;
 
-    let guessID = String.fromCharCode(posA + 65);
+    let guessID = String.fromCharCode(posA + 64);
     guessID = guessID + "" + posB;
 
     for (let i = 0; i < $tiles.length; i++) {
