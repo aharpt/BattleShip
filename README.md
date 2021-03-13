@@ -6,7 +6,7 @@
 #### Player vs Computer: play against an AI with three difficulty options
 ######   Easy: random guesses
 ######   Medium: random guesses until ship is hit then, targets ship
-######   Hard: Cheater Mode (AI know where your ships are and immidiatly targets ships)
+######   Hard: Cheater Mode (AI know where your ships are and immediately targets ships)
 #### Dark Mode / Light Mode
 
 ### Developed By:
