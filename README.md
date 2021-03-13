@@ -4,9 +4,9 @@
 ## Game Options
 #### Player 1 vs Player 2: play against a friend
 #### Player vs Computer: play against an AI with three difficulty options
-##### Easy: random guesses
-##### Medium: random guesses until ship is hit then, targets ship
-##### Hard: Cheater Mode (AI know where your ships are and immidiatly targets ships)
+######   Easy: random guesses
+######   Medium: random guesses until ship is hit then, targets ship
+######   Hard: Cheater Mode (AI know where your ships are and immidiatly targets ships)
 #### Dark Mode / Light Mode
 
 ### Developed By:
@@ -22,6 +22,12 @@
 #### 2. Azdeen Jeljalane 
 #### 3. Chauncey Hester
 #### 4. Jonelle Gamble
+
+### Custom Additions:
+#### Dark Mode / Light Mode
+#### Sound Effects
+#### Play Again Button
+
 
 
 ### Technologies Used:
