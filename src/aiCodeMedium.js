@@ -336,11 +336,15 @@ let myBoard2 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']];
 
-//let $tiles2 = $(".myBoard2 button");
 let orientation2 = "neither";
 
-// JavaScript source code
-// Haven't coded yet but guess works!
+
+/**
+ * @description Logic for AI to place thier ships.
+ * @pre none
+ * @post Gets random positions and places 'S' for proper spaces in myBoard2
+ * @returns none
+ */
 function aiShipPlace() {
     for (let i = 1; i <= numOfShips; i++) {
         let count = 1;
@@ -436,7 +440,13 @@ function aiShipPlace() {
 let gotHit = false;
 let hitList = [];
 
-function easyGuess() {
+/**
+ * @description Logic for AI to guess on medium difficulty
+ * @pre none
+ * @post AI guesses random space and either hits or misses. when it hits starts to target ship until hitlist is empty
+ * @returns none
+ */
+function mediumGuess() {
     let posA = 1;
     let posB = 1;
     let guessID = "A1";
@@ -460,7 +470,7 @@ function easyGuess() {
         guessID = String.fromCharCode(posA + 64);
         guessID = guessID + "" + posB;
     }
-    
+
 
     for (let i = 0; i < $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
@@ -506,7 +516,7 @@ function easyGuess() {
                 console.log("AI trying to miss at: " + guessID);
                 if ($($tiles[i]).hasClass("btn-dark")) {
                     console.log("Fail...AI Already guess here");
-                    easyGuess();
+                    mediumGuess();
                 }
                 else {
                     console.log("success miss.");
@@ -614,7 +624,7 @@ $(".enemyBoard1 button").click(function () {
         }
         else {
             alert("computer's turn");
-            easyGuess();
+            mediumGuess();
         }
 
     } else {
@@ -628,7 +638,7 @@ $(".enemyBoard1 button").click(function () {
             $(this).addClass("btn-dark");
             if (!isGameOver) {
                 alert("Computer's Turn");
-                easyGuess();
+                mediumGuess();
             }
         }
 

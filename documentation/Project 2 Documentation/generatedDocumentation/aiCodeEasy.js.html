@@ -1,4 +1,32 @@
-// get all board tiles from my board
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: aiCodeEasy.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: aiCodeEasy.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// get all board tiles from my board
 let $tiles = $(".myBoard1 button");
 
 // orientation of ship placement
@@ -34,7 +62,7 @@ function returnIdsOfShip() {
     let shipIds = [];
     let shipIdLetters = [];
     let shipIdNumbers = [];
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($($tiles[i]).hasClass("btn-success")) {
             shipIdLetters.push($tiles[i].id[0]);
             if ($tiles[i].id[2] === undefined) {
@@ -114,8 +142,8 @@ $(".myBoard1 button").click(function () {
     }
 
     let rowUpID = clickedId[0] + "" + rowUpNumber;
-    for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
+        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) &amp;&amp; orientation !== "horizontal" &amp;&amp; ($($tiles[i]).hasClass("btn-success") === false&amp;&amp;!specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -143,8 +171,8 @@ $(".myBoard1 button").click(function () {
         columnUpID = columnUpID + "" + clickedId[2];
     }
 
-    for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
+        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) &amp;&amp; orientation !== "vertical" &amp;&amp; ($($tiles[i]).hasClass("btn-success") === false&amp;&amp;!specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -155,7 +183,7 @@ $(".myBoard1 button").click(function () {
  * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
  */
 let doneWithPlacingShip = function ($board) {
-    for (let i = 0; i < $board.length; i++) {
+    for (let i = 0; i &lt; $board.length; i++) {
         if ($($board[i]).hasClass("btn-success")) {
             $board[i].disabled = true;
         }
@@ -172,7 +200,7 @@ $('#done1Btn').prop('disabled', true);
  */
 function whenTileClicked($board, myBoardBtns) {
     let numOfShipTiles = 0;
-    for (let i = 0; i < $board.length; i++) {
+    for (let i = 0; i &lt; $board.length; i++) {
         if ($($board[i]).hasClass("btn-success")) {
             numOfShipTiles++;
         }
@@ -289,7 +317,7 @@ function whenTileClicked($board, myBoardBtns) {
             $(".myBoard1 button").attr("disabled", "true");
             alert("Opponent's Turn");
             aiShipPlace();
-            for (let i = 0; i < $tiles.length; i++) {
+            for (let i = 0; i &lt; $tiles.length; i++) {
               $tiles3[i].disabled = false;
             }
             $('#done1Btn').prop('disabled', true);
@@ -309,7 +337,7 @@ function whenTileClicked($board, myBoardBtns) {
  */
 $("#done1Btn").click(function () {
     let successLength = 0;
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($($tiles[i]).hasClass("btn-success")) {
             successLength++;
         }
@@ -325,7 +353,7 @@ $("#done1Btn").click(function () {
     }
 
     $("#done1Btn").hide();
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         $tiles[i].disabled = true;
         $tiles3[i].disabled = false;
     }
@@ -354,7 +382,7 @@ let orientation2 = "neither";
  * @returns none
  */
 function aiShipPlace() {
-    for (let i = 1; i <= numOfShips; i++) {
+    for (let i = 1; i &lt;= numOfShips; i++) {
         let count = 1;
         let posA = 1;
         let posB = 1;
@@ -385,7 +413,7 @@ function aiShipPlace() {
                 if (!fail) {
                     if (orientation2 == "horizonal") {
                         //Horizontal placement
-                        if (prevPosB + 1 < 10) {
+                        if (prevPosB + 1 &lt; 10) {
                             if (myBoard2[prevPosA][prevPosB + 1] != 'S') {
                                 posA = prevPosA;
                                 posB = prevPosB + 1;
@@ -400,7 +428,7 @@ function aiShipPlace() {
                     }
                     else {
                         //Vertical placement
-                        if (prevPosA + 1 < 10) {
+                        if (prevPosA + 1 &lt; 10) {
                             if (myBoard2[prevPosA + 1][prevPosB] != 'S') {
                                 posA = prevPosA + 1;
                                 posB = prevPosB;
@@ -440,7 +468,7 @@ function aiShipPlace() {
 
             }
 
-        } while (count <= i);
+        } while (count &lt;= i);
     }
     alert("Computer has placed their ships!")
 }
@@ -458,7 +486,7 @@ function easyGuess() {
     let guessID = String.fromCharCode(posA + 64);
     guessID = guessID + "" + posB;
 
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
             console.log(guessID)
             if ($($tiles[i]).hasClass("btn-success")) {
@@ -471,7 +499,7 @@ function easyGuess() {
                 if (isGameOver) {
                     $("#player1OuterContainer").addClass("outer-container");
                     //$("#player2OuterContainer").addClass("outer-container");
-                    document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Computer Won!</h2>";
+                    document.body.innerHTML = "&lt;h2 id='playerWon' class='lead'>Game Over, Computer Won!&lt;/h2>";
                 }
                 setTimeout(changeTurn, 2, isGameOver);
 
@@ -501,8 +529,8 @@ function easyGuess() {
  * @returns true if game is over, false otherwise
  */
 function checkForGameEnd(board) {
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
+    for (let i = 0; i &lt; 10; i++) {
+        for (let j = 0; j &lt; 10; j++) {
             if (board[i][j] === "S") {
                 return false;
             }
@@ -525,7 +553,7 @@ let enemyBoard1 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']];
 
-for (let i = 0; i < $tiles.length; i++) {
+for (let i = 0; i &lt; $tiles.length; i++) {
   $tiles3[i].disabled = true;
 }
 /**
@@ -583,7 +611,7 @@ $(".enemyBoard1 button").click(function () {
         if (isGameOver) {
             $("#player1OuterContainer").addClass("outer-container");
             //$("#player2OuterContainer").addClass("outer-container");
-            document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
+            document.body.innerHTML = "&lt;h2 id='playerWon' class='lead'>Game Over, Player 1 Won!&lt;/h2>";
         }
         else {
             alert("computer's turn");
@@ -610,3 +638,26 @@ $(".enemyBoard1 button").click(function () {
 
 
 });
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:clickeventcallbackfunctionforPlayer1'sshipplacement">click event callback function for Player 1's ship placement</a></li><li><a href="global.html#event:clickforwhenPlayer1shootsatPlayer2'sships">click for when Player 1 shoots at Player 2's ships</a></li><li><a href="global.html#event:clickforwhenPlayer1's'DonePlacingShips'buttonisclicked">click for when Player 1's 'Done Placing Ships' button is clicked</a></li></ul><h3>Global</h3><ul><li><a href="global.html#aiShipPlace">aiShipPlace</a></li><li><a href="global.html#changeTurn">changeTurn</a></li><li><a href="global.html#checkForGameEnd">checkForGameEnd</a></li><li><a href="global.html#decrementShips">decrementShips</a></li><li><a href="global.html#doneWithPlacingShip">doneWithPlacingShip</a></li><li><a href="global.html#easyGuess">easyGuess</a></li><li><a href="global.html#returnIdsOfShip">returnIdsOfShip</a></li><li><a href="global.html#whenTileClicked">whenTileClicked</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Mar 14 2021 15:47:23 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

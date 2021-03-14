@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: aiCodeMedium.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: aiCodeMedium.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// JavaScript source code
 // get all board tiles from my board
 let $tiles = $(".myBoard1 button");
 
@@ -8,7 +37,6 @@ let isGameOver = false;
 //The arrays are filled with the returnIdsOfShip function. The largest ships are stored at the beginning of the array and the 1x1 ship is stored in the end.
 let player1Ships = [];
 let player2Ships = [];
-
 //Sound Effects
 function shipHitS() {
     let sound = new Audio('Sound Effects/explosion.mp3');
@@ -23,18 +51,11 @@ function backgroudS() {
     sound.play();
 }
 
-/**
- * @description 1. shipIdLetters and shipIdNumbers hold a list of their respective values.
-   You can access an entire id by accessing the same index in both arrays.
-   For instance, shipIdLetters[0] + shipIdNumbers[0] will give entire id of 0th element
-  2. shipIds is a 2d array.  shipIds[0] holds shipIdLetters array, shipIds[1] holds shipIdNumbers
- * @returns 2d array shipIds that holds ship coordinates that have a ship placed on them
- */
 function returnIdsOfShip() {
     let shipIds = [];
     let shipIdLetters = [];
     let shipIdNumbers = [];
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($($tiles[i]).hasClass("btn-success")) {
             shipIdLetters.push($tiles[i].id[0]);
             if ($tiles[i].id[2] === undefined) {
@@ -67,7 +88,7 @@ let myBoard1 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 
 /* When a Button on Player1's Place Ships Board is Clicked */
 let numberOfShipsPlaced;
-let specialCase=false;
+let specialCase = false;
 /**
  * @event click event callback function for Player 1's ship placement
  */
@@ -114,8 +135,8 @@ $(".myBoard1 button").click(function () {
     }
 
     let rowUpID = clickedId[0] + "" + rowUpNumber;
-    for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) && orientation !== "horizontal" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
+        if (($tiles[i].id === rowDownID || $tiles[i].id === rowUpID) &amp;&amp; orientation !== "horizontal" &amp;&amp; ($($tiles[i]).hasClass("btn-success") === false &amp;&amp; !specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -143,8 +164,8 @@ $(".myBoard1 button").click(function () {
         columnUpID = columnUpID + "" + clickedId[2];
     }
 
-    for (let i = 0; i < $tiles.length; i++) {
-        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) && orientation !== "vertical" && ($($tiles[i]).hasClass("btn-success") === false&&!specialCase)) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
+        if (($tiles[i].id === columnDownID || $tiles[i].id === columnUpID) &amp;&amp; orientation !== "vertical" &amp;&amp; ($($tiles[i]).hasClass("btn-success") === false &amp;&amp; !specialCase)) {
             $tiles[i].disabled = false;
         }
     }
@@ -155,13 +176,13 @@ $(".myBoard1 button").click(function () {
  * @param {array} $board A jQuery representation of all DOM elements that match a particular selector
  */
 let doneWithPlacingShip = function ($board) {
-    for (let i = 0; i < $board.length; i++) {
+    for (let i = 0; i &lt; $board.length; i++) {
         if ($($board[i]).hasClass("btn-success")) {
             $board[i].disabled = true;
         }
     }
 };
-//records number of ships placed
+
 let numOfShips = 0;
 $('#done1Btn').prop('disabled', true);
 /**
@@ -172,7 +193,7 @@ $('#done1Btn').prop('disabled', true);
  */
 function whenTileClicked($board, myBoardBtns) {
     let numOfShipTiles = 0;
-    for (let i = 0; i < $board.length; i++) {
+    for (let i = 0; i &lt; $board.length; i++) {
         if ($($board[i]).hasClass("btn-success")) {
             numOfShipTiles++;
         }
@@ -270,7 +291,7 @@ function whenTileClicked($board, myBoardBtns) {
             break;
 
         case 21:
-            specialCase=true
+            specialCase = true
             /* DOM */
             alert("Sixth Ship Placed");
             $(myBoardBtns).removeAttr("disabled");
@@ -285,14 +306,12 @@ function whenTileClicked($board, myBoardBtns) {
             }
             doneWithPlacingShip($board);
             numOfShips = 6;
-            //No more ships can be placed so switches to guessing mode.
             $(".myBoard1 button").attr("disabled", "true");
             alert("Opponent's Turn");
             aiShipPlace();
-            for (let i = 0; i < $tiles.length; i++) {
-              $tiles3[i].disabled = false;
+            for (let i = 0; i &lt; $tiles.length; i++) {
+                $tiles3[i].disabled = false;
             }
-            $('#done1Btn').prop('disabled', true);
             break;
 
         default:
@@ -309,7 +328,7 @@ function whenTileClicked($board, myBoardBtns) {
  */
 $("#done1Btn").click(function () {
     let successLength = 0;
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($($tiles[i]).hasClass("btn-success")) {
             successLength++;
         }
@@ -325,7 +344,7 @@ $("#done1Btn").click(function () {
     }
 
     $("#done1Btn").hide();
-    for (let i = 0; i < $tiles.length; i++) {
+    for (let i = 0; i &lt; $tiles.length; i++) {
         $tiles[i].disabled = true;
         $tiles3[i].disabled = false;
     }
@@ -347,6 +366,7 @@ let myBoard2 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 
 let orientation2 = "neither";
 
+
 /**
  * @description Logic for AI to place thier ships.
  * @pre none
@@ -354,7 +374,7 @@ let orientation2 = "neither";
  * @returns none
  */
 function aiShipPlace() {
-    for (let i = 1; i <= numOfShips; i++) {
+    for (let i = 1; i &lt;= numOfShips; i++) {
         let count = 1;
         let posA = 1;
         let posB = 1;
@@ -385,7 +405,7 @@ function aiShipPlace() {
                 if (!fail) {
                     if (orientation2 == "horizonal") {
                         //Horizontal placement
-                        if (prevPosB + 1 < 10) {
+                        if (prevPosB + 1 &lt; 10) {
                             if (myBoard2[prevPosA][prevPosB + 1] != 'S') {
                                 posA = prevPosA;
                                 posB = prevPosB + 1;
@@ -400,7 +420,7 @@ function aiShipPlace() {
                     }
                     else {
                         //Vertical placement
-                        if (prevPosA + 1 < 10) {
+                        if (prevPosA + 1 &lt; 10) {
                             if (myBoard2[prevPosA + 1][prevPosB] != 'S') {
                                 posA = prevPosA + 1;
                                 posB = prevPosB;
@@ -440,25 +460,47 @@ function aiShipPlace() {
 
             }
 
-        } while (count <= i);
+        } while (count &lt;= i);
     }
     alert("Computer has placed their ships!")
 }
 
+let gotHit = false;
+let hitList = [];
+
 /**
- * @description Logic for AI to guess on easy difficulty
+ * @description Logic for AI to guess on medium difficulty
  * @pre none
- * @post AI guesses random space and either hits or misses
+ * @post AI guesses random space and either hits or misses. when it hits starts to target ship until hitlist is empty
  * @returns none
  */
-function easyGuess() {
-    let posA = Math.floor(Math.random() * 10) + 1;
-    let posB = Math.floor(Math.random() * 10) + 1;
+function mediumGuess() {
+    let posA = 1;
+    let posB = 1;
+    let guessID = "A1";
+    if (gotHit) {
+        guessID = hitList.shift();
+        if (guessID[2] === undefined) {
+            posA = guessID[0].charCodeAt(0) - 64;
+            posB = guessID[1];
+        } else {
+            posA = guessID[0].charCodeAt(0) - 64;
+            posB = 9;
+        }
+        if (hitList.length == 0) {
+            gotHit = false;
+        }
+    }
+    else {
+        posA = Math.floor(Math.random() * 10) + 1;
+        posB = Math.floor(Math.random() * 10) + 1;
 
-    let guessID = String.fromCharCode(posA + 64);
-    guessID = guessID + "" + posB;
+        guessID = String.fromCharCode(posA + 64);
+        guessID = guessID + "" + posB;
+    }
 
-    for (let i = 0; i < $tiles.length; i++) {
+
+    for (let i = 0; i &lt; $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
             console.log(guessID)
             if ($($tiles[i]).hasClass("btn-success")) {
@@ -471,8 +513,30 @@ function easyGuess() {
                 if (isGameOver) {
                     $("#player1OuterContainer").addClass("outer-container");
                     //$("#player2OuterContainer").addClass("outer-container");
-                    document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Computer Won!</h2>";
+                    document.body.innerHTML = "&lt;h2 id='playerWon' class='lead'>Game Over, Computer Won!&lt;/h2>";
                 }
+
+                if (posA + 1 &lt;= 10) {
+                    hitID1 = String.fromCharCode(posA + 65) + "" + posB;
+                    hitList.push(hitID1);
+                    gotHit = true;
+                }
+                if (posA - 1 > 0) {
+                    hitID2 = String.fromCharCode(posA + 63) + "" + posB;
+                    hitList.push(hitID2);
+                    gotHit = true;
+                }
+                if (posB + 1 &lt;= 10) {
+                    hitID3 = String.fromCharCode(posA + 64) + "" + (posB - 1);
+                    hitList.push(hitID3);
+                    gotHit = true;
+                }
+                if (posB - 1 > 0) {
+                    hitID4 = String.fromCharCode(posA + 64) + "" + (posB + 1);
+                    hitList.push(hitID4);
+                    gotHit = true;
+                }
+
                 setTimeout(changeTurn, 2, isGameOver);
 
             }
@@ -480,7 +544,7 @@ function easyGuess() {
                 console.log("AI trying to miss at: " + guessID);
                 if ($($tiles[i]).hasClass("btn-dark")) {
                     console.log("Fail...AI Already guess here");
-                    easyGuess();
+                    mediumGuess();
                 }
                 else {
                     console.log("success miss.");
@@ -495,14 +559,15 @@ function easyGuess() {
     }
 }
 
+
 /**
  * @description Takes in a player board and the tile clicked, and checks if the game is over
  * @param {array} board An array of a player board
  * @returns true if game is over, false otherwise
  */
 function checkForGameEnd(board) {
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
+    for (let i = 0; i &lt; 10; i++) {
+        for (let j = 0; j &lt; 10; j++) {
             if (board[i][j] === "S") {
                 return false;
             }
@@ -525,8 +590,8 @@ let enemyBoard1 = [['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']];
 
-for (let i = 0; i < $tiles.length; i++) {
-  $tiles3[i].disabled = true;
+for (let i = 0; i &lt; $tiles.length; i++) {
+    $tiles3[i].disabled = true;
 }
 /**
  * @description Changes the turn to the next player as long as the current turn did not result in the game ending
@@ -583,25 +648,25 @@ $(".enemyBoard1 button").click(function () {
         if (isGameOver) {
             $("#player1OuterContainer").addClass("outer-container");
             //$("#player2OuterContainer").addClass("outer-container");
-            document.body.innerHTML = "<h2 id='playerWon' class='lead'>Game Over, Player 1 Won!</h2>";
+            document.body.innerHTML = "&lt;h2 id='playerWon' class='lead'>Game Over, Player 1 Won!&lt;/h2>";
         }
         else {
             alert("computer's turn");
-            easyGuess();
+            mediumGuess();
         }
 
     } else {
         shipMissS();
-        if($(this).hasClass("btn-dark")){
+        if ($(this).hasClass("btn-dark")) {
             alert("Already guessed this square.");
 
         }
-        else{
+        else {
             alert("You Missed.");
             $(this).addClass("btn-dark");
             if (!isGameOver) {
                 alert("Computer's Turn");
-                easyGuess();
+                mediumGuess();
             }
         }
 
@@ -610,3 +675,26 @@ $(".enemyBoard1 button").click(function () {
 
 
 });
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:clickeventcallbackfunctionforPlayer1'sshipplacement">click event callback function for Player 1's ship placement</a></li><li><a href="global.html#event:clickforwhenPlayer1shootsatPlayer2'sships">click for when Player 1 shoots at Player 2's ships</a></li><li><a href="global.html#event:clickforwhenPlayer1's'DonePlacingShips'buttonisclicked">click for when Player 1's 'Done Placing Ships' button is clicked</a></li></ul><h3>Global</h3><ul><li><a href="global.html#aiShipPlace">aiShipPlace</a></li><li><a href="global.html#changeTurn">changeTurn</a></li><li><a href="global.html#checkForGameEnd">checkForGameEnd</a></li><li><a href="global.html#decrementShips">decrementShips</a></li><li><a href="global.html#doneWithPlacingShip">doneWithPlacingShip</a></li><li><a href="global.html#mediumGuess">mediumGuess</a></li><li><a href="global.html#whenTileClicked">whenTileClicked</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Mar 14 2021 15:47:54 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
