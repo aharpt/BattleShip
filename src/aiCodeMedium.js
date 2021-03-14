@@ -455,7 +455,8 @@ function mediumGuess() {
         if (guessID[2] === undefined) {
             posA = guessID[0].charCodeAt(0) - 64;
             posB = guessID[1];
-        } else {
+        }
+        else {
             posA = guessID[0].charCodeAt(0) - 64;
             posB = 9;
         }
@@ -475,7 +476,7 @@ function mediumGuess() {
     for (let i = 0; i < $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
             console.log(guessID)
-            if ($($tiles[i]).hasClass("btn-success")) {
+            if ($($tiles[i]).hasClass("btn-success") && !($($tiles[i]).hasClass("btn-danger"))) {
                 shipHitS();
                 alert("Computer got a Hit!");
                 $($tiles[i]).addClass("btn-danger");
@@ -514,7 +515,7 @@ function mediumGuess() {
             }
             else {
                 console.log("AI trying to miss at: " + guessID);
-                if ($($tiles[i]).hasClass("btn-dark")) {
+                if ($($tiles[i]).hasClass("btn-dark") || ($($tiles[i]).hasClass("btn-danger"))) {
                     console.log("Fail...AI Already guess here");
                     mediumGuess();
                 }
@@ -629,7 +630,7 @@ $(".enemyBoard1 button").click(function () {
 
     } else {
         shipMissS();
-        if ($(this).hasClass("btn-dark")) {
+        if ($(this).hasClass("btn-dark") || $(this).hasClass("btn-danger")) {
             alert("Already guessed this square.");
 
         }

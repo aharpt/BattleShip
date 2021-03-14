@@ -458,7 +458,7 @@ function hardGuess() {
     for (let i = 0; i < $tiles.length; i++) {
         if ($tiles[i].id == guessID) {
             console.log(guessID)
-            if ($($tiles[i]).hasClass("btn-success")) {
+            if ($($tiles[i]).hasClass("btn-success") && !($($tiles[i]).hasClass("btn-danger"))) {
                 shipHitS();
                 alert("Computer got a Hit!");
                 $($tiles[i]).addClass("btn-danger");
@@ -475,7 +475,7 @@ function hardGuess() {
             }
             else {
                 console.log("AI trying to miss at: " + guessID);
-                if ($($tiles[i]).hasClass("btn-dark")) {
+                if ($($tiles[i]).hasClass("btn-dark") || ($($tiles[i]).hasClass("btn-danger"))) {
                     console.log("Fail...AI Already guess here");
                     hardGuess();
                 }
@@ -590,7 +590,7 @@ $(".enemyBoard1 button").click(function () {
 
     } else {
         shipMissS();
-        if ($(this).hasClass("btn-dark")) {
+        if ($(this).hasClass("btn-dark") || $(this).hasClass("btn-danger")) {
             alert("Already guessed this square.");
 
         }
