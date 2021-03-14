@@ -459,7 +459,7 @@ function mediumGuess() {
         }
         else {
             posA = guessID[0].charCodeAt(0) - 64;
-            posB = 9;
+            posB = 10;
         }
         if (hitList.length == 0) {
             gotHit = false;
