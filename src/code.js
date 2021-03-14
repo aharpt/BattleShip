@@ -792,7 +792,7 @@ $(".enemyBoard1 button").click(function() {
     if ($tiles2[i].id == clickedId) {
 
 
-      if ($($tiles2[i]).hasClass("btn-success")) {
+        if ($($tiles2[i]).hasClass("btn-success") && !($($tiles[i]).hasClass("btn-danger"))) {
         shipHitS();
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
@@ -811,7 +811,7 @@ $(".enemyBoard1 button").click(function() {
       }
       else {
         shipMissS();
-        if($(this).hasClass("btn-dark")){
+          if ($(this).hasClass("btn-dark") || $(this).hasClass("btn-danger")){
           alert("Already guessed this square.");
           continue;
         }
@@ -857,7 +857,7 @@ $(".enemyBoard2 button").click(function() {
 
   for (let i = 0; i < $tiles.length; i++) {
     if ($tiles[i].id == clickedId) {
-      if ($($tiles[i]).hasClass("btn-success")) {
+        if ($($tiles[i]).hasClass("btn-success") && !($($tiles[i]).hasClass("btn-danger"))) {
         shipHitS();
         alert("You got a Hit!");
         $(this).addClass("btn-danger");
@@ -875,7 +875,7 @@ $(".enemyBoard2 button").click(function() {
       }
       else {
         shipMissS();
-        if($(this).hasClass("btn-dark")){
+          if ($(this).hasClass("btn-dark") || $(this).hasClass("btn-danger")){
           alert("Already guessed this square.");
           continue;
         }
