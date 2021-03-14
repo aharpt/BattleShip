@@ -278,6 +278,7 @@ function whenTileClicked($board, myBoardBtns) {
             doneWithPlacingShip($board);
             numOfShips = 6;
             $(".myBoard1 button").attr("disabled", "true");
+            $("#done1Btn").hide();
             alert("Opponent's Turn");
             aiShipPlace();
             for (let i = 0; i < $tiles.length; i++) {

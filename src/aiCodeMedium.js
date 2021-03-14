@@ -279,6 +279,7 @@ function whenTileClicked($board, myBoardBtns) {
             doneWithPlacingShip($board);
             numOfShips = 6;
             $(".myBoard1 button").attr("disabled", "true");
+            $("#done1Btn").hide();
             alert("Opponent's Turn");
             aiShipPlace();
             for (let i = 0; i < $tiles.length; i++) {
@@ -449,7 +450,7 @@ let hitList = [];
 function mediumGuess() {
     let posA = 1;
     let posB = 1;
-    let guessID = "A1";
+    let guessID = "";
     if (gotHit) {
         guessID = hitList.shift();
         if (guessID[2] === undefined) {
@@ -500,12 +501,12 @@ function mediumGuess() {
                     gotHit = true;
                 }
                 if (posB + 1 <= 10) {
-                    hitID3 = String.fromCharCode(posA + 64) + "" + (posB - 1);
+                    hitID3 = String.fromCharCode(posA + 64) + "" + (posB + 1);
                     hitList.push(hitID3);
                     gotHit = true;
                 }
                 if (posB - 1 > 0) {
-                    hitID4 = String.fromCharCode(posA + 64) + "" + (posB + 1);
+                    hitID4 = String.fromCharCode(posA + 64) + "" + (posB - 1);
                     hitList.push(hitID4);
                     gotHit = true;
                 }

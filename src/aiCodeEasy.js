@@ -287,6 +287,7 @@ function whenTileClicked($board, myBoardBtns) {
             numOfShips = 6;
             //No more ships can be placed so switches to guessing mode.
             $(".myBoard1 button").attr("disabled", "true");
+            $("#done1Btn").hide();
             alert("Opponent's Turn");
             aiShipPlace();
             for (let i = 0; i < $tiles.length; i++) {
