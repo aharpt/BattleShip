@@ -444,13 +444,13 @@ function aiShipPlace() {
 function hardGuess() {
     let posA = 1;
     let posB = 1;
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; i++) {
-            if (myBoard1[i][j] == 'S') {
-                posA = i + 1;
-                posB = j + 1;
-            }
+    for(let i=0; i<10;i++){
+      for (let j=0; j<10;j++){
+        if(myBoard1[i][j]=='S'){
+          posA=i+1;
+          posB=j+1;
         }
+      }
     }
     let guessID = String.fromCharCode(posA + 64);
     guessID = guessID + "" + posB;
